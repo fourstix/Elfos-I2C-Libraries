@@ -148,7 +148,7 @@ Print the hex digits *hhhh* on the Adafruit 7 Segment LED display.
 Clear the Adafruit 7 Segment LED display.
 
 ## led7clock
-**Usage:** led7clear    
+**Usage:** led7clock    
 Display a digital clock on the Adafruit 7 Segment LED display.  Requires the 1802-Mini RTC (Real Time Clock) Card.  Press the input button to exit the program.
 
 ## alprint
@@ -205,7 +205,37 @@ Example program for the SHT31 temperature and humidity sensor.
 
 Repository Contents
 -------------------
-(TBD)
+* **/src/**  --Source files for assembling I2C libraries and example programs.
+* **/src/alnum/**  -- Source files for Sparkfun 14 Segment Alphanumeric display library.
+  * alnum.bat - Windows batch file to assemble source files to create library 
+  * clean.bat - Windows batch file to delete binaries before rebuilding
+* **/src/example/**  -- Source files for Elf/OS I2c library example programs.
+  * build.bat - Windows batch file to assemble source files to create example programs 
+  * clean.bat - Windows batch file to delete binaries before rebuilding
+* **/src/i2c/**  -- Source files for Elf/OS I2C library.
+  * i2c.bat - Windows batch file to assemble source files to create library 
+  * clean.bat - Windows batch file to delete binaries before rebuilding
+* **/src/include/**  -- Include files for Elf/OS I2c libraries and example programs.
+* **/src/joystick/**  -- Source files for Sparkfun Qwiic Joystick library.
+  * joystick.bat - Windows batch file to assemble source files to create library 
+  * clean.bat - Windows batch file to delete binaries before rebuilding
+* **/src/led7/**  -- Source files for Adafruit 7 Segment LED display library.
+  * led7.bat - Windows batch file to assemble source files to create library 
+  * clean.bat - Windows batch file to delete binaries before rebuilding
+* **/src/lm75a/**  -- Source files for LM75A temperature sensor library.
+  * lm75a.bat - Windows batch file to assemble source files to create library 
+  * clean.bat - Windows batch file to delete binaries before rebuilding
+* **/src/relay/**  -- Source files for Sparkfun Qwiic Single relay library.
+  * relay.bat - Windows batch file to assemble source files to create library 
+  * clean.bat - Windows batch file to delete binaries before rebuilding
+* **/src/sht31/**  -- Source files for SHT31 temperature and humidity sensor library.
+  * sht31.bat - Windows batch file to assemble source files to create library 
+  * clean.bat - Windows batch file to delete binaries before rebuilding
+* **/src/util/**  -- Source files for common utility library.
+  * util.bat - Windows batch file to assemble source files to create library 
+  * clean.bat - Windows batch file to delete binaries before rebuilding
+* **/lib/**  -- Assembled Elf/OS I2C library files for linking with example programs
+* **/bin/**  -- Binary files for Elf/OS I2C example programs.
 
 
 License Information
