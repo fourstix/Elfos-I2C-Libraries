@@ -91,21 +91,117 @@ Supported Devices
 <tr><td>Sparkfun 14-Segment Alphanumeric display</td><td>alnum</td></tr>
 <tr><td>Sparkfun Qwiic Single Relay</td><td>relay</td></tr>
 <tr><td>Sparkfun Qwiic Joystick</td><td>joystick</td></tr>
-<tr><td>LM75A temperature Sensor</td><td>lm75a</td></tr>
+<tr><td>LM75A Temperature Sensor</td><td>lm75a</td></tr>
+<tr><td>SHT31 Temperature and Humidity Sensor</td><td>sht31</td></tr>
 </table>
 
 I2C Library API
 ----------------
-(TBD)
+<table>
+<tr><th>Name</th><th>Description</th></tr>
+<tr><td>i2c_init</td><td>Initialize the i2c bus</td></tr>
+<tr><td>i2c_avail</td><td>Check for an i2c device at a given address</td></tr>
+<tr><td>i2c_wrbuf</td><td>Write a message to the i2c bus</td></tr>
+<tr><td>i2c_rdbuf</td><td>Read a message from the i2c bus</td></tr>
+<tr><td>i2c_rdreg</td><td>Read a message from a register in an i2c device.</td></tr>
+<tr><td>i2c_scan</td><td>Write the id in RF.0 to the i2c bus to see if a device is available</td></tr>
+<tr><td>i2c_clear</td><td>Attempt to clear a device error on the i2c bus</td></tr>
+</table>
 
-Device Library API
+These API functions return DF=0 when successful, and DF=1 when there is an error.
+
+Util Library API
 -------------------
-(TBD)
+<table>
+<tr><th>Name</th><th>Description</th></tr>
+<tr><td>util_full_mult16</td><td>Multiply two 16-bit integer numbers into a full 32-bit integer product</td></tr>
+<tr><td>util_write_10x</td><td>Write a 10X value into a buffer as a single-precession decimal string</td></tr>
+<tr><td>util_c_to_f</td><td>Convert a 1X Celsius value into a 10X Fahrenheit value </td></tr>
+<tr><td>util_delay</td><td>Wait for the amount of time specified in RC and then return</td></tr>
+</table>
 
-Demo programs
--------------
 
+Example programs
+----------------
 
+<table>
+<tr><th>Device</th><th>Example Programs</th></tr>
+<tr><td>(Any I2C device)</td><td>scanner</td></tr>
+<tr><td>Adafruit 7 Segment LED display</td><td>led7print, led7clear, led7clock</td></tr>
+<tr><td>Sparkfun 14-Segment Alphanumeric display</td><td>alprint, alclear, altest</td></tr>
+<tr><td>Sparkfun Qwiic Single Relay</td><td>relay, relayOn, relayOff</td></tr>
+<tr><td>Sparkfun Qwiic Joystick</td><td>joystick</td></tr>
+<tr><td>LM75A Temperature Sensor</td><td>lm75a</td></tr>
+<tr><td>SHT31 Temperature and Humidity Sensor</td><td>sht31</td></tr>
+</table>
+
+## scanner
+**Usage:** scanner    
+Scan the i2c bus and list the devices found.
+
+## led7print
+**Usage:** led7print *hhhh*    
+Print the hex digits *hhhh* on the Adafruit 7 Segment LED display.
+
+## led7clear
+**Usage:** led7clear    
+Clear the Adafruit 7 Segment LED display.
+
+## led7clock
+**Usage:** led7clear    
+Display a digital clock on the Adafruit 7 Segment LED display.  Requires the 1802-Mini RTC (Real Time Clock) Card.  Press the input button to exit the program.
+
+## alprint
+**Usage:** alprint *cccc*    
+Print the characters *cccc* on the Sparkfun 14 Segment LED display.
+
+## alclear
+**Usage:** alclear    
+Clear the Sparkfun 14 Segment LED display.
+
+## altest
+**Usage:** altest     
+Turn on four segments, one per each character, along with the colon and decimal point to test the Sparkfun 14 Segment LED display.
+
+## relay
+**Usage:** relay [-s|-t|-v, default = -s] 
+Example program for the Sparkfun Qwiic Single Relay.  
+*Options:* 
+*  -s Show relay state (default)
+*  -t Toggle relay state
+*  -v show relay Version
+           
+## relayOn
+**Usage:** relayOn 
+Example program to turn on the Sparkfun Qwiic Single Relay.
+
+## relayOff
+**Usage:** relayOff 
+Example program to turn on the Sparkfun Qwiic Single Relay.
+
+## joystick
+**Usage:** joystick 
+Example program for the Sparkfun Qwiic Joystick.
+
+## lm75a
+**Usage:** lm75a [-c|-f, default = -c] 
+Example program for the LM75A temperature sensor.  
+
+*Options:*
+* -c show temperature in Celsius (default)   
+* -f show temperature in Fahrenheit
+
+## sht31
+**Usage:** sht31 [-c|-d|-e|-f|-h|-r|-s, default = -c] 
+Example program for the SHT31 temperature and humidity sensor.  
+*Options:* 
+* -c show readings in Celsius (default)
+* -d Disable heater
+*  -e Enable heater 
+* -f show reading in Fahrenheit
+* -h show Heater state (on or off)
+* -r Reset sensor
+* -s show Status byte values
 
 Repository Contents
 -------------------
