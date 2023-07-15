@@ -1,0 +1,48 @@
+.big
+{relay_set_on
+/i2c_wrbuf 0001 00
+\i2c_wrbuf 0002
+:0000 d4 00 00 18 01 00 08 d5 01
++0005
+}
+.big
+{relay_set_off
+/i2c_wrbuf 0001 00
+\i2c_wrbuf 0002
+:0000 d4 00 00 18 01 00 08 d5 00
++0005
+}
+.big
+{relay_get_state
+/i2c_rdreg 0005 00
+\i2c_rdreg 0006
+:0000 9d 73 8d 73 d4 00 00 18 01 05 01 00 1f c3 00 18
+:0010 f8 1f ad f8 00 bd 0d ae 60 72 ad f0 bd 8e d5 00
++000b
++000e
+v0011
+^0014 1f
+}
+.big
+{relay_get_version
+/i2c_rdreg 0005 00
+\i2c_rdreg 0006
+:0000 9d 73 8d 73 d4 00 00 18 01 04 02 00 32 c3 00 2c
+:0010 f8 32 ad f8 00 bd f8 35 af f8 00 bf 4d fc 30 5f
+:0020 1f 1f 0d fc 30 5f f8 34 af f8 00 bf 60 72 ad f0
+:0030 bd d5 00 00 76 30 2e 30 00
++000b
++000e
+v0011
+^0014 32
+v0017
+^001a 34
+v0027
+^002a 34
+}
+.big
+{relay_avail
+/i2c_avail 0001 00
+\i2c_avail 0002
+:0000 d4 00 00 18 d5
+}

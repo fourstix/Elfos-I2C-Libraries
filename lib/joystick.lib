@@ -1,0 +1,114 @@
+.big
+{joystick_get_horizontal
+/i2c_rdreg 0005 00
+\i2c_rdreg 0006
+:0000 9f 73 8f 73 d4 00 00 20 01 03 02 00 2e c3 00 28
+:0010 f8 2e af f8 00 bf 4f bd 0f ad f8 06 af 9d f6 bd
+:0020 8d 76 ad 2f 8f ca 00 1d 60 72 af f0 bf d5 00 00
++000b
++000e
+v0011
+^0014 2e
++0026
+}
+.big
+{joystick_get_vertical
+/i2c_rdreg 0005 00
+\i2c_rdreg 0006
+:0000 9f 73 8f 73 d4 00 00 20 01 05 02 00 2e c3 00 28
+:0010 f8 2e af f8 00 bf 4f bd 0f ad f8 06 af 9d f6 bd
+:0020 8d 76 ad 2f 8f ca 00 1d 60 72 af f0 bf d5 00 00
++000b
++000e
+v0011
+^0014 2e
++0026
+}
+.big
+{joystick_get_version
+/i2c_rdreg 0005 00
+\i2c_rdreg 0006
+:0000 9d 73 8d 73 d4 00 00 20 01 01 02 00 32 c3 00 2c
+:0010 f8 32 ad f8 00 bd f8 35 af f8 00 bf 4d fc 30 5f
+:0020 1f 1f 0d fc 30 5f f8 34 af f8 00 bf 60 72 ad f0
+:0030 bd d5 00 00 76 30 2e 30 00
++000b
++000e
+v0011
+^0014 32
+v0017
+^001a 34
+v0027
+^002a 34
+}
+.big
+{joystick_get_x_byte
+/i2c_rdreg 0005 00
+\i2c_rdreg 0006
+:0000 9f 73 8f 73 d4 00 00 20 01 03 01 00 1f c3 00 18
+:0010 f8 1f af f8 00 bf 0f ae 60 72 af f0 bf 8e d5 00
++000b
++000e
+v0011
+^0014 1f
+}
+.big
+{joystick_get_y_byte
+/i2c_rdreg 0005 00
+\i2c_rdreg 0006
+:0000 9f 73 8f 73 d4 00 00 20 01 05 01 00 1f c3 00 18
+:0010 f8 1f af f8 00 bf 0f ae 60 72 af f0 bf 8e d5 00
++000b
++000e
+v0011
+^0014 1f
+}
+.big
+{joystick_get_xy_position
+/i2c_rdreg 0005 00
+\i2c_rdreg 0006
+:0000 9f 73 8f 73 d4 00 00 20 01 03 01 00 2c c3 00 26
+/i2c_rdreg 0011 00
+\i2c_rdreg 0012
+:0010 d4 00 00 20 01 05 01 00 2d c3 00 26 f8 2c af f8
+:0020 00 bf 4f ad 0f bd 60 72 af f0 bf d5 00 00
++000b
++000e
++0017
++001a
+v001d
+^0020 2c
+}
+.big
+{joystick_avail
+/i2c_avail 0001 00
+\i2c_avail 0002
+:0000 d4 00 00 20 d5
+}
+.big
+{joystick_button_state
+/i2c_rdreg 0005 00
+\i2c_rdreg 0006
+:0000 9f 73 8f 73 d4 00 00 20 01 07 01 00 1f c3 00 18
+:0010 f8 1f af f8 00 bf 0f ae 60 72 af f0 bf 8e d5 00
++000b
++000e
+v0011
+^0014 1f
+}
+.big
+{joystick_button_pressed
+/i2c_rdreg 0005 00
+\i2c_rdreg 0006
+:0000 9f 73 8f 73 d4 00 00 20 01 08 01 00 29 c3 00 22
+/i2c_wrbuf 0011 00
+\i2c_wrbuf 0012
+:0010 d4 00 00 20 02 00 2a c3 00 22 f8 29 af f8 00 bf
+:0020 0f ae 60 72 af f0 bf 8e d5 00 08 00
++000b
++000e
++0015
++0018
+v001b
+^001e 29
+}

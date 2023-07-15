@@ -1,0 +1,222 @@
+.big
+{sht31_avail
+/i2c_avail 0001 00
+\i2c_avail 0002
+:0000 d4 00 00 44 d5
+}
+.big
+{sht31_clear_status
+/i2c_wrbuf 0001 00
+\i2c_wrbuf 0002
+:0000 d4 00 00 44 02 00 08 d5 30 41
++0005
+}
+.big
+{sht31_read_status
+/i2c_rdreg 0005 00
+\i2c_rdreg 0006
+:0000 9f 73 8f 73 d4 00 00 44 02 f3 2d 03 00 21 c3 00
+:0010 1b f8 21 af f8 00 bf 4f bd 0f ad 60 72 af f0 bf
+:0020 d5 00 00 00
++000c
++000f
+v0012
+^0015 21
+}
+.big
+{sht31_init
+/i2c_wrbuf 0005 00
+\i2c_wrbuf 0006
+:0000 9c 73 8c 73 d4 00 00 44 02 00 24 c3 00 1e f8 03
+/util_delay 0015 00
+\util_delay 0016
+/i2c_wrbuf 0018 00
+\i2c_wrbuf 0019
+:0010 bc f8 3e ac d4 00 00 d4 00 00 44 02 00 26 60 72
+:0020 ac f0 bc d5 30 a2 30 41
++0009
++000c
++001c
+}
+.big
+{sht31_set_heater
+/i2c_wrbuf 0004 00
+\i2c_wrbuf 0005
+/i2c_wrbuf 000e 00
+\i2c_wrbuf 000f
+:0000 c2 00 0d d4 00 00 44 02 00 15 c0 00 14 d4 00 00
+:0010 44 02 00 17 d5 30 6d 30 66
++0001
++0008
++000b
++0012
+}
+.big
+{sht31_get_heater
+/i2c_rdreg 0005 00
+\i2c_rdreg 0006
+:0000 9d 73 8d 73 d4 00 00 44 02 f3 2d 03 00 25 c3 00
+:0010 1e f8 25 ad f8 00 bd 0d fa 20 ce f8 01 ae 60 72
+:0020 ad f0 bd 8e d5 00 00 00
++000c
++000f
+v0012
+^0015 25
+}
+.big
+{sht31_read_data
+/i2c_wrbuf 0005 00
+\i2c_wrbuf 0006
+:0000 9c 73 8c 73 d4 00 00 44 02 00 2d c3 00 27 f8 06
+/util_delay 0015 00
+\util_delay 0016
+/i2c_rdbuf 0018 00
+\i2c_rdbuf 0019
+?sht31_data_buf 001c
+:0010 bc f8 7c ac d4 00 00 d4 00 00 44 06 00 00 c3 00
+\sht31_data_buf 0022
+/sht31_data_buf 0025 00
+:0020 27 f8 00 af f8 00 bf 60 72 ac f0 bc d5 24 00
++0009
++000c
++001f
+}
+.big
+{sht31_data_buf
+:0000 00 00 00 00 00 00
+}
+.big
+{sht31_temperature_c
+\sht31_data_buf 000d
+:0000 9d 73 8d 73 9c 73 8c 73 9b 73 8b 73 f8 00 af f8
+/sht31_data_buf 0010 00
+/util_full_mult16 001d 00
+\util_full_mult16 001e
+:0010 00 bf 4f bd 4f ad f8 d6 af f8 06 bf d4 00 00 8c
+:0020 ff c2 ac 9c 7f 01 bc 8c ad 9c bd f8 4e af f8 00
+/util_write_10x 0034 00
+\util_write_10x 0035
+:0030 bf f8 43 d4 00 00 60 72 ab f0 bb 60 72 ac f0 bc
+:0040 60 72 ad f0 bd f8 4e af f8 00 bf fc 00 d5 00 00
+:0050 00 00 00 00 00 00
+v002c
+^002f 4e
+v0046
+^0049 4e
+}
+.big
+{sht31_temperature_f
+\sht31_data_buf 000d
+:0000 9d 73 8d 73 9c 73 8c 73 9b 73 8b 73 f8 00 af f8
+/sht31_data_buf 0010 00
+/util_full_mult16 001d 00
+\util_full_mult16 001e
+:0010 00 bf 4f bd 4f ad f8 4e af f8 0c bf d4 00 00 8c
+:0020 ff ea ac 9c 7f 01 bc 8c ad 9c bd f8 4c af f8 00
+/util_write_10x 0034 00
+\util_write_10x 0035
+:0030 bf f8 46 d4 00 00 60 72 ab f0 bb 60 72 ac f0 bc
+:0040 60 72 ad f0 bd f8 4c af f8 00 bf d5 00 00 00 00
+:0050 00 00 00 00
+v002c
+^002f 4c
+v0046
+^0049 4c
+}
+.big
+{sht31_humidity
+\sht31_data_buf 000d
+:0000 9d 73 8d 73 9c 73 8c 73 9b 73 8b 73 f8 03 af f8
+/sht31_data_buf 0010 03
+/util_full_mult16 001e 00
+\util_full_mult16 001f
+:0010 00 bf 4f bd 4f ad 1d f8 e8 af f8 03 bf d4 00 00
+/util_write_10x 002d 00
+\util_write_10x 002e
+:0020 8c ad 9c bd f8 47 af f8 00 bf f8 25 d4 00 00 60
+:0030 72 ab f0 bb 60 72 ac f0 bc 60 72 ad f0 bd f8 47
+:0040 af f8 00 bf fc 00 d5 00 00 00 00 00 00 00
+v0025
+^0028 47
+v003f
+^0042 47
+}
+.big
+{sht31_dewpoint_c
+:0000 9d 73 8d 73 9c 73 8c 73 9b 73 8b 73 9a 73 8a 73
+\sht31_data_buf 0011
+/sht31_data_buf 0014 00
+:0010 f8 00 af f8 00 bf 4f bd 4f ad f8 d6 af f8 06 bf
+/util_full_mult16 0021 00
+\util_full_mult16 0022
+:0020 d4 00 00 8c ff c2 ac 9c 7f 01 bc 8c aa 9c ba f8
+\sht31_data_buf 0030
+/sht31_data_buf 0033 03
+:0030 03 af f8 00 bf 4f bd 4f ad 1d f8 64 af f8 00 bf
+/util_full_mult16 0041 00
+\util_full_mult16 0042
+:0040 d4 00 00 8c fe ac 9c 7e bc 8c 52 8a f4 aa 9c 52
+:0050 9a 74 ba 8a ff c8 aa 9a 7f 00 ba 8a ad 9a bd f8
+/util_write_10x 0068 00
+\util_write_10x 0069
+:0060 87 af f8 00 bf f8 43 d4 00 00 60 72 aa f0 ba 60
+:0070 72 ab f0 bb 60 72 ac f0 bc 60 72 ad f0 bd f8 87
+:0080 af f8 00 bf fc 00 d5 00 00 00 00 00 00 00 00
+v0060
+^0063 87
+v007f
+^0082 87
+}
+.big
+{sht31_dewpoint_f
+:0000 9d 73 8d 73 9c 73 8c 73 9b 73 8b 73 9a 73 8a 73
+\sht31_data_buf 0011
+/sht31_data_buf 0014 00
+:0010 f8 00 af f8 00 bf 4f bd 4f ad f8 af af f8 00 bf
+/util_full_mult16 0021 00
+\util_full_mult16 0022
+:0020 d4 00 00 8c ff 2d ac 9c 7f 00 bc 8c aa 9c ba 8a
+\sht31_data_buf 0038
+/sht31_data_buf 003b 03
+:0030 ff 14 aa 9a 7f 00 ba f8 03 af f8 00 bf 4f bd 4f
+/util_full_mult16 0049 00
+\util_full_mult16 004a
+:0040 ad 1d f8 64 af f8 00 bf d4 00 00 8c af 9c bf f8
+:0050 05 ad f8 00 bd d4 ff 33 8b 52 8a f4 aa 9b 52 9a
+/util_c_to_f 006a 00
+\util_c_to_f 006b
+:0060 74 ba 8f ff 03 8a ad 9a bd d4 00 00 f8 94 af f8
+/util_write_10x 0075 00
+\util_write_10x 0076
+:0070 00 bf f8 46 d4 00 00 60 72 aa f0 ba 60 72 ab f0
+:0080 bb 60 72 ac f0 bc 60 72 ad f0 bd f8 94 af f8 00
+:0090 bf fc 00 d5 00 00 00 00 00 00 00 00
+v006d
+^0070 94
+v008c
+^008f 94
+}
+.big
+{sht31_ready
+/i2c_rdreg 0005 00
+\i2c_rdreg 0006
+:0000 9d 73 8d 73 d4 00 00 44 02 f3 2d 03 00 28 c3 00
+:0010 21 f8 01 ae f8 29 ad f8 00 bd 0d c2 00 21 f8 00
+:0020 ae 60 72 ad f0 bd 8e d5 00 00 00
++000c
++000f
+v0015
+^0018 28
++001c
+}
+.big
+{sht31_reset
+/i2c_wrbuf 0005 00
+\i2c_wrbuf 0006
+:0000 9c 73 8c 73 d4 00 00 44 02 00 1d c3 00 17 f8 03
+/util_delay 0015 00
+\util_delay 0016
+:0010 bc f8 3e ac d4 00 00 60 72 ac f0 bc d5 30 a2
++0009
++000c
+}

@@ -1,0 +1,146 @@
+.big
+{led7_write_disp
+/i2c_wrbuf 0001 00
+\i2c_wrbuf 0002
+?led7_display_buf 0005
+:0000 d4 00 00 70 11 00 00 d5
+}
+.big
+{led7_init
+/i2c_wrbuf 0001 00
+\i2c_wrbuf 0002
+/led7_clear 000b 00
+\led7_clear 000c
+/led7_write_disp 000e 00
+\led7_write_disp 000f
+:0000 d4 00 00 70 01 00 11 c3 00 10 d4 00 00 d4 00 00
+:0010 d5 21
++0005
++0008
+}
+.big
+{led7_clear
+/led7_display_buf 0009 01
+\led7_display_buf 000c
+:0000 9d 73 8d 73 99 73 89 73 f8 00 bd f8 01 ad f8 10
+:0010 a9 f8 00 5d 1d 29 89 ca 00 11 60 72 a9 f0 b9 60
+:0020 72 ad f0 bd d5
++0018
+}
+.big
+{led7_set_brightness
+/led7_cmd_buf 0005 00
+\led7_cmd_buf 0008
+:0000 9d 73 8d 73 f8 00 bd f8 00 ad 8b fa 0f f9 e0 5d
+/i2c_wrbuf 0011 00
+\i2c_wrbuf 0012
+?led7_cmd_buf 0015
+:0010 d4 00 00 70 01 00 00 60 72 ad f0 bd d5
+}
+.big
+{led7_set_blink_rate
+/led7_cmd_buf 0005 00
+\led7_cmd_buf 0008
+:0000 9d 73 8d 73 f8 00 bd f8 00 ad 8b fe fa 06 f9 81
+/i2c_wrbuf 0012 00
+\i2c_wrbuf 0013
+?led7_cmd_buf 0016
+:0010 5d d4 00 00 70 01 00 00 60 72 ad f0 bd d5
+}
+.big
+{led7_set_blink_off
+/led7_cmd_buf 0005 00
+\led7_cmd_buf 0008
+/i2c_wrbuf 000e 00
+\i2c_wrbuf 000f
+:0000 9d 73 8d 73 f8 00 bd f8 00 ad f8 81 5d d4 00 00
+?led7_cmd_buf 0012
+:0010 70 01 00 00 60 72 ad f0 bd d5
+}
+.big
+{led7_write_digit
+/led7_display_buf 0009 01
+\led7_display_buf 000c
+:0000 9c 73 8c 73 9d 73 8d 73 f8 00 bd f8 01 ad 8a c2
+:0010 00 24 1d 1d ff 01 c2 00 24 1d 1d 1d 1d ff 01 c2
+/led7_digits 0025
+\led7_digits 002b
+:0020 00 24 1d 1d f8 00 bc 8b fa 0f fc 00 ac 0c 5d 60
+:0030 72 ad f0 bd 60 72 ac f0 bc d5
++0010
++0017
++0020
+}
+.big
+{led7_write_blank
+/led7_display_buf 0005 01
+\led7_display_buf 0008
+:0000 9d 73 8d 73 f8 00 bd f8 01 ad 8a c2 00 20 1d 1d
+:0010 ff 01 c2 00 20 1d 1d 1d 1d ff 01 c2 00 20 1d 1d
+:0020 f8 00 5d 60 72 ad f0 bd d5
++000c
++0013
++001c
+}
+.big
+{led7_write_colon
+/led7_display_buf 0005 05
+\led7_display_buf 0008
+:0000 9d 73 8d 73 f8 00 bd f8 05 ad 8b fa 01 fe 5d 60
+:0010 72 ad f0 bd d5
+}
+.big
+{led7_blank_disp
+/led7_clear 0001 00
+\led7_clear 0002
+/led7_write_disp 0004 00
+\led7_write_disp 0005
+:0000 d4 00 00 d4 00 00 d5
+}
+.big
+.align  para
+{led7_digits
+:0000 3f 06 5b 4f 66 6d 7d 07 7f 6f 77 7c 39 5e 79 71
+}
+.big
+{led7_cmd_buf
+>0001
+}
+{led7_display_buf
+:0000 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+:0010 00
+}
+.big
+{led7_tobcd
+:0000 f8 00 5f 8c ff c8 cb 00 0e ac 0f fc 02 5f 8c ff
+:0010 64 cb 00 19 ac 0f fc 01 5f 1f f8 00 5f 8c ff 50
+:0020 cb 00 28 ac 0f fc 08 5f 8c ff 28 cb 00 33 ac 0f
+:0030 fc 04 5f 8c ff 14 cb 00 3e ac 0f fc 02 5f 8c ff
+:0040 0a cb 00 49 ac 0f fc 01 5f 1f 8c 5f d5
++0007
++0012
++0021
++002c
++0037
++0042
+}
+.big
+{led7_write_dp
+/led7_display_buf 0005 01
+\led7_display_buf 0008
+:0000 9d 73 8d 73 f8 00 bd f8 01 ad 8a c2 00 20 1d 1d
+:0010 ff 01 c2 00 20 1d 1d 1d 1d ff 01 c2 00 20 1d 1d
+:0020 8b c2 00 2a 0d f9 80 c0 00 2d 0d fa 7f 5d 60 72
+:0030 ad f0 bd d5
++000c
++0013
++001c
++0022
++0028
+}
+.big
+{led7_avail
+/i2c_avail 0001 00
+\i2c_avail 0002
+:0000 d4 00 00 70 d5
+}

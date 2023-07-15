@@ -1,0 +1,36 @@
+.big
+{util_full_mult16
+:0000 f8 10 ae f8 00 ac bc 9f 76 bb 8f 76 ab cb 00 1a
+:0010 8d 52 8c f4 ac 9d 52 9c 74 bc 9c 76 bc 8c 76 ac
+:0020 9b 76 bb 8b 76 ab 2e 8e ca 00 0d fc 00 d5
++000e
++0029
+}
+.big
+{util_write_10x
+:0000 ae 9c 73 8c 73 8d ac 9d bc 9c fe cb 00 1a 8c fb
+:0010 ff fc 01 ac 9c fb ff 7c 00 bc 9c ca 00 35 8c ff
+:0020 09 c3 00 35 9d fe cb 00 31 f8 2d 5f 1f 8c ad 9c
+:0030 bd f8 30 5f 1f 8e ac d4 ff 63 2f 0f ad f8 2e 5f
+:0040 1f 8d 5f 1f 8c 5f 1f f8 00 5f 60 72 ac f0 bc fc
+:0050 00 d5
++000c
++001c
++0022
++0027
+}
+.big
+{util_c_to_f
+:0000 8d 7e ad 9d 7e 8d fe ad 9d 7e bd 8d fe ad 9d 7e
+:0010 bd 8f 52 8d f4 ad 9f 52 9d 74 bd 8d fe ad 9d 7e
+:0020 bd 8d fc 40 ad 9d 7c 01 bd fc 00 d5 00 00 00 00
+:0030 00 00 00 00 00
+}
+.big
+{util_delay
+:0000 2c 8c ca 00 00 9c ca 00 00 d5
+^0003
+v0004
+^0007
+v0008
+}

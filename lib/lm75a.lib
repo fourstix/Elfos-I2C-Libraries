@@ -1,0 +1,72 @@
+.big
+{lm75a_temperature_c
+/i2c_rdreg 0009 00
+\i2c_rdreg 000a
+:0000 9a 73 8a 73 9d 73 8d 73 d4 00 00 48 01 00 02 00
+:0010 6f c3 00 5e f8 00 ba f8 6f aa f8 00 bf f8 71 af
+:0020 f8 00 bd 4a ad fa 80 c2 00 39 f8 2d 5f 1f 8d fb
+:0030 ff ad 0a fa 80 ca 00 39 1d f8 00 bf f8 71 af d4
+:0040 ff 63 9f bd 8f ad 0a fa 80 c2 00 55 f8 00 bf f8
+:0050 7a af d4 ff 18 f8 00 bf f8 7d af d4 ff 18 60 72
+:0060 ad f0 bd 60 72 aa f0 ba f8 00 bf f8 71 af d5 00
+:0070 00 00 00 00 00 00 00 00 00 00 2e 35 00 43 00
++000f
++0012
+^0015 6f
+v0018
+^001b 71
+v001e
++0028
++0036
+^003a 71
+v003d
++004a
+^004d 7a
+v0050
+^0056 7d
+v0059
+^0069 71
+v006c
+}
+.big
+{lm75a_temperature_f
+/i2c_rdreg 0009 00
+\i2c_rdreg 000a
+:0000 9a 73 8a 73 9d 73 8d 73 d4 00 00 48 01 00 02 00
+:0010 4b c3 00 3a f8 00 ba f8 4b aa f8 00 bd bf 4a ad
+/util_c_to_f 002d 00
+\util_c_to_f 002e
+:0020 af fa 80 c2 00 2a f8 ff bd bf 0a fe d4 00 00 f8
+/util_write_10x 0038 00
+\util_write_10x 0039
+:0030 4d af f8 00 bf f8 46 d4 00 00 60 72 ad f0 bd 60
+:0040 72 aa f0 ba f8 00 bf f8 4d af d5 00 00 00 00 00
+:0050 00 00 00 00 00 00
++000f
++0012
+^0015 4b
+v0018
++0024
+v0030
+^0033 4d
+^0045 4d
+v0048
+}
+.big
+{lm75a_temperature_raw
+/i2c_rdreg 0005 00
+\i2c_rdreg 0006
+:0000 9d 73 8d 73 d4 00 00 48 01 00 02 00 20 c3 00 1a
+:0010 f8 20 ad f8 00 bd 4d bf 0d af 60 72 ad f0 bd d5
+:0020 00 00
++000b
++000e
+v0011
+^0014 20
+}
+.big
+{lm75a_avail
+/i2c_avail 0001 00
+\i2c_avail 0002
+:0000 d4 00 00 48 d5
+}
