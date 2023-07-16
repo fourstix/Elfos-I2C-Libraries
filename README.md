@@ -139,6 +139,8 @@ Example programs
 
 [*Adafruit Working with I2C Devices*](https://learn.adafruit.com/working-with-i2c-devices)
 
+Example program
+----------------
 ## scanner
 **Usage:** scanner    
 Scan the i2c bus and list the devices found.
@@ -147,6 +149,8 @@ Scan the i2c bus and list the devices found.
 
 [*Adafruit 4-Digit 7-Segment Display - Red (878)*](https://www.adafruit.com/product/878)
 
+Example programs
+----------------
 ## led7print
 **Usage:** led7print *hhhh*    
 Print the hex digits *hhhh* on the Adafruit 7 Segment LED display.
@@ -163,6 +167,8 @@ Display a digital clock on the Adafruit 7 Segment LED display.  Requires the 180
 
 [*Sparkfun Qwiic Alphanumeric Display - Blue (SPX-16426)*](https://www.sparkfun.com/products/16426)
 
+Example programs
+----------------
 ## alprint
 **Usage:** alprint *cccc*    
 Print the characters *cccc* on the Sparkfun 14 Segment LED display.
@@ -179,9 +185,11 @@ Turn on four segments, one per each character, along with the colon and decimal 
 
 [*Sparkfun Qwiic Single Relay (COM-15093)*](https://www.sparkfun.com/products/15093)
 
+Example programs
+----------------
 ## relay
 **Usage:** relay [-s|-t|-v, default = -s] 
-Example program for the Sparkfun Qwiic Single Relay.  
+Show information or toggle the Sparkfun Qwiic Single Relay.  
 *Options:* 
 *  -s Show relay state (default)
 *  -t Toggle relay state
@@ -189,28 +197,32 @@ Example program for the Sparkfun Qwiic Single Relay.
            
 ## relayOn
 **Usage:** relayOn 
-Example program to turn on the Sparkfun Qwiic Single Relay.
+Turn on the Sparkfun Qwiic Single Relay.
 
 ## relayOff
 **Usage:** relayOff 
-Example program to turn on the Sparkfun Qwiic Single Relay.
+Turn on the Sparkfun Qwiic Single Relay.
 
 [![Sparkfun Qwiic Joystick](https://cdn.sparkfun.com/assets/parts/1/3/5/5/8/15168-SparkFun_Qwiic_Joystick-01.jpg)](https://www.sparkfun.com/products/15168)
 
 [*SparkFun Qwiic Joystick (COM-15168)*](https://www.sparkfun.com/products/15168)
 
+Example program
+----------------
 ## joystick
 **Usage:** joystick 
-Example program for the Sparkfun Qwiic Joystick.
+Show information read from the Sparkfun Qwiic Joystick.
 
 
 [![LM75A Temperature Sensor](https://m.media-amazon.com/images/I/51C7YSnVaTL._SL1010_.jpg)](https://www.amazon.com/s?k=lm75a+temperature+sensor&i=industrial&crid=M44WMUW0SOME&sprefix=lm75a+temperature+sensor%252Cindustrial%252C76)
 
 [*LM75A Temperature Sensor*](https://www.amazon.com/s?k=lm75a+temperature+sensor&i=industrial&crid=M44WMUW0SOME&sprefix=lm75a+temperature+sensor%252Cindustrial%252C76)
 
+Example program
+----------------
 ## lm75a
 **Usage:** lm75a [-c|-f, default = -c] 
-Example program for the LM75A temperature sensor.  
+Show the temperature read from the LM75A temperature sensor.  
 
 *Options:*
 * -c show temperature in Celsius (default)   
@@ -220,13 +232,15 @@ Example program for the LM75A temperature sensor.
 
 [*Adafruit SHT31 Temperature & Humidity Sensor (2857)*](https://www.adafruit.com/product/2857)
 
+Example program
+----------------
 ## sht31
 **Usage:** sht31 [-c|-d|-e|-f|-h|-r|-s, default = -c] 
-Example program for the SHT31 temperature and humidity sensor.  
+Show temperature, humidity and dewpoint readings from the SHT31 temperature and humidity sensor.  
 *Options:* 
 * -c show readings in Celsius (default)
 * -d Disable heater
-*  -e Enable heater 
+* -e Enable heater 
 * -f show reading in Fahrenheit
 * -h show Heater state (on or off)
 * -r Reset sensor
