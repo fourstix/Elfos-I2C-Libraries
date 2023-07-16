@@ -18,11 +18,11 @@ Version A of the [I2C Adapter](https://github.com/arhefner/1802-Mini-I2C) needs 
 
 The modification wire is shown in blue in the images below. I found it easiest to solder the wire on the backside of then I2C Adapter.
 
-![Modification - Front View](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/pics/modAfront.png)(https://github.com/arhefner/1802-Mini-I2C)
+[![Modification - Front View](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/pics/modAfront.png)](https://github.com/arhefner/1802-Mini-I2C)
 
 **Modification - Front View**
 
-![Modification - Back View](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/pics/modAback.png)(https://github.com/arhefner/1802-Mini-I2C)
+[![Modification - Back View](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/pics/modAback.png)](https://github.com/arhefner/1802-Mini-I2C)
 
 **Modification - Back View**
 
