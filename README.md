@@ -201,7 +201,7 @@ Turn on the Sparkfun Qwiic Single Relay.
 
 ## relayOff
 **Usage:** relayOff   
-Turn on the Sparkfun Qwiic Single Relay.
+Turn off the Sparkfun Qwiic Single Relay.
 
 [![Sparkfun Qwiic Joystick](https://cdn.sparkfun.com/assets/parts/1/3/5/5/8/15168-SparkFun_Qwiic_Joystick-01.jpg)](https://www.sparkfun.com/products/15168)
 
