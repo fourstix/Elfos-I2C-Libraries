@@ -169,15 +169,15 @@ Display a digital clock on the Adafruit 7 Segment LED display.  Requires the 180
 
 Example programs
 ----------------
-## alprint
+## alprint  
 **Usage:** alprint *cccc*    
 Print the characters *cccc* on the Sparkfun 14 Segment LED display.
 
-## alclear
+## alclear  
 **Usage:** alclear    
 Clear the Sparkfun 14 Segment LED display.
 
-## altest
+## altest  
 **Usage:** altest     
 Turn on four segments, one per each character, along with the colon and decimal point to test the Sparkfun 14 Segment LED display.
 
@@ -188,7 +188,7 @@ Turn on four segments, one per each character, along with the colon and decimal 
 Example programs
 ----------------
 ## relay
-**Usage:** relay [-s|-t|-v, default = -s] 
+**Usage:** relay [-s|-t|-v, default = -s]   
 Show information or toggle the Sparkfun Qwiic Single Relay.  
 *Options:* 
 *  -s Show relay state (default)
@@ -210,7 +210,7 @@ Turn on the Sparkfun Qwiic Single Relay.
 Example program
 ----------------
 ## joystick
-**Usage:** joystick 
+**Usage:** joystick   
 Show information read from the Sparkfun Qwiic Joystick.
 
 
@@ -221,7 +221,7 @@ Show information read from the Sparkfun Qwiic Joystick.
 Example program
 ----------------
 ## lm75a
-**Usage:** lm75a [-c|-f, default = -c] 
+**Usage:** lm75a [-c|-f, default = -c]  
 Show the temperature read from the LM75A temperature sensor.  
 
 *Options:*
@@ -235,7 +235,7 @@ Show the temperature read from the LM75A temperature sensor.
 Example program
 ----------------
 ## sht31
-**Usage:** sht31 [-c|-d|-e|-f|-h|-r|-s, default = -c] 
+**Usage:** sht31 [-c|-d|-e|-f|-h|-r|-s, default = -c]  
 Show temperature, humidity and dewpoint readings from the SHT31 temperature and humidity sensor.  
 *Options:* 
 * -c show readings in Celsius (default)
