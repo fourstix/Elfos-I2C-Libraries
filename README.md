@@ -7,27 +7,30 @@ The programs were written to run displays from an [1802-Mini](https://github.com
 
 These programs were assembled and linked with updated versions of the Asm-02 assembler and Link-02 linker by Mike Riley. The updated versions required to assemble and link this code are available at [arhefner/Asm-02](https://github.com/arhefner/Asm-02) and [arhefner/Link-02](https://github.com/arhefner/Link-02).
 
+Modification of I2C Adapter for Clock Stretching
+------------------------------------------------
+
+Version A of the [I2C Adapter](https://github.com/arhefner/1802-Mini-I2C) needs a single wire modification to support I2C clock stretching.  First, solder a wire from the EF4 post on JP1 to the SCL signal available on the right side of resistor R7 as shown in the diagrams below. Then the jumper at JP1 must be set to use EF3 for the SDA line.  With this 
+modification the I2C routines will be able to check EF4 to see if a device is holding the 
+SCL line low for clock stretching.
+
+The modification wire is shown in blue in the images below. I found it easiest to solder the wire on the back side of the I2C Adapter.
+
+[![Modification for Clock Stretching - Front View](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/pics/modAfront.png)](https://github.com/arhefner/1802-Mini-I2C)
+
+**Modification for Clock Stretching - Front View**
+
+[![Modification for Clock Stretching - Back View](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/pics/modAback.png)](https://github.com/arhefner/1802-Mini-I2C)
+
+**Modification for Clock Stretching - Back View**
+
+You can find more information about clock stretching and I2C in general in the Adafruit
+tutorial [*Working with I2C Devices*](https://learn.adafruit.com/working-with-i2c-devices).
+
+
 1802-Mini v4.5 Configuration 
 -----------------------------
-For this configuration, the code is assembled with the expansion group  I2C_GROUP  defined as 02 in sysconfig.inc and with the I2C_PORT define statement set equal to 7.
-
-Modification of I2C Adapter
------------------------------
-
-Version A of the [I2C Adapter](https://github.com/arhefner/1802-Mini-I2C) needs a single wire modification to support I2C clock stretching.  The jumper at JP1 must be set to use EF3 for the SDA line.  Then solder a wire from the EF4 post on JP1 to the SCL signal available on the right side of resistor R7 as shown in the diagrams below.  
-
-The modification wire is shown in blue in the images below. I found it easiest to solder the wire on the backside of then I2C Adapter.
-
-[![Modification - Front View](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/pics/modAfront.png)](https://github.com/arhefner/1802-Mini-I2C)
-
-**Modification - Front View**
-
-[![Modification - Back View](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/pics/modAback.png)](https://github.com/arhefner/1802-Mini-I2C)
-
-**Modification - Back View**
-
-You can find more information about clock-stretching and I2C in general in the Adafruit
-tutorial [*Working with I2C Devices*](https://learn.adafruit.com/working-with-i2c-devices).
+For this configuration, the code is assembled with the expansion group I2C_GROUP defined as 02 in sysconfig.inc and with the I2C_PORT define statement set equal to 7.
 
 Card Groups and Ports
 -------------------------
