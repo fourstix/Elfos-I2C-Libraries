@@ -1,6 +1,6 @@
 ;-------------------------------------------------------------------------------
-; This library contains routines to support the Adafruit 4 digit 7-segment
-; display with I2C running from an 1802-Mini Computer with the PIO and 
+; This library contains routines to support the various Adafruit LED backpack
+; displays with I2C running from an 1802-Mini Computer with the PIO and 
 ; I2C Expansion Boards. These routines are meant to be called using SCRT 
 ; in Elf/OS with X=R2 being the stack pointer.
 ;
@@ -17,7 +17,7 @@
 ; Copyright 2022 by Tony Hefner 
 ; Please see github.com/arhefner/1802-Mini-PIO for more info
 ;
-; Adafruit 4 Digit 7-Segment Display hardware
+; Adafruit LED Backpack Display hardware
 ; Copyright 2012-2023 by Adafruit Industries
 ; Please see learn.adafruit.com/adafruit-led-backpack/ for more info
 ;-------------------------------------------------------------------------------
@@ -34,12 +34,16 @@
 #define BLINK_HALFHZ    3
 
 
+#define LED_ON     1
+#define LED_OFF    0
+#define LED_RED    1
+#define LED_YELLOW 2
+#define LED_GREEN  3
+
 CMD_BRIGHT: equ     0e0h
 CMD_BLINK:  equ     080h
 DISP_ON:    equ     001h
 OSC_ON:     equ     021h
-
-
 
 I2C_ADDR:   equ     070h
 I2C_ADDR2:  equ     071h

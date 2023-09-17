@@ -1,0 +1,89 @@
+.big
+{keypad_avail
+/i2c_avail 0001 00
+\i2c_avail 0002
+:0000 d4 00 00 4b d5
+}
+.big
+{keypad_get_version
+/i2c_rdreg 0005 00
+\i2c_rdreg 0006
+:0000 9d 73 8d 73 d4 00 00 4b 01 01 02 00 32 c3 00 2c
+:0010 f8 32 ad f8 00 bd f8 35 af f8 00 bf 4d fc 30 5f
+:0020 1f 1f 0d fc 30 5f f8 34 af f8 00 bf 60 72 ad f0
+:0030 bd d5 00 00 76 30 2e 30 00
++000b
++000e
+v0011
+^0014 32
+v0017
+^001a 34
+v0027
+^002a 34
+}
+.big
+{keypad_update
+/i2c_wrbuf 0005 00
+\i2c_wrbuf 0006
+:0000 9c 73 8c 73 d4 00 00 4b 02 00 1f c3 00 19 f8 7c
+/util_delay 0015 00
+\util_delay 0016
+:0010 ac f8 06 bc d4 00 00 fc 00 60 72 ac f0 bc d5 06
+:0020 01
++0009
++000c
+}
+.big
+{keypad_get_key
+/i2c_rdreg 000c 00
+\i2c_rdreg 000d
+:0000 9f 73 8f 73 9c 73 8c 73 f8 ff ae d4 00 00 4b 01
+/util_delay 001e 00
+\util_delay 001f
+:0010 03 01 00 36 c3 00 2a f8 7c ac f8 06 bc d4 00 00
+:0020 f8 36 af f8 00 bf 0f ae fc 00 60 72 ac f0 bc 60
+:0030 72 af f0 bf 8e d5 00
++0012
++0015
+v0021
+^0024 36
+}
+.big
+{keypad_get_time
+/i2c_rdreg 0009 00
+\i2c_rdreg 000a
+:0000 9f 73 8f 73 9c 73 8c 73 d4 00 00 4b 01 04 02 00
+/util_delay 001b 00
+\util_delay 001c
+:0010 34 c3 00 29 f8 7c ac f8 06 bc d4 00 00 f8 34 af
+:0020 f8 00 bf 4f bd 0f ad fc 00 60 72 ac f0 bc 60 72
+:0030 af f0 bf d5 00 00
++000f
++0012
+v001e
+^0021 34
+}
+.big
+{keypad_read_key
+/i2c_wrbuf 000c 00
+\i2c_wrbuf 000d
+:0000 9f 73 8f 73 9c 73 8c 73 f8 00 ae d4 00 00 4b 02
+/util_delay 001c 00
+\util_delay 001d
+/i2c_rdreg 001f 00
+:0010 00 50 c3 00 44 f8 7c ac f8 06 bc d4 00 00 d4 00
+\i2c_rdreg 0020
+:0020 00 4b 01 03 01 00 52 c3 00 44 f8 7c ac f8 06 bc
+/util_delay 0031 00
+\util_delay 0032
+:0030 d4 00 00 f8 52 af f8 00 bf 0f ae fe cb 00 44 f8
+:0040 3f ae fc 00 60 72 ac f0 bc 60 72 af f0 bf 8e d5
+:0050 06 01 00
++0010
++0013
++0025
++0028
+v0034
+^0037 52
++003d
+}

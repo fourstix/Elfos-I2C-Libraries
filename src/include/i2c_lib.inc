@@ -9,3 +9,5 @@
             extrn   i2c_avail 
             extrn   i2c_scan 
             extrn   i2c_clear
+            extrn   i2c_wraddr
+            extrn   i2c_rdaddr 

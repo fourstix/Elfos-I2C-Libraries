@@ -1,0 +1,218 @@
+.big
+{twist_avail
+/i2c_avail 0001 00
+\i2c_avail 0002
+:0000 d4 00 00 3f d5
+}
+.big
+{twist_get_version
+/i2c_rdreg 0009 00
+\i2c_rdreg 000a
+:0000 9d 73 8d 73 9c 73 8c 73 d4 00 00 3f 01 02 02 00
+/util_delay 001b 00
+\util_delay 001c
+:0010 46 c3 00 3b f8 7c ac f8 06 bc d4 00 00 f8 46 ad
+:0020 f8 00 bd f8 49 af f8 00 bf 4d fc 30 5f 1f 1f 0d
+:0030 fc 30 5f f8 48 af f8 00 bf fc 00 60 72 ac f0 bc
+:0040 60 72 ad f0 bd d5 00 00 76 30 2e 30 00
++000f
++0012
+v001e
+^0021 46
+v0024
+^0027 48
+v0034
+^0037 48
+}
+.big
+{twist_get_status
+/i2c_rdreg 000c 00
+\i2c_rdreg 000d
+:0000 9f 73 8f 73 9c 73 8c 73 f8 00 ae d4 00 00 3f 01
+/util_delay 001e 00
+\util_delay 001f
+:0010 01 01 00 47 c3 00 3b f8 7c ac f8 06 bc d4 00 00
+/i2c_wrbuf 0021 00
+\i2c_wrbuf 0022
+:0020 d4 00 00 3f 02 00 48 c3 00 3b f8 7c ac f8 06 bc
+/util_delay 0031 00
+\util_delay 0032
+:0030 d4 00 00 f8 47 af f8 00 bf 0f ae 60 72 ac f0 bc
+:0040 60 72 af f0 bf 8e d5 00 01 00 00
++0012
++0015
++0025
++0028
+v0034
+^0037 47
+}
+.big
+{twist_get_count
+/i2c_rdreg 0009 00
+\i2c_rdreg 000a
+:0000 9f 73 8f 73 9c 73 8c 73 d4 00 00 3f 01 05 02 00
+/util_delay 001b 00
+\util_delay 001c
+:0010 34 c3 00 29 f8 7c ac f8 06 bc d4 00 00 f8 34 af
+:0020 f8 00 bf 4f ad 0f bd fc 00 60 72 ac f0 bc 60 72
+:0030 af f0 bf d5 00 00
++000f
++0012
+v001e
+^0021 34
+}
+.big
+{twist_set_count
+:0000 9f 73 8f 73 9c 73 8c 73 f8 34 af f8 00 bf 1f 8d
+/i2c_wrbuf 0015 00
+\i2c_wrbuf 0016
+:0010 5f 1f 9d 5f d4 00 00 3f 03 00 34 c3 00 29 f8 7c
+/util_delay 0025 00
+\util_delay 0026
+:0020 ac f8 06 bc d4 00 00 fc 00 60 72 ac f0 bc 60 72
+:0030 af f0 bf d5 05 00 00
+v0009
+^000c 34
++0019
++001c
+}
+.big
+{twist_get_diff
+/i2c_rdreg 0009 00
+\i2c_rdreg 000a
+:0000 9f 73 8f 73 9c 73 8c 73 d4 00 00 3f 01 07 02 00
+/util_delay 001b 00
+\util_delay 001c
+/i2c_wrbuf 001e 00
+\i2c_wrbuf 001f
+:0010 47 c3 00 3c f8 7c ac f8 06 bc d4 00 00 d4 00 00
+/util_delay 002e 00
+\util_delay 002f
+:0020 3f 03 00 49 c3 00 3c f8 7c ac f8 06 bc d4 00 00
+:0030 f8 47 af f8 00 bf 4f ad 0f bd fc 00 60 72 ac f0
+:0040 bc 60 72 af f0 bf d5 00 00 07 00 00
++000f
++0012
++0022
++0025
+v0031
+^0034 47
+}
+.big
+{twist_last_move
+/i2c_rdreg 0009 00
+\i2c_rdreg 000a
+:0000 9f 73 8f 73 9c 73 8c 73 d4 00 00 3f 01 09 02 00
+/util_delay 001b 00
+\util_delay 001c
+/i2c_wrbuf 001e 00
+\i2c_wrbuf 001f
+:0010 47 c3 00 3c f8 7c ac f8 06 bc d4 00 00 d4 00 00
+/util_delay 002e 00
+\util_delay 002f
+:0020 3f 03 00 49 c3 00 3c f8 7c ac f8 06 bc d4 00 00
+:0030 f8 47 af f8 00 bf 4f ad 0f bd fc 00 60 72 ac f0
+:0040 bc 60 72 af f0 bf d5 00 00 09 00 00
++000f
++0012
++0022
++0025
+v0031
+^0034 47
+}
+.big
+{twist_last_press
+/i2c_rdreg 0009 00
+\i2c_rdreg 000a
+:0000 9f 73 8f 73 9c 73 8c 73 d4 00 00 3f 01 0b 02 00
+/util_delay 001b 00
+\util_delay 001c
+/i2c_wrbuf 001e 00
+\i2c_wrbuf 001f
+:0010 47 c3 00 3c f8 7c ac f8 06 bc d4 00 00 d4 00 00
+/util_delay 002e 00
+\util_delay 002f
+:0020 3f 03 00 49 c3 00 3c f8 7c ac f8 06 bc d4 00 00
+:0030 f8 47 af f8 00 bf 4f ad 0f bd fc 00 60 72 ac f0
+:0040 bc 60 72 af f0 bf d5 00 00 0b 00 00
++000f
++0012
++0022
++0025
+v0031
+^0034 47
+}
+.big
+{twist_set_color
+:0000 9f 73 8f 73 9c 73 8c 73 f8 37 af f8 00 bf 1f 4d
+/i2c_wrbuf 0018 00
+\i2c_wrbuf 0019
+:0010 5f 1f 4d 5f 1f 0d 5f d4 00 00 3f 04 00 37 c3 00
+/util_delay 0028 00
+\util_delay 0029
+:0020 2c f8 7c ac f8 06 bc d4 00 00 fc 00 60 72 ac f0
+:0030 bc 60 72 af f0 bf d5 0d 00 00 00
+v0009
+^000c 37
++001c
++001f
+}
+.big
+{twist_get_color
+/i2c_rdreg 0005 00
+\i2c_rdreg 0006
+:0000 9c 73 8c 73 d4 00 00 3f 01 0d 03 00 27 c3 00 21
+/util_delay 0017 00
+\util_delay 0018
+:0010 f8 7c ac f8 06 bc d4 00 00 f8 27 af f8 00 bf fc
+:0020 00 60 72 ac f0 bc d5 00 00 00
++000b
++000e
+v001a
+^001d 27
+}
+.big
+{twist_chg_red
+:0000 9f 73 8f 73 9c 73 8c 73 f8 34 af f8 00 bf 1f 8d
+/i2c_wrbuf 0015 00
+\i2c_wrbuf 0016
+:0010 5f 1f 9d 5f d4 00 00 3f 03 00 34 c3 00 29 f8 7c
+/util_delay 0025 00
+\util_delay 0026
+:0020 ac f8 06 bc d4 00 00 fc 00 60 72 ac f0 bc 60 72
+:0030 af f0 bf d5 10 00 00
+v0009
+^000c 34
++0019
++001c
+}
+.big
+{twist_chg_green
+:0000 9f 73 8f 73 9c 73 8c 73 f8 34 af f8 00 bf 1f 8d
+/i2c_wrbuf 0015 00
+\i2c_wrbuf 0016
+:0010 5f 1f 9d 5f d4 00 00 3f 03 00 34 c3 00 29 f8 7c
+/util_delay 0025 00
+\util_delay 0026
+:0020 ac f8 06 bc d4 00 00 fc 00 60 72 ac f0 bc 60 72
+:0030 af f0 bf d5 12 00 00
+v0009
+^000c 34
++0019
++001c
+}
+.big
+{twist_chg_blue
+:0000 9f 73 8f 73 9c 73 8c 73 f8 34 af f8 00 bf 1f 8d
+/i2c_wrbuf 0015 00
+\i2c_wrbuf 0016
+:0010 5f 1f 9d 5f d4 00 00 3f 03 00 34 c3 00 29 f8 7c
+/util_delay 0025 00
+\util_delay 0026
+:0020 ac f8 06 bc d4 00 00 fc 00 60 72 ac f0 bc 60 72
+:0030 af f0 bf d5 14 00 00
+v0009
+^000c 34
++0019
++001c
+}
