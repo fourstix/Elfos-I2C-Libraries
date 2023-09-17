@@ -107,6 +107,7 @@ External Flags
 Supported Devices
 ------------------
 <table>
+<tr><th colspan="2">First Group</th></tr>
 <tr><th>Device</th><th>Library</th></tr>
 <tr><td>Adafruit 7 Segment LED display</td><td>led7</td></tr>
 <tr><td>Sparkfun 14-Segment Alphanumeric display</td><td>alnum</td></tr>
@@ -114,6 +115,16 @@ Supported Devices
 <tr><td>Sparkfun Qwiic Joystick</td><td>joystick</td></tr>
 <tr><td>LM75A Temperature Sensor</td><td>lm75a</td></tr>
 <tr><td>SHT31 Temperature and Humidity Sensor</td><td>sht31</td></tr>
+<tr><th colspan="2">Second Group</th></tr>
+<tr><th>Device</th><th>Library</th></tr>
+<tr><td>Adafruit Non-Volatile Fram Breakout Board</td><td rowspan="2">mem</td></tr>
+<tr><td>Sparkfun Qwiic EEPROM Breakout Board</td></tr>
+<tr><td>Sparkfun Qwiic 12 Button Keypad</td><td>keypad/td></tr>
+<tr><td>Sparkfun Qwiic Twist RGB Rotary Encoder</td><td>twist</td></tr>
+<tr><td>I2C 16x2 Liquid Crystal Display</td><td rowspan="2">lcd</td></tr>
+<tr><td>I2C 20x4 Liquid Crystal Display</td></tr>
+<tr><td>Adafruit 8x8 BiColor LED Matrix</td><td rowspan="2">mtrx</td></tr>
+<tr><td>Adafruit 8x8 LED Matrix</td></tr>
 </table>
 
 I2C Library API
@@ -125,6 +136,8 @@ I2C Library API
 <tr><td>i2c_wrbuf</td><td>Write a message to the i2c bus</td></tr>
 <tr><td>i2c_rdbuf</td><td>Read a message from the i2c bus</td></tr>
 <tr><td>i2c_rdreg</td><td>Read a message from a register in an i2c device.</td></tr>
+<tr><td>i2c_write_byte</td><td>Write one byte of data (msb first) to the i2c bus</td></tr>
+<tr><td>i2c_read_byte</td><td>Read one byte of data (msb first) from the i2c bus</td></tr>
 <tr><td>i2c_scan</td><td>Scan the i2c bus for any device with the id in RF.0</td></tr>
 <tr><td>i2c_clear</td><td>Attempt to clear a device error on the i2c bus</td></tr>
 </table>
@@ -139,6 +152,7 @@ Util Library API
 <tr><td>util_write_10x</td><td>Write a 10X value into a buffer as a single-precession decimal string</td></tr>
 <tr><td>util_c_to_f</td><td>Convert a 1X Celsius value into a 10X Fahrenheit value </td></tr>
 <tr><td>util_delay</td><td>Wait for the amount of time specified in RC and then return</td></tr>
+<tr><td>util_delay</td><td>Wait for the input key to be pressed, up to the amount of time specified in RC, and return. DF = 1 means the input key was pressed.</td></tr>
 </table>
 
 
@@ -146,6 +160,7 @@ Example programs
 ----------------
 
 <table>
+<tr><th colspan="2">First Group</th></tr>
 <tr><th>Device</th><th>Example Programs</th></tr>
 <tr><td>(Any I2C device)</td><td>scanner</td></tr>
 <tr><td>Adafruit 7 Segment LED display</td><td>led7print, led7clear, led7clock</td></tr>
@@ -154,7 +169,18 @@ Example programs
 <tr><td>Sparkfun Qwiic Joystick</td><td>joystick</td></tr>
 <tr><td>LM75A Temperature Sensor</td><td>lm75a</td></tr>
 <tr><td>SHT31 Temperature and Humidity Sensor</td><td>sht31</td></tr>
+<tr><th colspan="2">Second Group</th></tr>
+<tr><th>Device</th><th>Example Programs</th></tr>
+<tr><td>Adafruit Non-Volatile Fram Breakout Board</td><td rowspan="2">memdump, memset , memtest</td></tr>
+<tr><td>Sparkfun Qwiic EEPROM Breakout Board</td></tr>
+<tr><td>Sparkfun Qwiic 12 Button Keypad</td><td>keypad/td></tr>
+<tr><td>Sparkfun Qwiic Twist RGB Rotary Encoder</td><td>twist</td></tr>
+<tr><td>I2C 16x2 Liquid Crystal Display</td><td rowspan="2">lcdchar, lcdscroll, lcdtext</td></tr>
+<tr><td>I2C 20x4 Liquid Crystal Display</td></tr>
+<tr><td>Adafruit 8x8 BiColor LED Matrix</td><td rowspan="2">bicolor, bichar</td></tr>
+<tr><td>Adafruit 8x8 LED Matrix</td></tr>
 </table>
+
 
 [![Adafruit List of I2C Devices](https://cdn-learn.adafruit.com/guides/cropped_images/000/001/701/medium640/PhotoFunia-1501383296.jpg)](https://learn.adafruit.com/i2c-addresses)
 
@@ -274,7 +300,8 @@ Repository Contents
   * alnum.bat - Windows batch file to assemble source files to create library 
   * clean.bat - Windows batch file to delete binaries before rebuilding
 * **/src/example/**  -- Source files for Elf/OS I2c library example programs.
-  * build.bat - Windows batch file to assemble source files to create example programs 
+  * build.bat - Windows batch file to assemble source files to first set of example programs 
+  * build2.bat - Windows batch file to assemble source files to create second set of example programs 
   * clean.bat - Windows batch file to delete binaries before rebuilding
 * **/src/i2c/**  -- Source files for Elf/OS I2C library.
   * i2c.bat - Windows batch file to assemble source files to create library 
