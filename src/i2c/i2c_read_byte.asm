@@ -43,6 +43,9 @@
 ;   DF = 0 on success, DF = 1 on error
 ;------------------------------------------------------------------------
 
+; guarantee short branches stay within the same page
+.link       .align  64
+
             proc    i2c_read_byte
 
             sep     r3

@@ -1,0 +1,338 @@
+.big
+{lcd_avail
+/i2c_avail 0001 00
+\i2c_avail 0002
+:0000 d4 00 00 27 d5
+}
+.big
+{lcd_reset
+/util_delay 000f 00
+:0000 9d 73 8d 73 9c 73 8c 73 f8 36 ac f8 10 bc d4 00
+\util_delay 0010
+/i2c_wrbuf 0012 00
+\i2c_wrbuf 0013
+:0010 00 d4 00 00 27 01 00 6b c3 00 60 f8 1c ac f8 a2
+/util_delay 0022 00
+\util_delay 0023
+/lcd_send_byte 0028 00
+\lcd_send_byte 0029
+:0020 bc d4 00 00 f8 30 ad d4 00 00 c3 00 60 f8 9f ac
+/util_delay 0034 00
+\util_delay 0035
+/lcd_send_byte 003a 00
+\lcd_send_byte 003b
+:0030 f8 01 bc d4 00 00 f8 30 ad d4 00 00 c3 00 60 f8
+/util_delay 0046 00
+\util_delay 0047
+/lcd_send_byte 004c 00
+\lcd_send_byte 004d
+:0040 9f ac f8 01 bc d4 00 00 f8 30 ad d4 00 00 c3 00
+/util_delay 0058 00
+\util_delay 0059
+/lcd_send_byte 005e 00
+\lcd_send_byte 005f
+:0050 60 f8 10 ac f8 00 bc d4 00 00 f8 20 ad d4 00 00
+:0060 60 72 ac f0 bc 60 72 ad f0 bd d5 00
++0016
++0019
++002b
++003d
++004f
+}
+.big
+{lcd_send_byte
+:0000 9f 73 8f 73 f8 23 af f8 00 bf 8d 5f 1f 8d f9 04
+/i2c_wrbuf 0017 00
+\i2c_wrbuf 0018
+:0010 5f 1f 8d fa fb 5f d4 00 00 27 03 00 23 60 72 af
+:0020 f0 bf d5 00 00 00
+v0005
+^0008 23
++001b
+}
+.big
+{lcd_send_cmd
+:0000 ae 9f 73 8f 73 9d 73 8d 73 9c 73 8c 73 8e bd f8
+\cmd_ctrl 0010
+/cmd_ctrl 0013 00
+/lcd_send_byte 001d 00
+\lcd_send_byte 001e
+:0010 00 ac f8 00 bc 0c 52 9d fa f0 f1 ad d4 00 00 c3
+/lcd_send_byte 002e 00
+\lcd_send_byte 002f
+:0020 00 30 0c 52 9d fa 0f fe fe fe fe f1 ad d4 00 00
+:0030 60 72 ac f0 bc 60 72 ad f0 bd 60 72 af f0 bf d5
++0020
+}
+{cmd_ctrl
+:0000 08
+}
+.big
+{lcd_send_data
+:0000 ae 9f 73 8f 73 9d 73 8d 73 9c 73 8c 73 8e bd f8
+\data_ctrl 0010
+/data_ctrl 0013 00
+/lcd_send_byte 001d 00
+\lcd_send_byte 001e
+:0010 00 ac f8 00 bc 0c 52 9d fa f0 f1 ad d4 00 00 c3
+/lcd_send_byte 002e 00
+\lcd_send_byte 002f
+:0020 00 30 0c 52 9d fa 0f fe fe fe fe f1 ad d4 00 00
+:0030 60 72 ac f0 bc 60 72 ad f0 bd 60 72 af f0 bf d5
++0020
+}
+{data_ctrl
+:0000 09
+}
+.big
+{lcd_init
+/lcd_reset 0001 00
+\lcd_reset 0002
+/lcd_send_cmd 0009 00
+\lcd_send_cmd 000a
+:0000 d4 00 00 c3 00 2c f8 28 d4 00 00 c3 00 2c f8 0c
+/lcd_send_cmd 0011 00
+\lcd_send_cmd 0012
+/lcd_clear 0017 00
+\lcd_clear 0018
+/lcd_send_cmd 001f 00
+:0010 d4 00 00 c3 00 2c d4 00 00 c3 00 2c f8 06 d4 00
+\lcd_send_cmd 0020
+/lcd_home 0025 00
+\lcd_home 0026
+:0020 00 c3 00 2c d4 00 00 c3 00 2c fc 00 d5
++0004
++000c
++0014
++001a
++0022
++0028
+}
+.big
+{lcd_clear
+/lcd_send_cmd 0007 00
+\lcd_send_cmd 0008
+:0000 9c 73 8c 73 f8 01 d4 00 00 c3 00 17 f8 a6 ac f8
+/util_delay 0013 00
+\util_delay 0014
+:0010 00 bc d4 00 00 fc 00 60 72 ac f0 bc d5
++000a
+}
+.big
+{lcd_home
+/lcd_send_cmd 0007 00
+\lcd_send_cmd 0008
+:0000 9c 73 8c 73 f8 02 d4 00 00 c3 00 17 f8 a6 ac f8
+/util_delay 0013 00
+\util_delay 0014
+:0010 00 bc d4 00 00 fc 00 60 72 ac f0 bc d5
++000a
+}
+.big
+{lcd_create_char
+:0000 ae 9c 73 8c 73 f8 08 ac 8e fa 07 fe fe fe f9 40
+/lcd_send_cmd 0011 00
+\lcd_send_cmd 0012
+/lcd_send_data 0018 00
+\lcd_send_data 0019
+:0010 d4 00 00 c3 00 25 4f d4 00 00 c3 00 25 2c 8c ca
+/lcd_home 0023 00
+\lcd_home 0024
+:0020 00 16 d4 00 00 60 72 ac f0 bc d5
++0014
++001b
++0020
+}
+.big
+{lcd_print_char
+/lcd_send_data 0001 00
+\lcd_send_data 0002
+:0000 d4 00 00 d5
+}
+.big
+{lcd_print_str
+/lcd_send_data 0005 00
+\lcd_send_data 0006
+:0000 4f c2 00 0d d4 00 00 c3 00 0d c0 00 00 d5
++0002
++0008
++000b
+}
+.big
+{lcd_print_nstr
+/lcd_send_data 0009 00
+\lcd_send_data 000a
+:0000 8c c2 00 12 4f c2 00 12 d4 00 00 c3 00 12 2c c0
+:0010 00 00 d5
++0002
++0006
++000c
++0010
+}
+.big
+{lcd_position
+:0000 9f 73 8f 73 f8 22 af f8 00 bf 8f 52 8d f4 af 9f
+/lcd_send_cmd 001a 00
+\lcd_send_cmd 001b
+:0010 7c 00 bf 0f 52 9d f4 f9 80 d4 00 00 60 72 af f0
+:0020 bf d5 00 40 14 54
+v0005
+^0008 22
+}
+.big
+{lcd_blink_on
+\disp_ctrl 0005
+/disp_ctrl 0008 00
+/lcd_update 000f 00
+:0000 9f 73 8f 73 f8 00 af f8 00 bf 0f f9 01 5f d4 00
+\lcd_update 0010
+:0010 00 60 72 af f0 bf d5
+}
+.big
+{lcd_blink_off
+\disp_ctrl 0005
+/disp_ctrl 0008 00
+/lcd_update 000f 00
+:0000 9f 73 8f 73 f8 00 af f8 00 bf 0f fa fe 5f d4 00
+\lcd_update 0010
+:0010 00 60 72 af f0 bf d5
+}
+.big
+{lcd_cursor_on
+\disp_ctrl 0005
+/disp_ctrl 0008 00
+/lcd_update 000f 00
+:0000 9f 73 8f 73 f8 00 af f8 00 bf 0f f9 02 5f d4 00
+\lcd_update 0010
+:0010 00 60 72 af f0 bf d5
+}
+.big
+{lcd_cursor_off
+\disp_ctrl 0005
+/disp_ctrl 0008 00
+/lcd_update 000f 00
+:0000 9f 73 8f 73 f8 00 af f8 00 bf 0f fa fd 5f d4 00
+\lcd_update 0010
+:0010 00 60 72 af f0 bf d5
+}
+.big
+{lcd_update
+\disp_ctrl 0005
+/disp_ctrl 0008 00
+/lcd_send_cmd 000c 00
+\lcd_send_cmd 000d
+:0000 9f 73 8f 73 f8 00 af f8 00 bf 0f d4 00 00 60 72
+:0010 af f0 bf d5
+}
+{disp_ctrl
+:0000 0c
+}
+.big
+{lcd_display_on
+\disp_ctrl 0005
+/disp_ctrl 0008 00
+/lcd_update 000f 00
+:0000 9f 73 8f 73 f8 00 af f8 00 bf 0f f9 04 5f d4 00
+\lcd_update 0010
+:0010 00 60 72 af f0 bf d5
+}
+.big
+{lcd_display_off
+\disp_ctrl 0005
+/disp_ctrl 0008 00
+/lcd_update 000f 00
+:0000 9f 73 8f 73 f8 00 af f8 00 bf 0f fa fb 5f d4 00
+\lcd_update 0010
+:0010 00 60 72 af f0 bf d5
+}
+.big
+{lcd_default
+\disp_ctrl 0005
+/disp_ctrl 0008 00
+/lcd_update 000e 00
+\lcd_update 000f
+:0000 9f 73 8f 73 f8 00 af f8 00 bf f8 0c 5f d4 00 00
+:0010 60 72 af f0 bf d5
+}
+.big
+{lcd_backlight_on
+\data_ctrl 0005
+/data_ctrl 0008 00
+\cmd_ctrl 000e
+:0000 9f 73 8f 73 f8 00 af f8 00 bf f8 09 5f f8 00 af
+/cmd_ctrl 0011 00
+/lcd_update 0017 00
+\lcd_update 0018
+:0010 f8 00 bf f8 08 5f d4 00 00 60 72 af f0 bf d5
+}
+.big
+{lcd_backlight_off
+\data_ctrl 0005
+/data_ctrl 0008 00
+\cmd_ctrl 000e
+:0000 9f 73 8f 73 f8 00 af f8 00 bf f8 01 5f f8 00 af
+/cmd_ctrl 0011 00
+/lcd_update 0017 00
+\lcd_update 0018
+:0010 f8 00 bf f8 00 5f d4 00 00 60 72 af f0 bf d5
+}
+.big
+{lcd_entry_mode
+\entry_ctrl 0005
+/entry_ctrl 0008 00
+/lcd_send_cmd 000c 00
+\lcd_send_cmd 000d
+:0000 9f 73 8f 73 f8 00 af f8 00 bf 0f d4 00 00 60 72
+:0010 af f0 bf d5
+}
+{entry_ctrl
+:0000 06
+}
+.big
+{lcd_auto_on
+\entry_ctrl 0005
+/entry_ctrl 0008 00
+/lcd_entry_mode 000f 00
+:0000 9f 73 8f 73 f8 00 af f8 00 bf 0f f9 01 5f d4 00
+\lcd_entry_mode 0010
+:0010 00 60 72 af f0 bf d5
+}
+.big
+{lcd_auto_off
+\entry_ctrl 0005
+/entry_ctrl 0008 00
+/lcd_entry_mode 000f 00
+:0000 9f 73 8f 73 f8 00 af f8 00 bf 0f fa fe 5f d4 00
+\lcd_entry_mode 0010
+:0010 00 60 72 af f0 bf d5
+}
+.big
+{lcd_left_to_right
+\entry_ctrl 0005
+/entry_ctrl 0008 00
+/lcd_entry_mode 000f 00
+:0000 9f 73 8f 73 f8 00 af f8 00 bf 0f f9 02 5f d4 00
+\lcd_entry_mode 0010
+:0010 00 60 72 af f0 bf d5
+}
+.big
+{lcd_right_to_left
+\entry_ctrl 0005
+/entry_ctrl 0008 00
+/lcd_entry_mode 000f 00
+:0000 9f 73 8f 73 f8 00 af f8 00 bf 0f fa fd 5f d4 00
+\lcd_entry_mode 0010
+:0010 00 60 72 af f0 bf d5
+}
+.big
+{lcd_scroll_left
+/lcd_send_cmd 0003 00
+\lcd_send_cmd 0004
+:0000 f8 18 d4 00 00 d5
+}
+.big
+{lcd_scroll_right
+/lcd_send_cmd 0003 00
+\lcd_send_cmd 0004
+:0000 f8 1c d4 00 00 d5
+}

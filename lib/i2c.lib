@@ -1,4 +1,5 @@
 .big
+.align  64
 {i2c_write_byte
 :0000 d3 f8 08 a9 9f 7e bf 99 c3 00 0e f9 80 c8 fa 7f
 :0010 52 67 22 fa bf 52 67 22 f9 40 52 67 22 b9 29 89
@@ -11,6 +12,7 @@
 +003d
 }
 .big
+.align  64
 {i2c_read_byte
 :0000 d3 f8 08 a9 99 fa 7f 52 67 22 b9 99 fa bf 52 67
 :0010 22 b9 9f fe 36 18 f9 01 bf 99 f9 40 52 67 22 b9
@@ -111,4 +113,41 @@
 .big
 {i2c_init
 :0000 e3 65 02 67 00 f8 00 b9 65 00 e2 fc 00 d5
+}
+.big
+{i2c_wraddr
+/i2c_write_byte 000c 01
+\i2c_write_byte 000f
+:0000 ae 9a 73 8a 73 89 73 9f 73 8f 73 f8 00 ba f8 01
+:0010 aa 46 fe bf e3 65 02 e2 99 fa 7f 52 67 22 fa bf
+:0020 52 67 22 f9 80 52 67 22 f9 40 52 67 22 b9 da c3
+:0030 00 44 9d bf da c3 00 44 8d bf da c3 00 44 8e bf
+:0040 da c3 00 44 99 f9 80 52 67 22 fa bf 52 67 22 fa
+:0050 7f 52 67 22 b9 e3 65 00 e2 60 72 af 72 bf 72 a9
+:0060 72 aa f0 ba d5
++0030
++0036
++003c
++0042
+}
+.big
+{i2c_rdaddr
+:0000 9a 73 8a 73 9b 73 8b 73 8c 73 89 73 9f 73 8f 73
+/i2c_write_byte 0011 01
+\i2c_write_byte 0014
+/i2c_read_byte 0017 01
+\i2c_read_byte 001a
+:0010 f8 00 ba f8 01 aa f8 00 bb f8 01 ab 46 fe ac bf
+:0020 e3 65 02 e2 99 fa 7f 52 67 22 fa bf 52 67 22 f9
+:0030 80 52 67 22 f9 40 52 67 22 b9 da c3 00 7e 9d bf
+:0040 da c3 00 7e 8d bf da c3 00 7e f8 00 ae 99 fa 7f
+:0050 52 67 22 fa bf 52 67 22 f9 80 52 67 22 f9 40 52
+:0060 67 22 b9 8c f9 01 bf da db 9f ae 99 fa 7f 52 67
+:0070 22 fa bf 52 67 22 f9 40 52 67 22 b9 fc 00 99 f9
+:0080 80 52 67 22 fa bf 52 67 22 fa 7f 52 67 22 b9 e3
+:0090 65 00 e2 60 72 af 72 bf 72 a9 72 ac 72 ab 72 bb
+:00a0 72 aa f0 ba 8e d5
++003c
++0042
++0048
 }

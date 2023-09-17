@@ -18,3 +18,5 @@
 .op "LOAD","NW","F8 L2 A$1 F8 H2 B$1"
 .op "RETURN","","D5"
 .op "ABEND","","F8 FF FE D5"
+.op "SWAP","NR","8$1 52 8$2 A$1 F0 A$2 9$1 52 9$2 B$1 F0 B$2"
+.op "FLIP","R","8$1 52 9$1 A$1 F0 B$1"
