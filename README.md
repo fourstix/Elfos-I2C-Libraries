@@ -119,7 +119,7 @@ Supported Devices
 <tr><th>Device</th><th>Library</th></tr>
 <tr><td>Adafruit Non-Volatile Fram Breakout Board</td><td rowspan="2">mem</td></tr>
 <tr><td>Sparkfun Qwiic EEPROM Breakout Board</td></tr>
-<tr><td>Sparkfun Qwiic 12 Button Keypad</td><td>keypad/td></tr>
+<tr><td>Sparkfun Qwiic 12 Button Keypad</td><td>keypad</td></tr>
 <tr><td>Sparkfun Qwiic Twist RGB Rotary Encoder</td><td>twist</td></tr>
 <tr><td>I2C 16x2 Liquid Crystal Display</td><td rowspan="2">lcd</td></tr>
 <tr><td>I2C 20x4 Liquid Crystal Display</td></tr>
@@ -136,8 +136,8 @@ I2C Library API
 <tr><td>i2c_wrbuf</td><td>Write a message to the i2c bus</td></tr>
 <tr><td>i2c_rdbuf</td><td>Read a message from the i2c bus</td></tr>
 <tr><td>i2c_rdreg</td><td>Read a message from a register in an i2c device.</td></tr>
-<tr><td>i2c_write_byte</td><td>Write one byte of data (msb first) to the i2c bus</td></tr>
-<tr><td>i2c_read_byte</td><td>Read one byte of data (msb first) from the i2c bus</td></tr>
+<tr><td>i2c_write_byte</td><td>Write one byte of data to the i2c bus</td></tr>
+<tr><td>i2c_read_byte</td><td>Read one byte of data from the i2c bus</td></tr>
 <tr><td>i2c_scan</td><td>Scan the i2c bus for any device with the id in RF.0</td></tr>
 <tr><td>i2c_clear</td><td>Attempt to clear a device error on the i2c bus</td></tr>
 </table>
@@ -173,7 +173,7 @@ Example programs
 <tr><th>Device</th><th>Example Programs</th></tr>
 <tr><td>Adafruit Non-Volatile Fram Breakout Board</td><td rowspan="2">memdump, memset , memtest</td></tr>
 <tr><td>Sparkfun Qwiic EEPROM Breakout Board</td></tr>
-<tr><td>Sparkfun Qwiic 12 Button Keypad</td><td>keypad/td></tr>
+<tr><td>Sparkfun Qwiic 12 Button Keypad</td><td>keypad</td></tr>
 <tr><td>Sparkfun Qwiic Twist RGB Rotary Encoder</td><td>twist</td></tr>
 <tr><td>I2C 16x2 Liquid Crystal Display</td><td rowspan="2">lcdchar, lcdscroll, lcdtext</td></tr>
 <tr><td>I2C 20x4 Liquid Crystal Display</td></tr>
@@ -293,6 +293,95 @@ Show temperature, humidity and dewpoint readings from the SHT31 temperature and 
 * -r Reset sensor
 * -s show Status byte values
 
+<table>
+<tr><td>
+[![Adafruit Non-Volatile Fram Breakout Board](https://cdn-shop.adafruit.com/970x728/1895-03.jpg)](https://www.adafruit.com/product/1895)
+
+[*Adafruit Non-Volatile Fram Breakout Board (1895)*](https://www.adafruit.com/product/1895)
+</td><td>
+[![Sparkfun Qwiic EEPROM Breakout Board](https://cdn.sparkfun.com//assets/parts/1/7/7/0/1/18355-SparkFun_Qwiic_EEPROM_Breakout_-_512Kbit-01.jpg)](https://www.sparkfun.com/products/18355)
+
+[*Sparkfun Qwiic EEPROM Breakout Board*](https://www.sparkfun.com/products/18355)
+</td></tr>
+</table>
+## memset
+**Usage:** memset [-f hh, default = 00][hhhh, default = 0000]
+Set a 128 byte block in the device memory to a hexadecimal byte value.
+*Options:* 
+*  -f hh byte value hh to set (default = 00).
+*  hhhh is block address in hex (default = 0000)
+
+## memdump
+**Usage:** memdump [hhhh, default = 0000]
+Show the contents of a 128 byte block in the device memory
+*Options:* 
+*  hhhh is block address in hex (default = 0000)
+
+## memtest
+**Usage:** memtest [hhhh, default = 0000]
+Write a string to the device memory, read it back and verify match.
+*Options:* 
+*  hhhh is the test address in hex (default = 0000)
+
+[![Sparkfun Qwiic 12 Button Keypad](https://cdn.sparkfun.com//assets/parts/1/3/7/7/7/15290-SparkFun_Qwiic_Keypad_-_12_Button-01.jpg)](https://www.sparkfun.com/products/15290)
+
+[*Sparkfun Qwiic 12 Button Keypad*](https://www.sparkfun.com/products/15290)
+
+Example program
+----------------
+## keypad
+**Usage:** keypad   
+Show information read from the Sparkfun Qwiic 12 Button Keypad and display keys pressed.
+
+
+[![Sparkfun Qwiic Twist RGB Rotary Encoder](https://cdn.sparkfun.com//assets/parts/1/3/4/3/3/15083-SparkFun_Qwiic_Twist_-_RGB_Rotary_Encoder_Breakout-01.jpg)](https://www.sparkfun.com/products/15083)
+
+[*Sparkfun Qwiic Twist RGB Rotary Encoder*](https://www.sparkfun.com/products/15083)
+
+Example program
+----------------
+## twist
+**Usage:** twist   
+Show information read information from a Sparkfun Qwiic Twist RGB Rotary Encoder and change the color as the knob is turned.
+
+<table>
+<tr><td>
+[![I2C 16x2 Liquid Crystal Display](https://www.sunfounder.com/cdn/shop/products/CN0133-01_500x.jpg?v=1617877359)](https://www.sunfounder.com/products/i2c-lcd1602-module)
+
+[*I2C 16x2 Liquid Crystal Display*](https://www.sunfounder.com/products/i2c-lcd1602-module)
+</td><td>
+[![I2C 20x4 Liquid Crystal Display](https://www.sunfounder.com/cdn/shop/products/CN0132-01_500x.jpg?v=1629964807)](https://www.sunfounder.com/products/i2c-lcd2004-module)
+
+[*I2C 20x4 Liquid Crystal Display*](https://www.sunfounder.com/products/i2c-lcd2004-module)
+</td></tr>
+</table>
+## lcdchar
+**Usage:** lcdchar [-s|-l, default = -s (16x2 display)]
+Show various character and cursor functions on a Liquid Crystal Display with I2C
+*Options:* 
+*  -s = small 16x2 display (default)
+*  -l = large 20x4 display
+
+## lcdscroll
+**Usage:** lcdscroll
+Show scrolling text on a Liquid Crystal Display with I2C
+
+## lcdtext
+**Usage:** lcdtext
+Show changing the text direction on a Liquid Crystal Display with I2C
+
+[![Adafruit Bicolor 8x8 LED Matrix](https://cdn-shop.adafruit.com/970x728/902-00.jpg)](https://www.adafruit.com/product/902)
+
+[*Adafruit Bicolor 8x8 LED Matrix (902)*](https://www.adafruit.com/product/902)
+
+## bicolor
+**Usage:** bicolor
+Show graphics functions available on an Adafruit Bicolor 8x8 LED Matrix.
+
+## bichar
+**Usage:** lcdtext
+Show the printable ASCII character set on an Adafruit Bicolor 8x8 LED Matrix 
+
 Repository Contents
 -------------------
 * **/src/**  --Source files for assembling I2C libraries and example programs.
@@ -322,6 +411,21 @@ Repository Contents
 * **/src/sht31/**  -- Source files for SHT31 temperature and humidity sensor library.
   * sht31.bat - Windows batch file to assemble source files to create library 
   * clean.bat - Windows batch file to delete binaries before rebuilding
+* **/src/mem/**  -- Source files for Adafruit Non-Volatile Fram and Sparkfun Qwiic EEPROM Breakout Boards library.
+  * mem.bat - Windows batch file to assemble source files to create library 
+  * clean.bat - Windows batch file to delete binaries before rebuilding
+* **/src/keypad/**  -- Source files for Sparkfun Qwiic 12 Button Keypad library.
+  * keypad.bat - Windows batch file to assemble source files to create library 
+  * clean.bat - Windows batch file to delete binaries before rebuilding
+* **/src/twist/**  -- Source files for Sparkfun Qwiic Twist RGB Rotary Encoder library.
+  * twist.bat - Windows batch file to assemble source files to create library 
+  * clean.bat - Windows batch file to delete binaries before rebuilding
+* **/src/lcd/**  -- Source files for I2C 16x2 and I2C 20x4 Liquid Crystal Displays library.
+  * lcd.bat - Windows batch file to assemble source files to create library 
+  * clean.bat - Windows batch file to delete binaries before rebuilding
+* **/src/matrix/**  -- Source files for Adafruit 8x8 LED Matrices library.
+  * matrix.bat - Windows batch file to assemble source files to create library 
+  * clean.bat - Windows batch file to delete binaries before rebuilding
 * **/src/util/**  -- Source files for common utility library.
   * util.bat - Windows batch file to assemble source files to create library 
   * clean.bat - Windows batch file to delete binaries before rebuilding
@@ -343,6 +447,9 @@ trademarks of the Adafruit Industries, in the United States, other countries or 
 
 Sparkfun, the Sparkfun logo, and other Sparkfun products and services are
 trademarks of the Sparkfun Electronics, in the United States, other countries or both. 
+
+SunFounder, the SunFounder logo, and other SunFounder products and services are
+trademarks of the SunFounder in the United States, other countries or both. 
 
 Any company, product, or services names may be trademarks or services marks of others.
 
