@@ -5,7 +5,9 @@ Platform
 --------
 The programs were written to run displays from an [1802-Mini](https://github.com/dmadole/1802-Mini) by David Madole running with the [1802/Mini PIO Parallel Expansion Board](https://github.com/arhefner/1802-Mini-PIO) with the [I2C interface board](https://github.com/arhefner/1802-Mini-I2C) by Tony Hefner. 
 
-These programs were assembled and linked with updated versions of the Asm-02 assembler and Link-02 linker by Mike Riley. The updated versions required to assemble and link this code are available at [arhefner/Asm-02](https://github.com/arhefner/Asm-02) and [arhefner/Link-02](https://github.com/arhefner/Link-02).
+These programs were assembled and linked with updated versions of the Asm-02 assembler and Link-02 linker by Mike Riley. The updated versions required to assemble and link this code are available in the main branch of [arhefner/Asm-02](https://github.com/arhefner/Asm-02) and the [updates branch at arhefner/Link-02](https://github.com/arhefner/Link-02/tree/updates).  
+
+The Windows versions of Asm/02 and Link/02 are available in the latest release at [fourstix/Asm-02](https://github.com/fourstix/Asm-02/releases) and [fourstix/Link-02](https://github.com/fourstix/Link-02/tree/updates).
 
 Modification of I2C Adapter for Clock Stretching
 ------------------------------------------------
