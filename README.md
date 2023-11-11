@@ -131,17 +131,45 @@ Supported Devices
 I2C Library API
 ----------------
 
+<!-- A blank line is required before a link in a table. -->
 <table>
 <tr><th>Name</th><th>Description</th></tr>
-<tr><td>i2c_init</td><td>Initialize the i2c bus</td></tr>
-<tr><td>i2c_avail</td><td>Check for an i2c device at a given address</td></tr>
-<tr><td>i2c_scan</td><td>Scan the i2c bus for any device with the id in RF.0</td></tr>
-<tr><td>i2c_rdbuf</td><td>Read a message from the i2c bus</td></tr>
-<tr><td>i2c_rdreg</td><td>Read a message from a register in an i2c device</td></tr>
-<tr><td>i2c_rdaddr</td><td>Read one byte of data from a given address on an i2c memory device</td></tr>
-<tr><td>i2c_wrbuf</td><td>Write a message to the i2c bus</td></tr>
-<tr><td>i2c_wraddr</td><td>Write one byte of data to a given address on an i2c memory device</td></tr>
-<tr><td>i2c_clear</td><td>Attempt to clear a device error on the i2c bus</td></tr>
+<tr><td>
+
+[i2c_init](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/I2C_API.md#ic2_init)
+</td><td>Initialize the i2c bus</td></tr>
+<tr><td>
+
+[i2c_avail](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/I2C_API.md#ic2_avail) 
+</td><td>Check for an i2c device at a given address</td></tr>
+<tr><td>
+
+[i2c_scan](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/I2C_API.md#ic2_scan) 
+</td><td>Scan the i2c bus for any device with the id in RF.0</td></tr>
+<tr><td>
+
+[i2c_rdbuf](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/I2C_API.md#ic2_rdbuf)
+</td><td>Read a message from the i2c bus</td></tr>
+<tr><td>
+
+[i2c_rdreg](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/I2C_API.md#ic2_rdreg)
+</td><td>Read a message from a register in an i2c device</td></tr>
+<tr><td>
+
+[i2c_rdaddr](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/I2C_API.md#ic2_rdaddr)
+</td><td>Read one byte of data from a given address on an i2c memory device</td></tr>
+<tr><td>
+
+[i2c_wrbuf](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/I2C_API.md#ic2_wrbuf)
+</td><td>Write a message to the i2c bus</td></tr>
+<tr><td>
+
+[i2c_wraddr](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/I2C_API.md#ic2_wraddr)
+</td><td>Write one byte of data to a given address on an i2c memory device</td></tr>
+<tr><td>
+
+[i2c_clear](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/I2C_API.md#ic2_clear)
+</td><td>Attempt to clear a device error on the i2c bus</td></tr>
 </table>
 
 These API functions return DF=0 when successful, and DF=1 when there is an error. The [I2C API](I2C_API.md) are documented [here.](I2C_API.md)
