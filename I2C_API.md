@@ -1,5 +1,5 @@
 # Elf/OS I2C API
-Library API functions for using various I2C devices with an 1802-Mini with the PIO and I2C expansion boards. 
+API functions for using various I2C devices with an 1802-Mini with the PIO and I2C expansion boards. 
 
 Platform
 --------
@@ -16,11 +16,11 @@ The current value of the output port is maintained in register R9.1.
 This allows the routines to manipulate the i2c outputs without
 disturbing the values of other bits on the output port.
 
-These routines are meant to be called using the SCRT in Elf/OS, with X=R2 
-being the stack pointer.
+These routines are meant to be called using the SCRT (Standard Call and Return routines) in Elf/OS, with X=R2 being the stack pointer.
 
 I2C Setup API
 -------------
+
 ## ic2_init
 This routine initializes the i2c bus.  It should be called before any other i2c functions.
 
@@ -57,10 +57,10 @@ DF = 0 if success, DF = 1 if not found (error)
 ;------------------------------
 I2C_ADDR:   equ     $18
 
-call    i2c_avail
-db      I2C_ADDR
-
+            call    i2c_avail
+            db      I2C_ADDR
 ```
+
 ## ic2_scan
 This routine writes the id to the i2c bus to see if a device is available. By incrementing the address register RF, it one can easily scan a range of addresses
 
@@ -76,7 +76,7 @@ DF = 0 if success, DF = 1 if not found (error)
 # Example Code
 ```
 ;----------------------------------------------------------------------
-; Scan for Sparkfun Qwiic Relay at its possible I2C addresses
+; Scan for Sparkfun Qwiic Relay at its two possible I2C addresses
 ;----------------------------------------------------------------------
             ldi     $18           ; Set rf to relay primary address at $18
             plo     rf 
@@ -85,6 +85,7 @@ DF = 0 if success, DF = 1 if not found (error)
             lbnf    relay_found   ; DF = 0 means found at $18
                         
             inc     rf            ; check relay secondary address at $19
+
             call    i2c_scan
             lbnf    relay_found   ; DF = 0 means found at $19
             
@@ -131,9 +132,8 @@ sht31_data_buf:
         db 0              ; CRC byte
         db 0,0            ; 16-bit humidity reading
         db 0              ; CRC byte
-
-
 ```
+
 ## ic2_rdreg
 This routine reads a message from a register in an i2c device on the bus.  Some devices may refer to registers as commands.
 
@@ -173,6 +173,7 @@ I2C_ADDR:   equ     $18
 
 rly_state:  db     $00                ; relay state byte
 ```
+
 ## ic2_rdaddr
 This routine reads a byte from an address in an i2c memory device.
 
@@ -208,8 +209,10 @@ I2C_ADDR:   equ     $50
             ; save data read from I2C memory into RF.0
             plo     rf                  ; put data byte in D into RF.0           
 ```
+
 I2C WRITE API
 -------------
+
 ## ic2_wrbuf
 This routine write a message to a device on the i2c bus.
 
@@ -243,6 +246,7 @@ led7_display_buf:
             db      $00, $00, $00, $00, $00, $00, $00, $00
             db      $00, $00, $00, $00, $00, $00, $00, $00
 ```
+
 ## ic2_wraddr
 This routine write a byte to an address in an i2c memory device.
 

@@ -15,15 +15,15 @@ Modification of I2C Adapter for Clock Stretching
 Version A of the [I2C Adapter](https://github.com/arhefner/1802-Mini-I2C) needs a single wire modification to support I2C clock stretching.  First, solder a wire from the EF4 post on JP1 to the SCL signal available on the right side of resistor R7 as shown in the diagrams below. Then, set the jumper at JP1 to use EF3 for the SDA line.  With this 
 modification the I2C routines will be able to check EF4 to see if a device is holding the SCL line low for clock stretching, and EF3 is used for SDA.
 
-The modification wire is shown in blue in the images below. One can add the modification wire on either the back side or the front side.  I found it easiest to solder the wire on the back side of the I2C Adapter.
+The modification wire is shown in blue on the images below. One can add the modification wire to either the back side or the front side.  I found it easiest to solder the wire on the back side of the I2C Adapter.
 
-[![Modification for Clock Stretching - Front View](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/pics/modAfront.png)](https://github.com/arhefner/1802-Mini-I2C)
+[![Modification for Clock Stretching - Wire on Front](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/pics/modAfront.png)](https://github.com/arhefner/1802-Mini-I2C)
 
-**Modification for Clock Stretching - Front View**
+**Modification for Clock Stretching - Wire on Front**
 
-[![Modification for Clock Stretching - Back View](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/pics/modAback.png)](https://github.com/arhefner/1802-Mini-I2C)
+[![Modification for Clock Stretching - Wire on Back](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/pics/modAback.png)](https://github.com/arhefner/1802-Mini-I2C)
 
-**Modification for Clock Stretching - Back View**
+**Modification for Clock Stretching - Wire on Back**
 
 You can find more information about clock stretching and I2C in general in the Adafruit
 tutorial [*Working with I2C Devices*](https://learn.adafruit.com/working-with-i2c-devices).
@@ -130,16 +130,17 @@ Supported Devices
 
 I2C Library API
 ----------------
+
 <table>
 <tr><th>Name</th><th>Description</th></tr>
 <tr><td>i2c_init</td><td>Initialize the i2c bus</td></tr>
 <tr><td>i2c_avail</td><td>Check for an i2c device at a given address</td></tr>
-<tr><td>i2c_wrbuf</td><td>Write a message to the i2c bus</td></tr>
+<tr><td>i2c_scan</td><td>Scan the i2c bus for any device with the id in RF.0</td></tr>
 <tr><td>i2c_rdbuf</td><td>Read a message from the i2c bus</td></tr>
 <tr><td>i2c_rdreg</td><td>Read a message from a register in an i2c device</td></tr>
-<tr><td>i2c_wraddr</td><td>Write one byte of data to a given address on an i2c memory device</td></tr>
 <tr><td>i2c_rdaddr</td><td>Read one byte of data from a given address on an i2c memory device</td></tr>
-<tr><td>i2c_scan</td><td>Scan the i2c bus for any device with the id in RF.0</td></tr>
+<tr><td>i2c_wrbuf</td><td>Write a message to the i2c bus</td></tr>
+<tr><td>i2c_wraddr</td><td>Write one byte of data to a given address on an i2c memory device</td></tr>
 <tr><td>i2c_clear</td><td>Attempt to clear a device error on the i2c bus</td></tr>
 </table>
 
