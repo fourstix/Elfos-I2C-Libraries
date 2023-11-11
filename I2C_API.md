@@ -185,7 +185,7 @@ This routine reads a byte from an address in an i2c memory device.
 </table>
 
 # Returns
-DF = 0 if success, DF = 1 if not found (error) 
+DF = 0 if success, DF = 1 if not found (error)   
 D = byte read from memory
 
 # Example Code
