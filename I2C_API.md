@@ -62,7 +62,7 @@ I2C_ADDR:   equ     $18
 ```
 
 ## ic2_scan
-This routine writes the id to the i2c bus to see if a device is available. By incrementing the address register RF, it one can easily scan a range of addresses
+This routine writes the id to the i2c bus to see if a device is available. By incrementing the address register RF, one can easily scan a range of addresses
 
 # Parameters
 <table>
@@ -287,7 +287,7 @@ I2C Error API
 -------------
 
 ## ic2_clear
-This routine attempts to clear an error condition where a device is out of sync and is holding the SDA line low.
+This routine attempts to clear an error condition where a device is out of sync and holding the SDA line low.
 
 # Parameters
 <table>
