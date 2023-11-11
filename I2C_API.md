@@ -1,5 +1,5 @@
 # Elf/OS I2C API
-API functions for using various I2C devices with an 1802-Mini with the PIO and I2C expansion boards. 
+API for various I2C functions for Elf/OS programs communicating through the I2C protocol. 
 
 Platform
 --------
@@ -16,7 +16,7 @@ The current value of the output port is maintained in register R9.1.
 This allows the routines to manipulate the i2c outputs without
 disturbing the values of other bits on the output port.
 
-These routines are meant to be called using the SCRT (Standard Call and Return routines) in Elf/OS, with X=R2 being the stack pointer.
+These routines are meant to be called using the SCRT (Standard Call and Return) routines in Elf/OS, with X=R2 as the stack pointer.
 
 I2C Setup API
 -------------
@@ -300,6 +300,5 @@ DF = 0 if success, DF = 1 if error remains
 # Example Code
 ```
 bus_err:    call    i2c_clear   ; clear error on i2c bus
-            lbdf    err_exit    ; DF=1 means an error remains
-            
+            lbdf    err_exit    ; DF=1 means an error remains            
 ```
