@@ -40,17 +40,17 @@
 ;
 ; Parameters:
 ;   1: i2c_address     7-bit i2c address (1 byte)
-;   ?: num_bytes       number of bytes to write (1 byte) 
-;   2: reg_id          register to read (num_bytea)
-;   3: num_bytes       number of bytes to read (1 byte)
-;   4: address         address of message buffer (2 bytes)
+;   2: num_bytes       number of bytes in register address (1 byte) 
+;   3: reg_id          register to read (num_bytea)
+;   4: num_bytes       number of bytes to read (1 byte)
+;   5: address         address of message buffer (2 bytes)
 ;
 ; Example:
 ;   This call reads a 2 byte value from register 3 from the i2c device at 
 ;   address $20. On completion, the value read is at H_POS:
 ;
 ;   READ_TEMP:  CALL I2C_RDREG
-;               DB $20, $03, 2
+;               DB $20, 1, $03, 2
 ;               DW H_POS
 ;
 ;   H_POS:  DS 2
