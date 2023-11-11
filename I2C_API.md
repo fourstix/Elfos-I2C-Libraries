@@ -25,31 +25,49 @@ I2C Library API
 <tr><th>Name</th><th>Description</th></tr>
 <tr><td>
 
-[i2c_init](#i2c_init)</td><td>Initialize the i2c bus</td></tr>
+[i2c_init](#i2c_init)
+
+</td><td>Initialize the i2c bus</td></tr>
 <tr><td>
 
-[i2c_avail](#i2c_avail)</td><td>Check for an i2c device at a given address</td></tr>
+[i2c_avail](#i2c_avail) 
+
+</td><td>Check for an i2c device at a given address</td></tr>
 <tr><td>
 
-[i2c_scan](#i2c_scan)</td><td>Scan the i2c bus for any device with the id in RF.0</td></tr>
+[i2c_scan](#i2c_scan) 
+
+</td><td>Scan the i2c bus for any device with the id in RF.0</td></tr>
 <tr><td>
 
-[i2c_rdbuf](#i2c_rdbuf)</td><td>Read a message from the i2c bus</td></tr>
+[i2c_rdbuf](#i2c_rdbuf)
+
+</td><td>Read a message from the i2c bus</td></tr>
 <tr><td>
 
-[i2c_rdreg](#i2c_rdreg)</td><td>Read a message from a register in an i2c device</td></tr>
+[i2c_rdreg](#i2c_rdreg)
+
+</td><td>Read a message from a register in an i2c device</td></tr>
 <tr><td>
 
-[i2c_rdaddr](#i2c_rdaddr)</td><td>Read one byte of data from a given address on an i2c memory device</td></tr>
+[i2c_rdaddr](#i2c_rdaddr)
+
+</td><td>Read one byte of data from a given address on an i2c memory device</td></tr>
 <tr><td>
 
-[i2c_wrbuf](#i2c_wrbuf)</td><td>Write a message to the i2c bus</td></tr>
+[i2c_wrbuf](#i2c_wrbuf)
+
+</td><td>Write a message to the i2c bus</td></tr>
 <tr><td>
 
-[i2c_wraddr](#i2c_wraddr)</td><td>Write one byte of data to a given address on an i2c memory device</td></tr>
+[i2c_wraddr](#i2c_wraddr)
+
+</td><td>Write one byte of data to a given address on an i2c memory device</td></tr>
 <tr><td>
 
-[i2c_clear](#i2c_clear)</td><td>Attempt to clear a device error on the i2c bus</td></tr>
+[i2c_clear](#i2c_clear)
+
+</td><td>Attempt to clear a device error on the i2c bus</td></tr>
 </table>
 
 I2C Setup API
