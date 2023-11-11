@@ -18,6 +18,8 @@ disturbing the values of other bits on the output port.
 
 These routines are meant to be called using the SCRT (Standard Call and Return) routines in Elf/OS, with X=R2 as the stack pointer.
 
+[Return](https://github.com/fourstix/Elfos-I2C-Libraries/tree/main#i2c-library-api)
+
 I2C Library API
 ----------------
 <!-- A blank line is required before a link in a table. -->
@@ -61,6 +63,8 @@ I2C Library API
 </td><td>Attempt to clear a device error on the i2c bus</td></tr>
 </table>
 
+[Return](https://github.com/fourstix/Elfos-I2C-Libraries/tree/main#i2c-library-api)
+
 I2C Setup API
 -------------
 
@@ -80,6 +84,9 @@ This routine initializes the i2c bus.  It should be called before any other i2c 
 ```
 call    i2c_init    ; initialize i2c bus
 ```
+
+[Return](https://github.com/fourstix/Elfos-I2C-Libraries/tree/main#i2c-library-api)
+
 
 ## ic2_avail
 This routine writes the id to the i2c bus to see if a device is available.
@@ -103,6 +110,9 @@ I2C_ADDR:   equ     $18
             call    i2c_avail
             db      I2C_ADDR
 ```
+
+[Return](https://github.com/fourstix/Elfos-I2C-Libraries/tree/main#i2c-library-api)
+
 
 ## ic2_scan
 This routine writes the id to the i2c bus to see if a device is available. By incrementing the address register RF, one can easily scan a range of addresses
@@ -134,6 +144,9 @@ DF = 0 if success, DF = 1 if not found (error)
             
             lbr     no_relay     
 ```
+
+[Return](https://github.com/fourstix/Elfos-I2C-Libraries/tree/main#i2c-library-api)
+
 
 I2C READ API
 ------------
@@ -177,6 +190,9 @@ sht31_data_buf:
         db 0              ; CRC byte
 ```
 
+[Return](https://github.com/fourstix/Elfos-I2C-Libraries/tree/main#i2c-library-api)
+
+
 ## ic2_rdreg
 This routine reads a message from a register in an i2c device on the bus.  Some devices may refer to registers as commands.
 
@@ -217,6 +233,9 @@ I2C_ADDR:   equ     $18
 rly_state:  db     $00                ; relay state byte
 ```
 
+[Return](https://github.com/fourstix/Elfos-I2C-Libraries/tree/main#i2c-library-api)
+
+
 ## ic2_rdaddr
 This routine reads a byte from an address in an i2c memory device.
 
@@ -252,6 +271,9 @@ I2C_ADDR:   equ     $50
             ; save data read from I2C memory into RF.0
             plo     rf                  ; put data byte in D into RF.0           
 ```
+
+[Return](https://github.com/fourstix/Elfos-I2C-Libraries/tree/main#i2c-library-api)
+
 
 I2C WRITE API
 -------------
@@ -290,6 +312,9 @@ led7_display_buf:
             db      $00, $00, $00, $00, $00, $00, $00, $00
 ```
 
+[Return](https://github.com/fourstix/Elfos-I2C-Libraries/tree/main#i2c-library-api)
+
+
 ## ic2_wraddr
 This routine write a byte to an address in an i2c memory device.
 
@@ -326,6 +351,9 @@ I2C_ADDR:   equ     $50
             lbdf    err_exit            ; DF=1 means an error occurred            
 ```
 
+[Return](https://github.com/fourstix/Elfos-I2C-Libraries/tree/main#i2c-library-api)
+
+
 I2C Error API
 -------------
 
@@ -345,3 +373,5 @@ DF = 0 if success, DF = 1 if error remains
 bus_err:    call    i2c_clear   ; clear error on i2c bus
             lbdf    err_exit    ; DF=1 means an error remains            
 ```
+
+[Return](https://github.com/fourstix/Elfos-I2C-Libraries/tree/main#i2c-library-api)
