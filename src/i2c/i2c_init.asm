@@ -11,7 +11,7 @@
 ; This allows the routines to manipulate the i2c outputs without
 ; disturbing the values of other bits on the output port.
 ;
-; These routines are meant to be called using the SCRT ine Elf/OS, with X=R2 
+; These routines are meant to be called using the SCRT in Elf/OS, with X=R2 
 ; being the stack pointer.
 ;
 ; Based on program code in the Elf-I2C library
@@ -37,20 +37,21 @@
 
 
 ;-------------------------------------------------------------------------------
-;This routine initializes the i2c bus and clears the output port register.
+; This routine initializes the i2c bus and clears the output port register.
 ;
-;Parameters:
+; Parameters:
 ;   (none)
 ;
-;Example:
+; Example:
 ;   This call initializes the i2c bus:
 ;
 ;            CALL I2C_INIT
 ;
-;Register usage:
+; Register usage:
 ;   R9.1 - set up the initial state of the output port
 ;   RA   - function pointer to i2c write byte routine
 ;   RF.1 - i2c write 
+; 
 ; Returns:
 ;   R9.1 - the current state of the output port ($00)
 ;   DF = 0 (always successful)

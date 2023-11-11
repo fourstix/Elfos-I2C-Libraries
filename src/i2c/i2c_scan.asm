@@ -11,7 +11,7 @@
 ; This allows the routines to manipulate the i2c outputs without
 ; disturbing the values of other bits on the output port.
 ;
-; These routines are meant to be called using the SCRT ine Elf/OS, with X=R2 
+; These routines are meant to be called using the SCRT in Elf/OS, with X=R2 
 ; being the stack pointer.
 ;
 ; Based on program code in the Elf-I2C library
@@ -37,11 +37,11 @@
 
 
 ;-------------------------------------------------------------------------------
-;This routine writes the id to the i2c bus to see if a device is available
+; This routine writes the id to the i2c bus to see if a device is available
 ;
-;Parameters:
+; Parameters:
 ;   RF.0 - 7-bit i2c address to scan
-;Register usage:
+; Register usage:
 ;   R9.1 maintains the current state of the output port
 ;   RA   - function pointer to i2c write byte routine
 ;   RF.1 - consumed for i2c write address 

@@ -11,7 +11,7 @@
 ; This allows the routines to manipulate the i2c outputs without
 ; disturbing the values of other bits on the output port.
 ;
-; These routines are meant to be called using the SCRT ine Elf/OS, with X=R2 
+; These routines are meant to be called using the SCRT in Elf/OS, with X=R2 
 ; being the stack pointer.
 ;
 ; Based on program code in the Elf-I2C library
@@ -37,14 +37,14 @@
 
 
 ;------------------------------------------------------------------------
-;This routine writes a byte to an address on device on the i2c bus.
+; This routine writes a byte to an address on device on the i2c bus.
 ;
-;Parameters:
+; Parameters:
 ;   1: i2c_address     7-bit i2c address (1 byte inline)
 ;   RD: address        device address to write
 ;   D =  data          byte to write 
 ;
-;Example:
+; Example:
 ;   This call writes a byte $FF in D to the address $0070 for the i2c  
 ;   device on the i2c bus at i2c address 0x50:
 ;
@@ -57,7 +57,7 @@
 ;           call i2c_wraddr
 ;           db $50
 ;
-;Register usage:
+; Register usage:
 ;   R9.1 maintains the current state of the output port
 ;   RA   - function pointer to i2c write byte routine
 ;   RD   - pointer to write buffer
