@@ -11,7 +11,7 @@
 ; This allows the routines to manipulate the i2c outputs without
 ; disturbing the values of other bits on the output port.
 ;
-; These routines are meant to be called using the SCRT ine Elf/OS, with X=R2 
+; These routines are meant to be called using the SCRT in Elf/OS, with X=R2 
 ; being the stack pointer.
 ;
 ; Based on program code in the Elf-I2C library
@@ -41,7 +41,7 @@
 ; Parameters:
 ;   1: i2c_address     7-bit i2c address (1 byte)
 ;   2: num_bytes       number of bytes in register address (1 byte) 
-;   3: reg_id          register to read (num_bytea)
+;   3: reg_id          register to read (num_bytes)
 ;   4: num_bytes       number of bytes to read (1 byte)
 ;   5: address         address of message buffer (2 bytes)
 ;
