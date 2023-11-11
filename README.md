@@ -130,7 +130,7 @@ Supported Devices
 
 I2C Library API
 ----------------
-<!-- A blank line is required before a link in a table. -->
+
 <table>
 <tr><th>Name</th><th>Description</th></tr>
 <tr><td>i2c_init</td><td>Initialize the i2c bus</td></tr>
