@@ -336,7 +336,6 @@ This routine write a byte to an address in an i2c memory device.
 
 # Returns
 * DF = 0 if success, DF = 1 if not found (error)    
-* D = byte read from memory
 
 # Example Code
 ```
