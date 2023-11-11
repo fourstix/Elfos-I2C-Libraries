@@ -24,10 +24,10 @@ I2C Setup API
 ## ic2_init
 This routine initializes the i2c bus.  It should be called before any other i2c functions.
 
-# Parameterss
+# Parameters
 <table>
 <tr><th> </th><th>Description</th></tr>
-<tr><td>(None)</td><td>Should be called before any other i2c functions.</td></tr>
+<tr><td>(None)</td><td>Initialize the i2c bus. Should be called before any other i2c functions.</td></tr>
 </table>
 
 # Returns
@@ -41,7 +41,7 @@ call    i2c_init    ; initialize i2c bus
 ## ic2_avail
 This routine writes the id to the i2c bus to see if a device is available.
 
-# Parameterss
+# Parameters
 <table>
 <tr><th>#</th><th>Location</th><th>Name</th><th>Description</th><th>Size</th></tr>
 <tr><td>1</td><td>(inline)</td><td>I2C Address</td><td>7-bit i2c address</td><td>1 byte</td></tr>
@@ -64,7 +64,7 @@ db      I2C_ADDR
 ## ic2_scan
 This routine writes the id to the i2c bus to see if a device is available. By incrementing the address register RF, it one can easily scan a range of addresses
 
-# Parameterss
+# Parameters
 <table>
 <tr><th>#</th><th>Location</th><th>Name</th><th>Description</th></tr>
 <tr><td>1</td><td>RF.0</td><td>I2C Address</td><td>7-bit i2c address</td></tr>
@@ -96,7 +96,7 @@ I2C READ API
 ## ic2_rdbuf
 This routine reads a message from a device on the i2c bus.
 
-# Parameterss
+# Parameters
 <table>
 <tr><th>#</th><th>Location</th><th>Name</th><th>Description</th><th>Size</th></tr>
 <tr><td>1</td><td>(inline)</td><td>I2C Address</td><td>7-bit i2c address</td><td>1 byte</td></tr>
@@ -140,7 +140,7 @@ This routine reads a message from a register in an i2c device on the bus.  Some 
 ## Note:
 The function i2c_wrbuf is used to write a message to a register in an i2c device on the bus. 
 
-# Parameterss
+# Parameters
 <table>
 <tr><th>#</th><th>Location</th><th>Name</th><th>Description</th><th>Size</th></tr>
 <tr><td>1</td><td>(inline)</td><td>I2C Address</td><td>7-bit i2c address</td><td>1 byte</td></tr>
@@ -176,11 +176,12 @@ rly_state:  db     $00                ; relay state byte
 ## ic2_rdaddr
 This routine reads a byte from an address in an i2c memory device.
 
-# Parameterss
+# Parameters
 <table>
 <tr><th>#</th><th>Location</th><th>Name</th><th>Description</th><th>Size</th></tr>
 <tr><td>1</td><td>(inline)</td><td>I2C Address</td><td>7-bit i2c address</td><td>1 byte</td></tr>
 <tr><td>2</td><td>RD</td><td>Memory Address</td><td>16-bit memory address</td><td> </td></tr>
+</table>
 
 # Returns
 DF = 0 if success, DF = 1 if not found (error) 
@@ -215,7 +216,7 @@ This routine write a message to a device on the i2c bus.
 ## Note:
 This routine is also used to write a message to a register (or command) on an i2c device. To write a message to a register, put the register bytes before the message data in the buffer and send the entire buffer as one i2c_wrbuf transaction.
 
-# Parameterss
+# Parameters
 <table>
 <tr><th>#</th><th>Location</th><th>Name</th><th>Description</th><th>Size</th></tr>
 <tr><td>1</td><td>(inline)</td><td>I2C Address</td><td>7-bit i2c address</td><td>1 byte</td></tr>
@@ -245,12 +246,13 @@ led7_display_buf:
 ## ic2_wraddr
 This routine write a byte to an address in an i2c memory device.
 
-# Parameterss
+# Parameters
 <table>
 <tr><th>#</th><th>Location</th><th>Name</th><th>Description</th><th>Size</th></tr>
 <tr><td>1</td><td>(inline)</td><td>I2C Address</td><td>7-bit i2c address</td><td>1 byte</td></tr>
 <tr><td>2</td><td>RD</td><td>Memory Address</td><td>16-bit memory address</td><td> </td></tr>
 <tr><td>3</td><td>D</td><td>Data byte</td><td>data byte to write to memory device</td><td> </td></tr>
+</table>
 
 # Returns
 DF = 0 if success, DF = 1 if not found (error) 
@@ -277,13 +279,13 @@ I2C_ADDR:   equ     $50
             lbdf    err_exit            ; DF=1 means an error occurred            
 ```
 
-Other I2C API
+I2C Error API
 -------------
 
 ## ic2_clear
 This routine attempts to clear an error condition where a device is out of sync and is holding the SDA line low.
 
-# Parameterss
+# Parameters
 <table>
 <tr><th> </th><th>Description</th></tr>
 <tr><td>(None)</td><td>Attempt to clear an error on the i2c bus.</td></tr>
