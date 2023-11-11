@@ -86,7 +86,7 @@ This routine initializes the i2c bus.  It should be called before any other i2c 
 </table>
 
 # Returns
- DF = 0 (always successful)
+* DF = 0 (always successful)
  
 # Example Code
 ```
@@ -106,7 +106,7 @@ This routine writes the id to the i2c bus to see if a device is available.
 </table>
 
 # Returns
-DF = 0 if success, DF = 1 if not found (error) 
+* DF = 0 if success, DF = 1 if not found (error) 
 
 # Example Code
 ```
@@ -132,7 +132,7 @@ This routine writes the id to the i2c bus to see if a device is available. By in
 </table>
 
 # Returns
-DF = 0 if success, DF = 1 if not found (error) 
+* DF = 0 if success, DF = 1 if not found (error) 
 
 # Example Code
 ```
@@ -170,7 +170,7 @@ This routine reads a message from a device on the i2c bus.
 </table>
 
 # Returns
-DF = 0 if success, DF = 1 if not found (error) 
+* DF = 0 if success, DF = 1 if not found (error) 
 
 # Example Code
 ```
@@ -218,7 +218,7 @@ The function i2c_wrbuf is used to write a message to a register in an i2c device
 </table>
 
 # Returns
-DF = 0 if success, DF = 1 if not found (error) 
+* DF = 0 if success, DF = 1 if not found (error) 
 
 # Example Code
 ```
@@ -255,8 +255,8 @@ This routine reads a byte from an address in an i2c memory device.
 </table>
 
 # Returns
-DF = 0 if success, DF = 1 if not found (error)   
-D = byte read from memory
+* DF = 0 if success, DF = 1 if not found (error)     
+* D = byte read from memory
 
 # Example Code
 ```
@@ -301,7 +301,7 @@ This routine is also used to write a message to a register (or command) on an i2
 </table>
 
 # Returns
-DF = 0 if success, DF = 1 if not found (error) 
+* DF = 0 if success, DF = 1 if not found (error) 
 
 # Example Code
 ```
@@ -335,8 +335,8 @@ This routine write a byte to an address in an i2c memory device.
 </table>
 
 # Returns
-DF = 0 if success, DF = 1 if not found (error) 
-D = byte read from memory
+* DF = 0 if success, DF = 1 if not found (error)    
+* D = byte read from memory
 
 # Example Code
 ```
@@ -375,7 +375,8 @@ This routine attempts to clear an error condition where a device is out of sync 
 </table>
 
 # Returns
-DF = 0 if success, DF = 1 if error remains
+* DF = 0 if success, DF = 1 if error remains
+
 # Example Code
 ```
 bus_err:    call    i2c_clear   ; clear error on i2c bus
