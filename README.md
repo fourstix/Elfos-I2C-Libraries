@@ -152,7 +152,7 @@ I2C Library API
 </td><td>Read a message from the i2c bus</td></tr>
 <tr><td>
 
-[i2c_rdreg](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/I2C_API.md#ic2_rdreg)
+[i2c_rdreg](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/I2C_API.md#i2c_rdreg)
 </td><td>Read a message from a register in an i2c device</td></tr>
 <tr><td>
 
