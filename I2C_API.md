@@ -73,8 +73,8 @@ I2C API Summary
 
 [I2C LIbrary](https://github.com/fourstix/Elfos-I2C-Libraries/tree/main#i2c-library-api)
 
-**I2C Setup API**
------------------
+*I2C Setup API*
+---------------
 
 # i2c_init
 This routine initializes the i2c bus.  It should be called before any other i2c functions.
@@ -156,8 +156,8 @@ This routine writes the id to the i2c bus to see if a device is available. By in
 [I2C LIbrary](https://github.com/fourstix/Elfos-I2C-Libraries/tree/main#i2c-library-api)
 
 
-**I2C READ API**
-----------------
+*I2C READ API*
+--------------
 
 # i2c_rdbuf
 This routine reads a message from a device on the i2c bus.
@@ -284,8 +284,8 @@ I2C_ADDR:   equ     $50
 [I2C LIbrary](https://github.com/fourstix/Elfos-I2C-Libraries/tree/main#i2c-library-api)
 
 
-**I2C WRITE API**
------------------
+*I2C WRITE API*
+---------------
 
 # i2c_wrbuf
 This routine write a message to a device on the i2c bus.
@@ -362,8 +362,8 @@ I2C_ADDR:   equ     $50
 [I2C LIbrary](https://github.com/fourstix/Elfos-I2C-Libraries/tree/main#i2c-library-api)
 
 
-**I2C Error API**
------------------
+*I2C Error API*
+---------------
 
 # i2c_clear
 This routine attempts to clear an error condition where a device is out of sync and holding the SDA line low.
