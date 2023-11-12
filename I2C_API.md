@@ -73,22 +73,22 @@ I2C API Summary
 
 [I2C LIbrary](https://github.com/fourstix/Elfos-I2C-Libraries/tree/main#i2c-library-api)
 
-I2C Setup API
--------------
+**I2C Setup API**
+-----------------
 
 # i2c_init
 This routine initializes the i2c bus.  It should be called before any other i2c functions.
 
-# Parameters
+## Parameters
 <table>
 <tr><th> </th><th>Description</th></tr>
 <tr><td>(None)</td><td>Initialize the i2c bus. Should be called before any other i2c functions.</td></tr>
 </table>
 
-# Returns
+## Returns
 * DF = 0 (always successful)
  
-# Example Code
+## Example Code
 ```
 call    i2c_init    ; initialize i2c bus
 ```
@@ -99,16 +99,16 @@ call    i2c_init    ; initialize i2c bus
 # i2c_avail
 This routine writes the id to the i2c bus to see if a device is available.
 
-# Parameters
+## Parameters
 <table>
 <tr><th> </th><th>Location</th><th>Name</th><th>Description</th><th>Size</th></tr>
 <tr><td>1</td><td>(inline)</td><td>I2C Address</td><td>7-bit i2c address</td><td>1 byte</td></tr>
 </table>
 
-# Returns
+## Returns
 * DF = 0 if success, DF = 1 if not found (error) 
 
-# Example Code
+## Example Code
 ```
 ;------------------------------
 ; Sparkfun Qwiic Relay Address
@@ -125,16 +125,16 @@ I2C_ADDR:   equ     $18
 # i2c_scan
 This routine writes the id to the i2c bus to see if a device is available. By incrementing the address register RF, one can easily scan a range of addresses
 
-# Parameters
+## Parameters
 <table>
 <tr><th> </th><th>Location</th><th>Name</th><th>Description</th></tr>
 <tr><td>1</td><td>RF.0</td><td>I2C Address</td><td>7-bit i2c address</td></tr>
 </table>
 
-# Returns
+## Returns
 * DF = 0 if success, DF = 1 if not found (error) 
 
-# Example Code
+## Example Code
 ```
 ;----------------------------------------------------------------------
 ; Scan for Sparkfun Qwiic Relay at its two possible I2C addresses
@@ -156,12 +156,13 @@ This routine writes the id to the i2c bus to see if a device is available. By in
 [I2C LIbrary](https://github.com/fourstix/Elfos-I2C-Libraries/tree/main#i2c-library-api)
 
 
-I2C READ API
-------------
+**I2C READ API**
+----------------
+
 # i2c_rdbuf
 This routine reads a message from a device on the i2c bus.
 
-# Parameters
+## Parameters
 <table>
 <tr><th> </th><th>Location</th><th>Name</th><th>Description</th><th>Size</th></tr>
 <tr><td>1</td><td>(inline)</td><td>I2C Address</td><td>7-bit i2c address</td><td>1 byte</td></tr>
@@ -169,10 +170,10 @@ This routine reads a message from a device on the i2c bus.
 <tr><td>3</td><td>(inline)</td><td>Buffer Address</td><td>Address for data buffer</td><td>2 bytes</td></tr>
 </table>
 
-# Returns
+## Returns
 * DF = 0 if success, DF = 1 if not found (error) 
 
-# Example Code
+## Example Code
 ```
 ;------------------------------------------
 ; SHT31 Temperature/Humidity Sensor Address
@@ -204,10 +205,10 @@ sht31_data_buf:
 # i2c_rdreg
 This routine reads a message from a register in an i2c device on the bus.  Some devices may refer to registers as commands or as addresses.
 
-# Note:
+## Note:
 The function i2c_wrbuf is used to write a message to a register in an i2c device on the bus. 
 
-# Parameters
+## Parameters
 <table>
 <tr><th> </th><th>Location</th><th>Name</th><th>Description</th><th>Size</th></tr>
 <tr><td>1</td><td>(inline)</td><td>I2C Address</td><td>7-bit i2c address</td><td>1 byte</td></tr>
@@ -217,10 +218,10 @@ The function i2c_wrbuf is used to write a message to a register in an i2c device
 <tr><td>5</td><td>(inline)</td><td>Buffer Address</td><td>Address for data buffer</td><td>2 bytes</td></tr>
 </table>
 
-# Returns
+## Returns
 * DF = 0 if success, DF = 1 if not found (error) 
 
-# Example Code
+## Example Code
 ```
 ;------------------------------
 ; Sparkfun Qwiic Relay Address 
@@ -247,18 +248,18 @@ rly_state:  db     $00                ; relay state byte
 # i2c_rdaddr
 This routine reads a byte from an address in an i2c memory device.
 
-# Parameters
+## Parameters
 <table>
 <tr><th> </th><th>Location</th><th>Name</th><th>Description</th><th>Size</th></tr>
 <tr><td>1</td><td>(inline)</td><td>I2C Address</td><td>7-bit i2c address</td><td>1 byte</td></tr>
 <tr><td>2</td><td>RD</td><td>Memory Address</td><td>16-bit memory address</td><td> </td></tr>
 </table>
 
-# Returns
+## Returns
 * DF = 0 if success, DF = 1 if not found (error)     
 * D = byte read from memory
 
-# Example Code
+## Example Code
 ```
 ;-------------------------------------------
 ; Adafruit Non-Volatile Fram Breakout Board
@@ -283,16 +284,16 @@ I2C_ADDR:   equ     $50
 [I2C LIbrary](https://github.com/fourstix/Elfos-I2C-Libraries/tree/main#i2c-library-api)
 
 
-I2C WRITE API
--------------
+**I2C WRITE API**
+-----------------
 
 # i2c_wrbuf
 This routine write a message to a device on the i2c bus.
 
-# Note:
+## Note:
 This routine is also used to write a message to a register (or command) on an i2c device. To write a message to a register, put the register bytes before the message data in the buffer and send the entire buffer as one i2c_wrbuf transaction.
 
-# Parameters
+## Parameters
 <table>
 <tr><th> </th><th>Location</th><th>Name</th><th>Description</th><th>Size</th></tr>
 <tr><td>1</td><td>(inline)</td><td>I2C Address</td><td>7-bit i2c address</td><td>1 byte</td></tr>
@@ -300,10 +301,10 @@ This routine is also used to write a message to a register (or command) on an i2
 <tr><td>3</td><td>(inline)</td><td>Buffer Address</td><td>Address for data buffer</td><td>2 bytes</td></tr>
 </table>
 
-# Returns
+## Returns
 * DF = 0 if success, DF = 1 if not found (error) 
 
-# Example Code
+## Example Code
 ```
 I2C_ADDR:   equ     070h
 
@@ -326,7 +327,7 @@ led7_display_buf:
 # i2c_wraddr
 This routine write a byte to an address in an i2c memory device.
 
-# Parameters
+## Parameters
 <table>
 <tr><th> </th><th>Location</th><th>Name</th><th>Description</th><th>Size</th></tr>
 <tr><td>1</td><td>(inline)</td><td>I2C Address</td><td>7-bit i2c address</td><td>1 byte</td></tr>
@@ -334,10 +335,10 @@ This routine write a byte to an address in an i2c memory device.
 <tr><td>3</td><td>D</td><td>Data byte</td><td>data byte to write to memory device</td><td> </td></tr>
 </table>
 
-# Returns
+## Returns
 * DF = 0 if success, DF = 1 if not found (error)    
 
-# Example Code
+## Example Code
 ```
 ;-------------------------------------------
 ; Adafruit Non-Volatile Fram Breakout Board
@@ -361,22 +362,22 @@ I2C_ADDR:   equ     $50
 [I2C LIbrary](https://github.com/fourstix/Elfos-I2C-Libraries/tree/main#i2c-library-api)
 
 
-I2C Error API
--------------
+**I2C Error API**
+-----------------
 
 # i2c_clear
 This routine attempts to clear an error condition where a device is out of sync and holding the SDA line low.
 
-# Parameters
+## Parameters
 <table>
 <tr><th> </th><th>Description</th></tr>
 <tr><td>(None)</td><td>Attempt to clear an error on the i2c bus.</td></tr>
 </table>
 
-# Returns
+## Returns
 * DF = 0 if success, DF = 1 if error remains
 
-# Example Code
+## Example Code
 ```
 bus_err:    call    i2c_clear   ; clear error on i2c bus
             lbdf    err_exit    ; DF=1 means an error remains            
