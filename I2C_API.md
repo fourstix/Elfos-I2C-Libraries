@@ -28,22 +28,22 @@ I2C API Summary
 <tr><th>Name</th><th>Description</th></tr>
 <tr><td>
 
-[i2c_init](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/I2C_API.md#ic2_init)
+[i2c_init](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/I2C_API.md#i2c_init)
 </td><td>Initialize the i2c bus</td></tr>
 <tr><td>
 
-[i2c_avail](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/I2C_API.md#ic2_avail) 
+[i2c_avail](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/I2C_API.md#i2c_avail) 
 </td><td>Check for an i2c device at a given address</td></tr>
 <tr><td>
 
-[i2c_scan](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/I2C_API.md#ic2_scan) 
+[i2c_scan](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/I2C_API.md#i2c_scan) 
 </td><td>Scan the i2c bus for any device with the id in RF.0</td></tr>
 <tr><th colspan="2">I2C Read API</th></tr>
 <tr><th>Name</th><th>Description</th></tr>
 
 <tr><td>
 
-[i2c_rdbuf](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/I2C_API.md#ic2_rdbuf)
+[i2c_rdbuf](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/I2C_API.md#i2c_rdbuf)
 </td><td>Read a message from the i2c bus</td></tr>
 <tr><td>
 
@@ -51,23 +51,23 @@ I2C API Summary
 </td><td>Read a message from a register in an i2c device</td></tr>
 <tr><td>
 
-[i2c_rdaddr](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/I2C_API.md#ic2_rdaddr)
+[](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/I2C_API.md#i2c_rdaddr)
 </td><td>Read one byte of data from a given address on an i2c memory device</td></tr>
 <tr><th colspan="2">I2C Write API</th></tr>
 <tr><th>Name</th><th>Description</th></tr>
 <tr><td>
 
-[i2c_wrbuf](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/I2C_API.md#ic2_wrbuf)
+[i2c_wrbuf](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/I2C_API.md#i2c_wrbuf)
 </td><td>Write a message to the i2c bus</td></tr>
 <tr><td>
 
-[i2c_wraddr](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/I2C_API.md#ic2_wraddr)
+[i2c_wraddr](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/I2C_API.md#i2c_wraddr)
 </td><td>Write one byte of data to a given address on an i2c memory device</td></tr>
 <tr><th colspan="2">I2C Error API</th></tr>
 <tr><th>Name</th><th>Description</th></tr>
 <tr><td>
 
-[i2c_clear](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/I2C_API.md#ic2_clear)
+[i2c_clear](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/I2C_API.md#i2c_clear)
 </td><td>Attempt to clear a device error on the i2c bus</td></tr>
 </table>
 
@@ -76,7 +76,7 @@ I2C API Summary
 I2C Setup API
 -------------
 
-# ic2_init
+# i2c_init
 This routine initializes the i2c bus.  It should be called before any other i2c functions.
 
 # Parameters
@@ -96,7 +96,7 @@ call    i2c_init    ; initialize i2c bus
 [I2C LIbrary](https://github.com/fourstix/Elfos-I2C-Libraries/tree/main#i2c-library-api)
 
 
-# ic2_avail
+# i2c_avail
 This routine writes the id to the i2c bus to see if a device is available.
 
 # Parameters
@@ -122,7 +122,7 @@ I2C_ADDR:   equ     $18
 [I2C LIbrary](https://github.com/fourstix/Elfos-I2C-Libraries/tree/main#i2c-library-api)
 
 
-# ic2_scan
+# i2c_scan
 This routine writes the id to the i2c bus to see if a device is available. By incrementing the address register RF, one can easily scan a range of addresses
 
 # Parameters
@@ -158,7 +158,7 @@ This routine writes the id to the i2c bus to see if a device is available. By in
 
 I2C READ API
 ------------
-# ic2_rdbuf
+# i2c_rdbuf
 This routine reads a message from a device on the i2c bus.
 
 # Parameters
@@ -204,7 +204,7 @@ sht31_data_buf:
 # i2c_rdreg
 This routine reads a message from a register in an i2c device on the bus.  Some devices may refer to registers as commands or as addresses.
 
-* Note:
+# Note:
 The function i2c_wrbuf is used to write a message to a register in an i2c device on the bus. 
 
 # Parameters
@@ -244,7 +244,7 @@ rly_state:  db     $00                ; relay state byte
 [I2C LIbrary](https://github.com/fourstix/Elfos-I2C-Libraries/tree/main#i2c-library-api)
 
 
-* ic2_rdaddr
+# i2c_rdaddr
 This routine reads a byte from an address in an i2c memory device.
 
 # Parameters
@@ -286,7 +286,7 @@ I2C_ADDR:   equ     $50
 I2C WRITE API
 -------------
 
-# ic2_wrbuf
+# i2c_wrbuf
 This routine write a message to a device on the i2c bus.
 
 # Note:
@@ -323,7 +323,7 @@ led7_display_buf:
 [I2C LIbrary](https://github.com/fourstix/Elfos-I2C-Libraries/tree/main#i2c-library-api)
 
 
-# ic2_wraddr
+# i2c_wraddr
 This routine write a byte to an address in an i2c memory device.
 
 # Parameters
@@ -364,7 +364,7 @@ I2C_ADDR:   equ     $50
 I2C Error API
 -------------
 
-* ic2_clear
+# i2c_clear
 This routine attempts to clear an error condition where a device is out of sync and holding the SDA line low.
 
 # Parameters
