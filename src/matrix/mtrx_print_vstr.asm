@@ -26,7 +26,6 @@
 ;-------------------------------------------------------------------------------
 #include    ../include/ops.inc
 #include    ../include/bios.inc
-#include    ../include/ht16k33_def.inc  
 #include    ../include/mtrx_def.inc  
 
 ;-------------------------------------------------------
@@ -35,7 +34,7 @@
 ;-------------------------------------------------------
 
 ;-------------------------------------------------------
-; Name: mtrx_print_left
+; Name: mtrx_print_vstr
 ;
 ; Print a string vertically on the display as 
 ; upward scrolling 8x8 characters. 
@@ -61,7 +60,7 @@ pl_loop:    lda     rf
               
             plo     rd                ; put next character to print
 
-            call    gfx_scroll_up
+            call    mtrx_scroll_up
             lbdf    pl_exit           ; exit immediately, if error
           
             glo     rd                ; move old character from next
@@ -72,7 +71,7 @@ pl_loop:    lda     rf
 pl_finish:  ldi     ' '               ; scroll out last character
             plo     rd
             
-            call    gfx_scroll_up
+            call    mtrx_scroll_up
             lbdf    pl_exit           ; exit immediately, if error
             
 pl_exit:    pop     rd                ; restore registers        

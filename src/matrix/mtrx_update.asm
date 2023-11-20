@@ -21,23 +21,22 @@
 ; Please see learn.adafruit.com/adafruit-led-backpack/ for more info
 ;-------------------------------------------------------------------------------
 
+#include    ../include/ops.inc
+#include    ../include/bios.inc
+#include    ../include/mtrx_def.inc  
+
 ;-------------------------------------------------------------------------------
-; Display Buffer for 8x8 Matrix LED display
-;    1 position byte (always zero) followed by 
-;    8 lines of 2 bytes per line: a green byte and a red byte
-;    where bits 0 to 7 of each byte represents a pixel in the line
-;    Total size of the display buffer is 17 bytes
+; This routine writes the display buffer to the display
+; Returns:
+;   DF = 0 on success, DF = 1 on error
 ;-------------------------------------------------------------------------------
-                        
-            proc    mtrx_display_buf            
-            db      0                                 
-            db      0,0       ; line 0 byte for green bits, byte for red bits
-            db      0,0       ; line 1 byte for green bits, byte for red bits  
-            db      0,0       ; line 2 byte for green bits, byte for red bits
-            db      0,0       ; line 3 byte for green bits, byte for red bits
-            db      0,0       ; line 4 byte for green bits, byte for red bits
-            db      0,0       ; line 5 byte for green bits, byte for red bits
-            db      0,0       ; line 6 byte for green bits, byte for red bits
-            db      0,0       ; line 7 byte for green bits, byte for red bits
+
+            proc    mtrx_update
+
+            call    i2c_wrbuf
+            db      I2C_ADDR, 17
+            dw      mtrx_buffer
+
+            return
 
             endp

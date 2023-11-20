@@ -19,15 +19,12 @@
 ; Based on code from Adafruit_GFX library
 ; Written by Limor Fried/Ladyada for Adafruit Industries  
 ; Copyright 2012 by Adafruit Industries
-;
-; Adafruit 8x8 LED Matrix and Bi-Color LED Matrix Display hardware
-; Copyright 2012-2023 by Adafruit Industries
-; Please see learn.adafruit.com/adafruit-led-backpack/ for more info
+; Please see https://learn.adafruit.com/adafruit-gfx-graphics-library for more info
 ;-------------------------------------------------------------------------------
 #include    ../include/ops.inc
 #include    ../include/bios.inc
-#include    ../include/ht16k33_def.inc  
 #include    ../include/util_lib.inc 
+#include    ../include/gfx_lib.inc  
 #include    ../include/mtrx_def.inc  
 
 ;-------------------------------------------------------
@@ -37,11 +34,11 @@
 ;-------------------------------------------------------
 
 ;-------------------------------------------------------
-; Name: gfx_scroll_up
+; Name: mtrx_scroll_left
 ;
-; Write a 6x8 character to the display buffer, moving
-; it upwards as a new 6x8 character replaces it in the
-; display buffer. 
+; Write an 6x8 character to the display buffer, moving 
+; it to the left as a new 6x8 character replaces it in
+; the display buffer. 
 ; 
 ;
 ; Parameters: 
@@ -55,28 +52,25 @@
 ;   r9.0 - character to write
 ;   ra.0 - scroll counter
 ;   rc   - scratch register, copy of origin
-;   rf   - pointer to font bitmap (five data bytes)
 ;
 ; Note: Checks to see if any possible overlap with the
 ;   display before drawing bitmap.
 ;                  
 ; Return: DF = 1 if error, 0 if no error
 ;-------------------------------------------------------
-            proc    gfx_scroll_up
+            proc    mtrx_scroll_left
             
-            push    rf                ; save registers used
-            push    rc
+            push    rc                ; save registers used
             push    ra
             push    r9                
             push    r8
             push    r7
 
-            ldi     C_HEIGHT          ; set scroll counter
+            ldi     C_WIDTH           ; set scroll counter
             plo     ra  
             
-            ldi     1                 ; set previous origin to 1,0
+            ldi     0                 ; set previous origin to 0,0
             plo     r7                ; set x origin
-            ldi     0
             phi     r7                ; set y origin
             
 sl_loop:    ghi     rd                ; get previous character
@@ -86,34 +80,34 @@ sl_loop:    ghi     rd                ; get previous character
             
             copy    r7,rc             ; save origin in scratch register
             
-            call    gfx_write_char    ; r7  is consumed
+            call    gfx_draw_char    ; r7  is consumed
             lbdf    sl_exit
             
-            glo     rc                ; get x origin from scratch register
-            plo     r7                ; restore r7.1
+            ghi     rc                ; get y origin from scratch register
+            phi     r7                ; restore r7.1
             
-            ghi     rc                ; get y origin value from scratch reg
-            adi     C_HEIGHT          ; signed addition to calculate
-            phi     r7                ; set y origin for next bitmap
+            glo     rc                ; get x origin value from scratch reg
+            adi     C_WIDTH           ; signed addition to calculate
+            plo     r7                ; set x origin for next bitmap
             
-            clc                       ; clear DF flag after arithmetic
+            clc                       ; clear DF flag
             
             glo     rd                ; get next character
             plo     r9                ; write next character
-            call    gfx_write_char    ; r7 is consumed
+            call    gfx_draw_char    ; r7 is consumed
             lbdf    sl_exit
 
-            glo     rc                ; get x origin from scratch register
-            plo     r7                ; restore r7.0
+            ghi     rc                ; get y origin from scratch register
+            phi     r7                ; restore r7.1
             
-            ghi     rc                ; get y origin for previous bitmap
-            smi     1                 ; shift y origin up (signed value)
-            phi     r7                ; save as new previous y origin 
+            glo     rc                ; get x origin for previous bitmap
+            smi     1                 ; shift x origin left (signed value)
+            plo     r7                ; save as new previous x origin 
 
             dec     ra                ; count down
 
             clc                       ; clear DF 
-            call    mtrx_write_disp
+            call    mtrx_update
             lbdf    sl_exit
               
             load    rc, DELAY_100MS   ; wait a bit before continuing
@@ -127,7 +121,6 @@ sl_exit:    pop     r7                ; restore registers
             pop     r9
             pop     ra
             pop     rc
-            pop     rf        
 
             return
 

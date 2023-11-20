@@ -19,6 +19,7 @@
 ; Based on code from Adafruit_GFX library
 ; Written by Limor Fried/Ladyada for Adafruit Industries  
 ; Copyright 2012 by Adafruit Industries
+; Please see https://learn.adafruit.com/adafruit-gfx-graphics-library for more info
 ;
 ; Adafruit 8x8 LED Matrix and Bi-Color LED Matrix Display hardware
 ; Copyright 2012-2023 by Adafruit Industries
@@ -26,17 +27,10 @@
 ;-------------------------------------------------------------------------------
 #include    ../include/ops.inc
 #include    ../include/bios.inc
-#include    ../include/ht16k33_def.inc  
 #include    ../include/mtrx_def.inc  
 
 ;-------------------------------------------------------
-; Private routine - called only by the public routines
-; These routines may *not* validate or clip. They may 
-; also consume register values passed to them.
-;-------------------------------------------------------
-
-;-------------------------------------------------------
-; Name: gfx_write_pixel
+; Name: mtrx_write_pixel
 ;
 ; Set a pixel byte in the display buffer at position x,y.
 ;
@@ -51,7 +45,7 @@
 ; Return:
 ;   DF = 1 if error, 0 if no error
 ;-------------------------------------------------------
-            proc    gfx_write_pixel
+            proc    mtrx_write_pixel
             push    rd                ; save buffer pointer register 
             push    rc                ; save bit mask register
             
@@ -73,7 +67,7 @@ set_masks:  ghi     rc                ; get OR mask from rc.1
             plo     rc                ; save AND mask in rc.0
 
             ; point rd to display buffer   
-            load    rd, mtrx_display_buf 
+            load    rd, mtrx_buffer 
             inc     rd                ; display bytes are one after position byte 
 
             ghi     r7                ; shift y to multiply by 2

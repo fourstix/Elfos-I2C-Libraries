@@ -410,6 +410,10 @@ Show scrolling text on a Liquid Crystal Display with I2C
 **Usage:** lcdtext  
 Show changing the text direction on a Liquid Crystal Display with I2C  
 
+## lcdoff  
+**Usage:** lcdoff  
+Blank and turn off the backlight on a Liquid Crystal Display with I2C  
+
 [![Adafruit Bicolor 8x8 LED Matrix](https://cdn-shop.adafruit.com/970x728/902-00.jpg)](https://www.adafruit.com/product/902)
 
 [*Adafruit Bicolor 8x8 LED Matrix (902)*](https://www.adafruit.com/product/902)
