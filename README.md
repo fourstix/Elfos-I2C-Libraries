@@ -185,6 +185,9 @@ Util Library API
 <tr><td>util_wait</td><td>Wait for the input key to be pressed, up to the amount of time specified in RC, and return. DF = 1 means the input key was pressed to end the wait.</td></tr>
 </table>
 
+GFX 1802 library
+----------------
+The matrix library supports graphics functions provided by the [GFX 1802 Library.](https://github.com/fourstix/GFX-1802-Library) The GFX 1802 Library is a graphics library written in 1802 Assembler code based on the Adafruit_GFX-Library written by Ladyada Limor Fried.
 
 Example programs
 ----------------
@@ -205,7 +208,7 @@ Example programs
 <tr><td>Sparkfun Qwiic EEPROM Breakout Board</td></tr>
 <tr><td>Sparkfun Qwiic 12 Button Keypad</td><td>keypad</td></tr>
 <tr><td>Sparkfun Qwiic Twist RGB Rotary Encoder</td><td>twist</td></tr>
-<tr><td>I2C 16x2 Liquid Crystal Display</td><td rowspan="2">lcdchar, lcdscroll, lcdtext</td></tr>
+<tr><td>I2C 16x2 Liquid Crystal Display</td><td rowspan="2">lcdchar, lcdscroll, lcdtext, lcdoff</td></tr>
 <tr><td>I2C 20x4 Liquid Crystal Display</td></tr>
 <tr><td>Adafruit 8x8 BiColor LED Matrix</td><td rowspan="2">bicolor, bichar</td></tr>
 <tr><td>Adafruit 8x8 LED Matrix</td></tr>
@@ -466,6 +469,16 @@ These I2C libraries were written by Milton 'Nick' DeNicholas who was kind enough
 
 </table>
 
+Supported Devices
+------------------
+<table>
+<tr><th>Device</th><th>Library</th></tr>
+<tr><td>MCP23017 16-bit GPIO Expander</td><td>mscp23017</td></tr>
+<tr><td>BlinkM Smart LED</td><td>/nick/blinkm</td></tr>
+<tr><td>PCF8591 8 Bit A/D D/A Converter</td><td>pcf8591</td></tr>
+<tr><td>TSL2561 LUX Sensor</td><td>tsl2561</td></tr>
+</table>
+
 Repository Contents
 -------------------
 * **/src/**  --Source files for assembling I2C libraries and example programs.
@@ -520,22 +533,18 @@ Repository Contents
   * mcp23017.lib - Assembled I2C library for the MCP23017 16-bit GPIO Expander. 
   * **/nick/mcp23017/include** -- include files for MCP23017 16-bit GPIO Expander Library programs.
   * **/nick/mcp23017/src** -- source files for MCP23017 16-bit GPIO Expander Library.
-    * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/nick/blinkm/**  -- I2C library for the BlinkM Smart LED written by Milton 'Nick' DeNicholas.
   * blinkm.lib - Assembled I2C library for the BlinkM Smart LED. 
   * **/nick/blinkm/include** -- include files for BlinkM Smart LED Library.
   * **/nick/blinkm/src** -- source files for BlinkM Smart LED Library.
-    * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/nick/pcf8591/**  -- I2C library for the BlinkM Smart LED written by Milton 'Nick' DeNicholas.
   * pcf8591.lib - Assembled I2C library for the PCF8591 8 Bit A/D D/A Converter. 
   * **/nick/pcf8591/include** -- include files for PCF8591 8 Bit A/D D/A Converter Library.
   * **/nick/pcf8591/src** -- source files for PCF8591 8 Bit A/D D/A Converter Library.
-    * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/nick/tsl2561/**  -- I2C library for the TSL2561 LUX Sensor written by Milton 'Nick' DeNicholas.
   * tsl2561.lib - Assembled I2C library for the TSL2561 LUX Sensor. 
   * **/nick/tsl2561/include** -- include files for TSL2561 LUX Sensor Library.
   * **/nick/tsl2561/src** -- source files for TSL2561 LUX Sensor Library.
-    * clean.bat - Windows batch file to delete binaries before rebuilding.
 
 License Information
 -------------------
