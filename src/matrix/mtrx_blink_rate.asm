@@ -23,7 +23,6 @@
 
 #include    ../include/ops.inc
 #include    ../include/bios.inc
-#include    ../include/ht16k33_def.inc
 #include    ../include/mtrx_def.inc  
 
 

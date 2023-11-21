@@ -26,7 +26,6 @@
 ;-------------------------------------------------------------------------------
 #include    ../include/ops.inc
 #include    ../include/bios.inc
-#include    ../include/ht16k33_def.inc  
 #include    ../include/mtrx_def.inc  
 
 ;-------------------------------------------------------
@@ -61,7 +60,7 @@ pl_loop:    lda     rf
               
             plo     rd                ; put next character to print
 
-            call    gfx_scroll_left
+            call    mtrx_scroll_left
             lbdf    pl_exit           ; exit immediately, if error
           
             glo     rd                ; move old character from next
@@ -72,7 +71,7 @@ pl_loop:    lda     rf
 pl_finish:  ldi     ' '               ; scroll out last character
             plo     rd
             
-            call    gfx_scroll_left
+            call    mtrx_scroll_left
             lbdf    pl_exit           ; exit immediately, if error
             
 pl_exit:    pop     rd                ; restore registers        

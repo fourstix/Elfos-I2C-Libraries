@@ -23,7 +23,6 @@
 
 #include    ../include/ops.inc
 #include    ../include/bios.inc
-#include    ../include/ht16k33_def.inc  
 #include    ../include/mtrx_def.inc  
 
 ;-------------------------------------------------------------------------------
@@ -41,7 +40,7 @@
             
             call    mtrx_clear
 
-            call    mtrx_write_disp
+            call    mtrx_update
 err_exit:   return
 
 osc_on:     db      $21

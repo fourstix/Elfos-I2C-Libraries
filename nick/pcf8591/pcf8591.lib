@@ -1,0 +1,106 @@
+.big
+{pcf8591_avail
+/i2c_avail 0001 00
+\i2c_avail 0002
+:0000 d4 00 00 48 d5
+}
+.big
+{pcf8591_read
+:0000 98 73 88 73 f8 00 b8 f8 14 a8 46 58 18 46 58 d4
+/i2c_rdbuf 0010 00
+\i2c_rdbuf 0011
+:0010 00 00 48 01 00 00 60 72 a8 f0 b8 d5
+^0005 14
+v0008
+}
+.big
+{pcf8591_off
+/i2c_wrbuf 0001 00
+\i2c_wrbuf 0002
+:0000 d4 00 00 48 02 00 08 d5 00 7f
++0005
+}
+.big
+{pcf8591_init_s0
+/i2c_wrbuf 0001 00
+\i2c_wrbuf 0002
+:0000 d4 00 00 48 02 00 08 d5 40 7f
++0005
+}
+.big
+{pcf8591_init_s1
+/i2c_wrbuf 0001 00
+\i2c_wrbuf 0002
+:0000 d4 00 00 48 02 00 08 d5 41 7f
++0005
+}
+.big
+{pcf8591_init_s2
+/i2c_wrbuf 0001 00
+\i2c_wrbuf 0002
+:0000 d4 00 00 48 02 00 08 d5 42 7f
++0005
+}
+.big
+{pcf8591_init_s3
+/i2c_wrbuf 0001 00
+\i2c_wrbuf 0002
+:0000 d4 00 00 48 02 00 08 d5 43 7f
++0005
+}
+.big
+{pcf8591_init_d30
+/i2c_wrbuf 0001 00
+\i2c_wrbuf 0002
+:0000 d4 00 00 48 02 00 08 d5 50 7f
++0005
+}
+.big
+{pcf8591_init_d31
+/i2c_wrbuf 0001 00
+\i2c_wrbuf 0002
+:0000 d4 00 00 48 02 00 08 d5 51 7f
++0005
+}
+.big
+{pcf8591_init_d32
+/i2c_wrbuf 0001 00
+\i2c_wrbuf 0002
+:0000 d4 00 00 48 02 00 08 d5 52 7f
++0005
+}
+.big
+{pcf8591_init_md0
+/i2c_wrbuf 0001 00
+\i2c_wrbuf 0002
+:0000 d4 00 00 48 02 00 08 d5 60 7f
++0005
+}
+.big
+{pcf8591_init_md1
+/i2c_wrbuf 0001 00
+\i2c_wrbuf 0002
+:0000 d4 00 00 48 02 00 08 d5 61 7f
++0005
+}
+.big
+{pcf8591_init_md2
+/i2c_wrbuf 0001 00
+\i2c_wrbuf 0002
+:0000 d4 00 00 48 02 00 08 d5 62 7f
++0005
+}
+.big
+{pcf8591_init_d0:
+/i2c_wrbuf 0001 00
+\i2c_wrbuf 0002
+:0000 d4 00 00 48 02 00 08 d5 70 7f
++0005
+}
+.big
+{pcf8591_init_d1:
+/i2c_wrbuf 0001 00
+\i2c_wrbuf 0002
+:0000 d4 00 00 48 02 00 08 d5 71 7f
++0005
+}

@@ -23,12 +23,10 @@
 
 #include    ../include/ops.inc
 #include    ../include/bios.inc
-#include    ../include/ht16k33_def.inc
 #include    ../include/mtrx_def.inc  
 
 ;-------------------------------------------------------------------------------
-; This routine clears the display buffer
-;-------------------------------------------------------------------------------
+; This routine clears the matrix display buffer
 ; Registers Used:
 ;   RD   - pointer to the display buffer
 ;   R9.0 - byte counter
@@ -42,7 +40,7 @@
             ; one display byte + 8 lines of 2 bytes 
             ; each pixel has 2 bytes (one green byte + one red byte)
             
-            load    rd, mtrx_display_buf
+            load    rd, mtrx_buffer
             ldi     17                   
             plo     r9
 

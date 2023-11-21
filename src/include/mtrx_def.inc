@@ -19,9 +19,6 @@
 ; Based on code from Adafruit_GFX library
 ; Written by Limor Fried/Ladyada for Adafruit Industries  
 ; Copyright 2012 by Adafruit Industries
-;
-; Adafruit 8x8 LED Matrix and Bi-Color LED Matrix Display hardware
-; Copyright 2012-2023 by Adafruit Industries
 ; Please see learn.adafruit.com/adafruit-led-backpack/ for more info
 ;-------------------------------------------------------------------------------
 
@@ -29,43 +26,52 @@
 ; LED matrix display constants
 ;-------------------------------------------------------------------------------
 
-#define DISP_HEIGHT     8
-#define DISP_WIDTH      8
+#define MTRX_HEIGHT     8
+#define MTRX_WIDTH      8
 
 ;-------------------------------------------------------------------------------
-; Character constants
+; LED color display constants
 ;-------------------------------------------------------------------------------
 
-#define C_OFFSET     32
-#define C_ERROR      95
-#define C_WIDTH       6
-#define C_HEIGHT      8
+#define LED_ON     1
+#define LED_OFF    0
+#define LED_RED    1
+#define LED_YELLOW 2
+#define LED_GREEN  3
+
+;-------------------------------------------------------------------------------
+; HT16K33 display constants
+;-------------------------------------------------------------------------------
+
+#define BLINK_OFF       0
+#define BLINK_2HZ       1
+#define BLINK_1HZ       2
+#define BLINK_HALFHZ    3
 
 ;-------------------------------------------------------------------------------
 ; Routines used by library routines
 ;-------------------------------------------------------------------------------
             extrn   i2c_avail
             extrn   i2c_wrbuf
+            extrn   mtrx_buffer
             extrn   mtrx_clear
-            extrn   mtrx_write_disp
-            extrn   mtrx_display_buf
+            extrn   mtrx_update
+            extrn   mtrx_write_pixel
+            extrn   mtrx_scroll_left
+            extrn   mtrx_scroll_up
+            
 
 ;-------------------------------------------------------------------------------
-; Graphics routines used by library routines
+; Device I2C Address
 ;-------------------------------------------------------------------------------
-            extrn   gfx_check_bounds  
-            extrn   gfx_write_pixel      
-            extrn   gfx_adj_bounds  
-            extrn   gfx_write_bitmap      
-            extrn   gfx_check_overlap  
-            extrn   gfx_ascii_font  
-            extrn   gfx_write_char      
-            extrn   gfx_scroll_left
-            extrn   gfx_scroll_up
-            extrn   gfx_write_h_line 
-            extrn   gfx_write_v_line 
-            extrn   gfx_write_rect
-            extrn   gfx_write_block  
-            extrn   gfx_write_s_line 
-            extrn   gfx_steep_flag 
-            extrn   gfx_write_line 
+
+I2C_ADDR:   equ     070h
+
+;-------------------------------------------------------------------------------
+; HT16K33 display commands
+;-------------------------------------------------------------------------------
+
+CMD_BRIGHT: equ     0e0h
+CMD_BLINK:  equ     080h
+DISP_ON:    equ     001h
+OSC_ON:     equ     021h

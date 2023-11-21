@@ -185,6 +185,9 @@ Util Library API
 <tr><td>util_wait</td><td>Wait for the input key to be pressed, up to the amount of time specified in RC, and return. DF = 1 means the input key was pressed to end the wait.</td></tr>
 </table>
 
+GFX 1802 library
+----------------
+The matrix library implements the GFX Display Interface to support graphics functions provided by the [GFX 1802 Library.](https://github.com/fourstix/GFX-1802-Library) The GFX 1802 Library is a graphics library written in 1802 Assembler code based on the Adafruit_GFX-Library written by Ladyada Limor Fried.
 
 Example programs
 ----------------
@@ -205,7 +208,7 @@ Example programs
 <tr><td>Sparkfun Qwiic EEPROM Breakout Board</td></tr>
 <tr><td>Sparkfun Qwiic 12 Button Keypad</td><td>keypad</td></tr>
 <tr><td>Sparkfun Qwiic Twist RGB Rotary Encoder</td><td>twist</td></tr>
-<tr><td>I2C 16x2 Liquid Crystal Display</td><td rowspan="2">lcdchar, lcdscroll, lcdtext</td></tr>
+<tr><td>I2C 16x2 Liquid Crystal Display</td><td rowspan="2">lcdchar, lcdscroll, lcdtext, lcdoff</td></tr>
 <tr><td>I2C 20x4 Liquid Crystal Display</td></tr>
 <tr><td>Adafruit 8x8 BiColor LED Matrix</td><td rowspan="2">bicolor, bichar</td></tr>
 <tr><td>Adafruit 8x8 LED Matrix</td></tr>
@@ -395,6 +398,9 @@ Show information read information from a Sparkfun Qwiic Twist RGB Rotary Encoder
 </td></tr>
 </table>
 
+Example program
+----------------
+
 ## lcdchar  
 **Usage:** lcdchar [-s|-l, default = -s (16x2 display)]  
 Show various character and cursor functions on a Liquid Crystal Display with I2C 
@@ -410,9 +416,18 @@ Show scrolling text on a Liquid Crystal Display with I2C
 **Usage:** lcdtext  
 Show changing the text direction on a Liquid Crystal Display with I2C  
 
+## lcdoff  
+**Usage:** lcdoff  
+Blank and turn off the backlight on a Liquid Crystal Display with I2C  
+
 [![Adafruit Bicolor 8x8 LED Matrix](https://cdn-shop.adafruit.com/970x728/902-00.jpg)](https://www.adafruit.com/product/902)
 
 [*Adafruit Bicolor 8x8 LED Matrix (902)*](https://www.adafruit.com/product/902)
+
+Example program
+----------------
+
+The graphics functions for the matrix example programs are provided by the [GFX 1802 Library.](https://github.com/fourstix/GFX-1802-Library).  
 
 ## bicolor  
 **Usage:** bicolor  
@@ -422,56 +437,116 @@ Show graphics functions available on an Adafruit Bicolor 8x8 LED Matrix.
 **Usage:** bichar  
 Show the printable ASCII character set on an Adafruit Bicolor 8x8 LED Matrix   
 
+Nick's Libraries
+----------------
+These I2C libraries were written by Milton 'Nick' DeNicholas who was kind enough to share his code. The assembled library files and source files for each library are available in subdirectories underneath the */nick/* directory.
+
+<table>
+<tr><td>
+
+[![MCP23017 16-bit GPIO Expander](https://cdn-shop.adafruit.com/970x728/732-02.jpg)](https://www.adafruit.com/product/732)
+
+[*MCP23017 16-bit GPIO Expander*](https://www.adafruit.com/product/732)
+
+</td><td>
+
+[![BlinkM Smart LED](https://images.squarespace-cdn.com/content/v1/5c155684f407b4100552994c/1545605929235-6BZ1XQYJ049H753BWAR4/tm_blinkm_closeup_obliq_sma.jpg?format=2500w)](https://thingm.com/products/blinkm)
+
+[*BlinkM Smart LED*](https://www.sunfounder.com/products/i2c-lcd2004-module)
+
+</td></tr>
+<tr><td>
+
+[![PCF8591 8 Bit A/D D/A Converter](https://cdn-shop.adafruit.com/970x728/4648-04.jpg)](https://www.adafruit.com/product/4648)
+
+[*PCF8591 8 Bit A/D D/A Converter*](https://www.adafruit.com/product/4648)
+
+</td><td>
+
+[![TSL2561 LUX Sensor](https://cdn-shop.adafruit.com/970x728/1980-08.jpg)](https://www.adafruit.com/product/1980)
+
+[*TSL2561 LUX Sensor*](https://www.adafruit.com/product/1980)
+
+</td></tr>
+
+</table>
+
+Supported Devices
+------------------------
+<table>
+<tr><th>Device</th><th>Library</th></tr>
+<tr><td>MCP23017 16-bit GPIO Expander</td><td>mscp23017</td></tr>
+<tr><td>BlinkM Smart LED</td><td>blinkm</td></tr>
+<tr><td>PCF8591 8 Bit A/D D/A Converter</td><td>pcf8591</td></tr>
+<tr><td>TSL2561 LUX Sensor</td><td>tsl2561</td></tr>
+</table>
+
 Repository Contents
 -------------------
 * **/src/**  --Source files for assembling I2C libraries and example programs.
 * **/src/alnum/**  -- Source files for Sparkfun 14 Segment Alphanumeric display library.
-  * alnum.bat - Windows batch file to assemble source files to create library 
-  * clean.bat - Windows batch file to delete binaries before rebuilding
+  * alnum.bat - Windows batch file to assemble source files to create library. 
+  * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/example/**  -- Source files for Elf/OS I2c library example programs.
-  * build.bat - Windows batch file to assemble source files to first set of example programs 
-  * build2.bat - Windows batch file to assemble source files to create second set of example programs 
-  * clean.bat - Windows batch file to delete binaries before rebuilding
+  * build.bat - Windows batch file to assemble source files to first set of example programs. 
+  * build2.bat - Windows batch file to assemble source files to create second set of example programs.
+  * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/i2c/**  -- Source files for Elf/OS I2C library.
-  * i2c.bat - Windows batch file to assemble source files to create library 
-  * clean.bat - Windows batch file to delete binaries before rebuilding
+  * i2c.bat - Windows batch file to assemble source files to create library. 
+  * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/include/**  -- Include files for Elf/OS I2c libraries and example programs.
 * **/src/joystick/**  -- Source files for Sparkfun Qwiic Joystick library.
-  * joystick.bat - Windows batch file to assemble source files to create library 
-  * clean.bat - Windows batch file to delete binaries before rebuilding
+  * joystick.bat - Windows batch file to assemble source files to create library. 
+  * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/led7/**  -- Source files for Adafruit 7 Segment LED display library.
-  * led7.bat - Windows batch file to assemble source files to create library 
-  * clean.bat - Windows batch file to delete binaries before rebuilding
+  * led7.bat - Windows batch file to assemble source files to create library. 
+  * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/lm75a/**  -- Source files for LM75A temperature sensor library.
-  * lm75a.bat - Windows batch file to assemble source files to create library 
-  * clean.bat - Windows batch file to delete binaries before rebuilding
+  * lm75a.bat - Windows batch file to assemble source files to create library. 
+  * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/relay/**  -- Source files for Sparkfun Qwiic Single relay library.
-  * relay.bat - Windows batch file to assemble source files to create library 
-  * clean.bat - Windows batch file to delete binaries before rebuilding
+  * relay.bat - Windows batch file to assemble source files to create library. 
+  * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/sht31/**  -- Source files for SHT31 temperature and humidity sensor library.
-  * sht31.bat - Windows batch file to assemble source files to create library 
-  * clean.bat - Windows batch file to delete binaries before rebuilding
+  * sht31.bat - Windows batch file to assemble source files to create library. 
+  * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/mem/**  -- Source files for Adafruit Non-Volatile Fram and Sparkfun Qwiic EEPROM Breakout Boards library.
-  * mem.bat - Windows batch file to assemble source files to create library 
-  * clean.bat - Windows batch file to delete binaries before rebuilding
+  * mem.bat - Windows batch file to assemble source files to create library. 
+  * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/keypad/**  -- Source files for Sparkfun Qwiic 12 Button Keypad library.
-  * keypad.bat - Windows batch file to assemble source files to create library 
-  * clean.bat - Windows batch file to delete binaries before rebuilding
+  * keypad.bat - Windows batch file to assemble source files to create library. 
+  * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/twist/**  -- Source files for Sparkfun Qwiic Twist RGB Rotary Encoder library.
-  * twist.bat - Windows batch file to assemble source files to create library 
-  * clean.bat - Windows batch file to delete binaries before rebuilding
+  * twist.bat - Windows batch file to assemble source files to create library. 
+  * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/lcd/**  -- Source files for I2C 16x2 and I2C 20x4 Liquid Crystal Displays library.
-  * lcd.bat - Windows batch file to assemble source files to create library 
-  * clean.bat - Windows batch file to delete binaries before rebuilding
+  * lcd.bat - Windows batch file to assemble source files to create library. 
+  * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/matrix/**  -- Source files for Adafruit 8x8 LED Matrices library.
-  * matrix.bat - Windows batch file to assemble source files to create library 
-  * clean.bat - Windows batch file to delete binaries before rebuilding
+  * matrix.bat - Windows batch file to assemble source files to create library. 
+  * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/util/**  -- Source files for common utility library.
-  * util.bat - Windows batch file to assemble source files to create library 
-  * clean.bat - Windows batch file to delete binaries before rebuilding
-* **/lib/**  -- Assembled Elf/OS I2C library files for linking with example programs
+  * util.bat - Windows batch file to assemble source files to create library. 
+  * clean.bat - Windows batch file to delete binaries before rebuilding.
+* **/lib/**  -- Assembled Elf/OS I2C library files for linking with example programs.
 * **/bin/**  -- Binary files for Elf/OS I2C example programs.
-
+* **/nick/**  -- Various I2C libraries written by Milton 'Nick' DeNicholas.
+* **/nick/mcp23017/**  -- I2C library for the MCP23017 16-bit GPIO Expander written by Milton 'Nick' DeNicholas.
+  * mcp23017.lib - Assembled I2C library for the MCP23017 16-bit GPIO Expander. 
+  * **/nick/mcp23017/include** -- include files for MCP23017 16-bit GPIO Expander Library programs.
+  * **/nick/mcp23017/src** -- source files for MCP23017 16-bit GPIO Expander Library.
+* **/nick/blinkm/**  -- I2C library for the BlinkM Smart LED written by Milton 'Nick' DeNicholas.
+  * blinkm.lib - Assembled I2C library for the BlinkM Smart LED. 
+  * **/nick/blinkm/include** -- include files for BlinkM Smart LED Library.
+  * **/nick/blinkm/src** -- source files for BlinkM Smart LED Library.
+* **/nick/pcf8591/**  -- I2C library for the BlinkM Smart LED written by Milton 'Nick' DeNicholas.
+  * pcf8591.lib - Assembled I2C library for the PCF8591 8 Bit A/D D/A Converter. 
+  * **/nick/pcf8591/include** -- include files for PCF8591 8 Bit A/D D/A Converter Library.
+  * **/nick/pcf8591/src** -- source files for PCF8591 8 Bit A/D D/A Converter Library.
+* **/nick/tsl2561/**  -- I2C library for the TSL2561 LUX Sensor written by Milton 'Nick' DeNicholas.
+  * tsl2561.lib - Assembled I2C library for the TSL2561 LUX Sensor. 
+  * **/nick/tsl2561/include** -- include files for TSL2561 LUX Sensor Library.
+  * **/nick/tsl2561/src** -- source files for TSL2561 LUX Sensor Library.
 
 License Information
 -------------------
@@ -495,6 +570,18 @@ Any company, product, or services names may be trademarks or services marks of o
 
 All libraries used in this code are copyright their respective authors.
 
+MCP23017 16-bit GPIO Expander I2C Library  
+Copyright (c) 2023 by Milton 'Nick' DeNicholas  
+
+BlinkM Smart LED I2C Library  
+Copyright (c) 2023 by Milton 'Nick' DeNicholas  
+
+PCF8591 8 Bit A/D D/A Converter I2C Library  
+Copyright (c) 2023 by Milton 'Nick' DeNicholas  
+
+TSL2561 LUX Sensor I2C Library  
+Copyright (c) 2023 by Milton 'Nick' DeNicholas  
+
 This code is based on code written by Tony Hefner and assembled with the Asm/02 assembler and Link/02 linker written by Mike Riley.
 
 Elf/OS  
@@ -515,7 +602,7 @@ Copyright (c) 2022-2023 by Tony Hefner
 The 1802-Mini Microcomputer Hardware   
 Copyright (c) 2020-2023 by David Madole  
 
-Many thanks to the original authors for making their designs and code available as open source, and a big thank you to Bernie Murphy for his testing, code contributions and suggestions.
+Many thanks to the original authors for making their designs and code available as open source, and a big thank you to Bernie Murphy for his testing, code contributions and suggestions.  Many thanks to Milton 'Nick' DeNicholas for kindly contributing his libraries.
 
 This code, firmware, and software is released under the [MIT License](http://opensource.org/licenses/MIT).
 
