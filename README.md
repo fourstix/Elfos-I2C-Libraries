@@ -432,9 +432,9 @@ Show graphics functions available on an Adafruit Bicolor 8x8 LED Matrix.
 **Usage:** bichar  
 Show the printable ASCII character set on an Adafruit Bicolor 8x8 LED Matrix   
 
-Other Libraries
+Nick's Libraries
 ----------------
-These I2C libraries were written by Milton 'Nick' DeNicholas who was kind enough to share his code.
+These I2C libraries were written by Milton 'Nick' DeNicholas who was kind enough to share his code. The assembled library files and source files for each library are available in the */nick/* directory.
 
 <table>
 <tr><td>
@@ -470,72 +470,72 @@ Repository Contents
 -------------------
 * **/src/**  --Source files for assembling I2C libraries and example programs.
 * **/src/alnum/**  -- Source files for Sparkfun 14 Segment Alphanumeric display library.
-  * alnum.bat - Windows batch file to assemble source files to create library 
-  * clean.bat - Windows batch file to delete binaries before rebuilding
+  * alnum.bat - Windows batch file to assemble source files to create library. 
+  * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/example/**  -- Source files for Elf/OS I2c library example programs.
-  * build.bat - Windows batch file to assemble source files to first set of example programs 
-  * build2.bat - Windows batch file to assemble source files to create second set of example programs 
-  * clean.bat - Windows batch file to delete binaries before rebuilding
+  * build.bat - Windows batch file to assemble source files to first set of example programs. 
+  * build2.bat - Windows batch file to assemble source files to create second set of example programs.
+  * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/i2c/**  -- Source files for Elf/OS I2C library.
-  * i2c.bat - Windows batch file to assemble source files to create library 
-  * clean.bat - Windows batch file to delete binaries before rebuilding
+  * i2c.bat - Windows batch file to assemble source files to create library. 
+  * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/include/**  -- Include files for Elf/OS I2c libraries and example programs.
 * **/src/joystick/**  -- Source files for Sparkfun Qwiic Joystick library.
-  * joystick.bat - Windows batch file to assemble source files to create library 
-  * clean.bat - Windows batch file to delete binaries before rebuilding
+  * joystick.bat - Windows batch file to assemble source files to create library. 
+  * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/led7/**  -- Source files for Adafruit 7 Segment LED display library.
-  * led7.bat - Windows batch file to assemble source files to create library 
-  * clean.bat - Windows batch file to delete binaries before rebuilding
+  * led7.bat - Windows batch file to assemble source files to create library. 
+  * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/lm75a/**  -- Source files for LM75A temperature sensor library.
-  * lm75a.bat - Windows batch file to assemble source files to create library 
-  * clean.bat - Windows batch file to delete binaries before rebuilding
+  * lm75a.bat - Windows batch file to assemble source files to create library. 
+  * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/relay/**  -- Source files for Sparkfun Qwiic Single relay library.
-  * relay.bat - Windows batch file to assemble source files to create library 
-  * clean.bat - Windows batch file to delete binaries before rebuilding
+  * relay.bat - Windows batch file to assemble source files to create library. 
+  * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/sht31/**  -- Source files for SHT31 temperature and humidity sensor library.
-  * sht31.bat - Windows batch file to assemble source files to create library 
-  * clean.bat - Windows batch file to delete binaries before rebuilding
+  * sht31.bat - Windows batch file to assemble source files to create library. 
+  * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/mem/**  -- Source files for Adafruit Non-Volatile Fram and Sparkfun Qwiic EEPROM Breakout Boards library.
-  * mem.bat - Windows batch file to assemble source files to create library 
-  * clean.bat - Windows batch file to delete binaries before rebuilding
+  * mem.bat - Windows batch file to assemble source files to create library. 
+  * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/keypad/**  -- Source files for Sparkfun Qwiic 12 Button Keypad library.
-  * keypad.bat - Windows batch file to assemble source files to create library 
-  * clean.bat - Windows batch file to delete binaries before rebuilding
+  * keypad.bat - Windows batch file to assemble source files to create library. 
+  * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/twist/**  -- Source files for Sparkfun Qwiic Twist RGB Rotary Encoder library.
-  * twist.bat - Windows batch file to assemble source files to create library 
-  * clean.bat - Windows batch file to delete binaries before rebuilding
+  * twist.bat - Windows batch file to assemble source files to create library. 
+  * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/lcd/**  -- Source files for I2C 16x2 and I2C 20x4 Liquid Crystal Displays library.
-  * lcd.bat - Windows batch file to assemble source files to create library 
-  * clean.bat - Windows batch file to delete binaries before rebuilding
+  * lcd.bat - Windows batch file to assemble source files to create library. 
+  * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/matrix/**  -- Source files for Adafruit 8x8 LED Matrices library.
-  * matrix.bat - Windows batch file to assemble source files to create library 
-  * clean.bat - Windows batch file to delete binaries before rebuilding
+  * matrix.bat - Windows batch file to assemble source files to create library. 
+  * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/util/**  -- Source files for common utility library.
-  * util.bat - Windows batch file to assemble source files to create library 
-  * clean.bat - Windows batch file to delete binaries before rebuilding
-* **/lib/**  -- Assembled Elf/OS I2C library files for linking with example programs
+  * util.bat - Windows batch file to assemble source files to create library. 
+  * clean.bat - Windows batch file to delete binaries before rebuilding.
+* **/lib/**  -- Assembled Elf/OS I2C library files for linking with example programs.
 * **/bin/**  -- Binary files for Elf/OS I2C example programs.
 * **/nick/**  -- Various I2C libraries written by Milton 'Nick' DeNicholas.
 * **/nick/mcp23017/**  -- I2C library for the MCP23017 16-bit GPIO Expander written by Milton 'Nick' DeNicholas.
-  * mcp23017.lib - I2C library for the MCP23017 16-bit GPIO Expander 
+  * mcp23017.lib - Assembled I2C library for the MCP23017 16-bit GPIO Expander. 
   * **/nick/mcp23017/include** -- include files for MCP23017 16-bit GPIO Expander Library programs.
   * **/nick/mcp23017/src** -- source files for MCP23017 16-bit GPIO Expander Library.
-    * clean.bat - Windows batch file to delete binaries before rebuilding
+    * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/nick/blinkm/**  -- I2C library for the BlinkM Smart LED written by Milton 'Nick' DeNicholas.
-  * blinkm.lib - I2C library for the BlinkM Smart LED 
-  * **/nick/blinkm/include** -- include files for BlinkM Smart LED Library
-  * **/nick/blinkm/src** -- source files for BlinkM Smart LED Library
-    * clean.bat - Windows batch file to delete binaries before rebuilding
+  * blinkm.lib - Assembled I2C library for the BlinkM Smart LED. 
+  * **/nick/blinkm/include** -- include files for BlinkM Smart LED Library.
+  * **/nick/blinkm/src** -- source files for BlinkM Smart LED Library.
+    * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/nick/pcf8591/**  -- I2C library for the BlinkM Smart LED written by Milton 'Nick' DeNicholas.
-  * pcf8591.lib - I2C library for the PCF8591 8 Bit A/D D/A Converter 
-  * **/nick/pcf8591/include** -- include files for PCF8591 8 Bit A/D D/A Converter Library
-  * **/nick/pcf8591/src** -- source files for PCF8591 8 Bit A/D D/A Converter Library
-    * clean.bat - Windows batch file to delete binaries before rebuilding
+  * pcf8591.lib - Assembled I2C library for the PCF8591 8 Bit A/D D/A Converter. 
+  * **/nick/pcf8591/include** -- include files for PCF8591 8 Bit A/D D/A Converter Library.
+  * **/nick/pcf8591/src** -- source files for PCF8591 8 Bit A/D D/A Converter Library.
+    * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/nick/tsl2561/**  -- I2C library for the TSL2561 LUX Sensor written by Milton 'Nick' DeNicholas.
-  * tsl2561.lib - I2C library for the TSL2561 LUX Sensor 
-  * **/nick/tsl2561/include** -- include files for TSL2561 LUX Sensor Library
-  * **/nick/tsl2561/src** -- source files for TSL2561 LUX Sensor Library
-    * clean.bat - Windows batch file to delete binaries before rebuilding
+  * tsl2561.lib - Assembled I2C library for the TSL2561 LUX Sensor. 
+  * **/nick/tsl2561/include** -- include files for TSL2561 LUX Sensor Library.
+  * **/nick/tsl2561/src** -- source files for TSL2561 LUX Sensor Library.
+    * clean.bat - Windows batch file to delete binaries before rebuilding.
 
 License Information
 -------------------
