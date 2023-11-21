@@ -427,6 +427,8 @@ Blank and turn off the backlight on a Liquid Crystal Display with I2C
 Example program
 ----------------
 
+The graphics functions for the matrix example programs are provided by the [GFX 1802 Library.](https://github.com/fourstix/GFX-1802-Library).  
+
 ## bicolor  
 **Usage:** bicolor  
 Show graphics functions available on an Adafruit Bicolor 8x8 LED Matrix.
@@ -437,7 +439,7 @@ Show the printable ASCII character set on an Adafruit Bicolor 8x8 LED Matrix
 
 Nick's Libraries
 ----------------
-These I2C libraries were written by Milton 'Nick' DeNicholas who was kind enough to share his code. The assembled library files and source files for each library are available in the */nick/* directory.
+These I2C libraries were written by Milton 'Nick' DeNicholas who was kind enough to share his code. The assembled library files and source files for each library are available in subdirectories underneath the */nick/* directory.
 
 <table>
 <tr><td>
