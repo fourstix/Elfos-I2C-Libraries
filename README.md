@@ -395,6 +395,9 @@ Show information read information from a Sparkfun Qwiic Twist RGB Rotary Encoder
 </td></tr>
 </table>
 
+Example program
+----------------
+
 ## lcdchar  
 **Usage:** lcdchar [-s|-l, default = -s (16x2 display)]  
 Show various character and cursor functions on a Liquid Crystal Display with I2C 
@@ -418,6 +421,9 @@ Blank and turn off the backlight on a Liquid Crystal Display with I2C
 
 [*Adafruit Bicolor 8x8 LED Matrix (902)*](https://www.adafruit.com/product/902)
 
+Example program
+----------------
+
 ## bicolor  
 **Usage:** bicolor  
 Show graphics functions available on an Adafruit Bicolor 8x8 LED Matrix.
@@ -425,6 +431,40 @@ Show graphics functions available on an Adafruit Bicolor 8x8 LED Matrix.
 ## bichar  
 **Usage:** bichar  
 Show the printable ASCII character set on an Adafruit Bicolor 8x8 LED Matrix   
+
+Other Libraries
+----------------
+These I2C libraries were written by Milton 'Nick' DeNicholas who was kind enough to share his code.
+
+<table>
+<tr><td>
+
+[![MCP23017 16-bit GPIO Expander](https://cdn-shop.adafruit.com/970x728/732-02.jpg)](https://www.adafruit.com/product/732)
+
+[*MCP23017 16-bit GPIO Expander*](https://www.adafruit.com/product/732)
+
+</td><td>
+
+[![BlinkM Smart LED](https://images.squarespace-cdn.com/content/v1/5c155684f407b4100552994c/1545605929235-6BZ1XQYJ049H753BWAR4/tm_blinkm_closeup_obliq_sma.jpg?format=2500w)](https://thingm.com/products/blinkm)
+
+[*BlinkM Smart LED*](https://www.sunfounder.com/products/i2c-lcd2004-module)
+
+</td></tr>
+<tr><td>
+
+[![PCF8591 8 Bit A/D D/A Converter](https://cdn-shop.adafruit.com/970x728/4648-04.jpg)](https://www.adafruit.com/product/4648)
+
+[*PCF8591 8 Bit A/D D/A Converter*](https://www.adafruit.com/product/4648)
+
+</td><td>
+
+[![TSL2561 LUX Sensor](https://cdn-shop.adafruit.com/970x728/1980-08.jpg)](https://www.adafruit.com/product/1980)
+
+[*TSL2561 LUX Sensor*](https://www.adafruit.com/product/1980)
+
+</td></tr>
+
+</table>
 
 Repository Contents
 -------------------
@@ -475,7 +515,27 @@ Repository Contents
   * clean.bat - Windows batch file to delete binaries before rebuilding
 * **/lib/**  -- Assembled Elf/OS I2C library files for linking with example programs
 * **/bin/**  -- Binary files for Elf/OS I2C example programs.
-
+* **/nick/**  -- Various I2C libraries written by Milton 'Nick' DeNicholas.
+* **/nick/mcp23017/**  -- I2C library for the MCP23017 16-bit GPIO Expander written by Milton 'Nick' DeNicholas.
+  * mcp23017.lib - I2C library for the MCP23017 16-bit GPIO Expander 
+  * **/nick/mcp23017/include** -- include files for MCP23017 16-bit GPIO Expander Library programs.
+  * **/nick/mcp23017/src** -- source files for MCP23017 16-bit GPIO Expander Library.
+    * clean.bat - Windows batch file to delete binaries before rebuilding
+* **/nick/blinkm/**  -- I2C library for the BlinkM Smart LED written by Milton 'Nick' DeNicholas.
+  * blinkm.lib - I2C library for the BlinkM Smart LED 
+  * **/nick/blinkm/include** -- include files for BlinkM Smart LED Library
+  * **/nick/blinkm/src** -- source files for BlinkM Smart LED Library
+    * clean.bat - Windows batch file to delete binaries before rebuilding
+* **/nick/pcf8591/**  -- I2C library for the BlinkM Smart LED written by Milton 'Nick' DeNicholas.
+  * pcf8591.lib - I2C library for the PCF8591 8 Bit A/D D/A Converter 
+  * **/nick/pcf8591/include** -- include files for PCF8591 8 Bit A/D D/A Converter Library
+  * **/nick/pcf8591/src** -- source files for PCF8591 8 Bit A/D D/A Converter Library
+    * clean.bat - Windows batch file to delete binaries before rebuilding
+* **/nick/tsl2561/**  -- I2C library for the TSL2561 LUX Sensor written by Milton 'Nick' DeNicholas.
+  * tsl2561.lib - I2C library for the TSL2561 LUX Sensor 
+  * **/nick/tsl2561/include** -- include files for TSL2561 LUX Sensor Library
+  * **/nick/tsl2561/src** -- source files for TSL2561 LUX Sensor Library
+    * clean.bat - Windows batch file to delete binaries before rebuilding
 
 License Information
 -------------------
@@ -499,6 +559,18 @@ Any company, product, or services names may be trademarks or services marks of o
 
 All libraries used in this code are copyright their respective authors.
 
+MCP23017 16-bit GPIO Expander I2C Library  
+Copyright (c) 2023 by Milton 'Nick' DeNicholas  
+
+BlinkM Smart LED I2C Library  
+Copyright (c) 2023 by Milton 'Nick' DeNicholas  
+
+PCF8591 8 Bit A/D D/A Converter I2C Library  
+Copyright (c) 2023 by Milton 'Nick' DeNicholas  
+
+TSL2561 LUX Sensor I2C Library  
+Copyright (c) 2023 by Milton 'Nick' DeNicholas  
+
 This code is based on code written by Tony Hefner and assembled with the Asm/02 assembler and Link/02 linker written by Mike Riley.
 
 Elf/OS  
@@ -519,7 +591,7 @@ Copyright (c) 2022-2023 by Tony Hefner
 The 1802-Mini Microcomputer Hardware   
 Copyright (c) 2020-2023 by David Madole  
 
-Many thanks to the original authors for making their designs and code available as open source, and a big thank you to Bernie Murphy for his testing, code contributions and suggestions.
+Many thanks to the original authors for making their designs and code available as open source, and a big thank you to Bernie Murphy for his testing, code contributions and suggestions.  Many thanks to Milton 'Nick' DeNicholas for kindly contributing his libraries.
 
 This code, firmware, and software is released under the [MIT License](http://opensource.org/licenses/MIT).
 
