@@ -476,7 +476,7 @@ Supported Devices
 <table>
 <tr><th>Device</th><th>Library</th></tr>
 <tr><td>MCP23017 16-bit GPIO Expander</td><td>mscp23017</td></tr>
-<tr><td>BlinkM Smart LED</td><td>/nick/blinkm</td></tr>
+<tr><td>BlinkM Smart LED</td><td>blinkm</td></tr>
 <tr><td>PCF8591 8 Bit A/D D/A Converter</td><td>pcf8591</td></tr>
 <tr><td>TSL2561 LUX Sensor</td><td>tsl2561</td></tr>
 </table>
