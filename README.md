@@ -187,7 +187,7 @@ Util Library API
 
 GFX 1802 library
 ----------------
-The matrix library supports graphics functions provided by the [GFX 1802 Library.](https://github.com/fourstix/GFX-1802-Library) The GFX 1802 Library is a graphics library written in 1802 Assembler code based on the Adafruit_GFX-Library written by Ladyada Limor Fried.
+The matrix library implements the GFX Display Interface to support graphics functions provided by the [GFX 1802 Library.](https://github.com/fourstix/GFX-1802-Library) The GFX 1802 Library is a graphics library written in 1802 Assembler code based on the Adafruit_GFX-Library written by Ladyada Limor Fried.
 
 Example programs
 ----------------
@@ -472,7 +472,7 @@ These I2C libraries were written by Milton 'Nick' DeNicholas who was kind enough
 </table>
 
 Supported Devices
-------------------
+------------------------
 <table>
 <tr><th>Device</th><th>Library</th></tr>
 <tr><td>MCP23017 16-bit GPIO Expander</td><td>mscp23017</td></tr>
