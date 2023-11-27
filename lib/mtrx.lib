@@ -35,7 +35,7 @@
 /mtrx_buffer 000c 00
 :0000 9d 73 8d 73 99 73 89 73 f8 00 ad f8 00 bd f8 11
 :0010 a9 f8 00 5d 1d 29 89 ca 00 11 60 72 a9 f0 b9 60
-:0020 72 ad f0 bd d5
+:0020 72 ad f0 bd fc 00 d5
 +0018
 }
 .big
@@ -173,10 +173,6 @@ v0005
 }
 {gfx_disp_clear
 ?mtrx_clear 0001
-:0000 c0 00 00
-}
-{gfx_disp_update
-?mtrx_update 0001
 :0000 c0 00 00
 }
 {gfx_disp_pixel
