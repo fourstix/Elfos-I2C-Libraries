@@ -16,18 +16,22 @@
 ; Copyright 2022 by Tony Hefner 
 ; Please see github.com/arhefner/1802-Mini-PIO for more info
 ;
+; Based on code from Adafruit_GFX library
+; Written by Limor Fried/Ladyada for Adafruit Industries  
+; Copyright 2012 by Adafruit Industries
+; Please see https://learn.adafruit.com/adafruit-gfx-graphics-library for more info
+;
 ; Adafruit 8x8 LED Matrix and Bi-Color LED Matrix Display hardware
 ; Copyright 2012-2023 by Adafruit Industries
 ; Please see learn.adafruit.com/adafruit-led-backpack/ for more info
 ;-------------------------------------------------------------------------------
 
-
 #include ../include/ops.inc
 #include ../include/bios.inc
 #include ../include/kernel.inc
-#include ../include/ht16k33_def.inc  
 #include ../include/util_lib.inc
 #include ../include/mtrx_lib.inc
+#include ../include/gfx_lib.inc
 #include ../include/i2c_lib.inc
         
             org     2000h
@@ -67,6 +71,11 @@ show_it:    call    i2c_init            ; initialize i2c bus
             call    mtrx_brightness     ; set brightness
             lbdf    errmsg              ; if error writing to device, exit with msg
 
+            ldi     1                   ; set orign to 1,0
+            plo     r7                  ; set x origin
+            ldi     0
+            phi     r7                  ; set y origin
+
             ldi     0                   ; set up counter 
             plo     rc
             phi     rc        
@@ -85,11 +94,15 @@ loop:       glo     rc                  ; get counter from index
             ldi    ' '                  ; printable chars start at space
             add                         ; convert to character
             plo    r9                   ; save char to write
-                                  
-            call    mtrx_print_char     ; draw character bitmap
+
+            call    mtrx_clear          ; clear out display buffer
+
+            push    r7                  ; r7 is consumed              
+            call    gfx_draw_char       ; draw character bitmap
+            pop     r7                  ; restore r7
                                   
             ;---- update display to show pixels
-            call    mtrx_write_disp     ; update display
+            call    mtrx_update          ; update display
             lbdf    errmsg              ; if error writing to device, exit with msg
 
             push    rc                  ; save counter
@@ -104,7 +117,7 @@ loop:       glo     rc                  ; get counter from index
             
             ;---- exit and clear after all characters            
 done:       call    mtrx_clear          
-            call    mtrx_write_disp     ; update display
+            call    mtrx_update         ; update display
       
             ;---- show last character if input pressed
 break:      ldi     0

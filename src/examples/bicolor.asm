@@ -25,11 +25,11 @@
 #include ../include/ops.inc
 #include ../include/bios.inc
 #include ../include/kernel.inc
-#include ../include/ht16k33_def.inc  
 #include ../include/mtrx_lib.inc
+#include ../include/gfx_lib.inc
 #include ../include/util_lib.inc
 #include ../include/i2c_lib.inc
-
+          
             org     2000h
 start:      br      main
 
@@ -78,7 +78,7 @@ show_it:    call    i2c_init            ; initialize i2c bus
             ldi     LED_GREEN           
             phi     r9                  ; set pixel color
             
-loop:       call    mtrx_draw_pixel     ; draw pixel in buffer
+loop:       call    gfx_draw_pixel      ; draw pixel in buffer
             
             ghi     r7                  ; get signed y value
             adi      1                  ; add one
@@ -97,12 +97,12 @@ loop:       call    mtrx_draw_pixel     ; draw pixel in buffer
             phi     r7                  ; set pixel y
             ldi     LED_YELLOW           
             phi     r9                  ; set pixel color            
-            call    mtrx_draw_pixel     ; draw pixel in buffer
+            call    gfx_draw_pixel      ; draw pixel in buffer
 
             ldi     4                   ; set pixel position at 4,4
             plo     r7                  ; set pixel x
             phi     r7                  ; set pixel y
-            call    mtrx_draw_pixel     ; draw pixel in buffer
+            call    gfx_draw_pixel      ; draw pixel in buffer
             
             
             ldi     3                   ; reset counter 
@@ -114,7 +114,7 @@ loop:       call    mtrx_draw_pixel     ; draw pixel in buffer
             ldi     LED_RED           
             phi     r9                  ; set pixel color
 
-loop2:      call    mtrx_draw_pixel     ; draw pixel in buffer
+loop2:      call    gfx_draw_pixel     ; draw pixel in buffer
             
             ghi     r7                  ; get signed y value
             adi      1                  ; add one
@@ -129,7 +129,7 @@ loop2:      call    mtrx_draw_pixel     ; draw pixel in buffer
             bnz     loop2               ; keep going for 3 pixels
       
             ;---- update display to show pixels
-            call    mtrx_write_disp     ; update display
+            call    mtrx_update         ; update display
             lbdf    errmsg              ; if error writing to device, exit with msg
             
             load    rc, DELAY_500MS
@@ -149,11 +149,11 @@ loop2:      call    mtrx_draw_pixel     ; draw pixel in buffer
             plo     r8                  ; set width
             phi     r8                  ; set height
             
-            call    mtrx_draw_rect      ; draw rectangle
+            call    gfx_draw_rect       ; draw rectangle
             lbdf    errmsg              ; if error writing to device, exit with msg
             
             ;---- update display to show rectangle
-            call    mtrx_write_disp     ; update display
+            call    mtrx_update         ; update display
             lbdf    errmsg              ; if error writing to device, exit with msg
             
             load    rc, DELAY_500MS
@@ -170,11 +170,11 @@ loop2:      call    mtrx_draw_pixel     ; draw pixel in buffer
             plo     r8                  ; set width
             phi     r8                  ; set height
             
-            call    mtrx_fill_rect      ; draw rectangle
             lbdf    errmsg              ; if error writing to device, exit with msg
+            call    gfx_fill_rect       ; draw rectangle
             
             ;---- update display to show rectangles
-            call    mtrx_write_disp     ; update display
+            call    mtrx_update         ; update display
             lbdf    errmsg              ; if error writing to device, exit with msg
             
             load    rc, DELAY_500MS
@@ -182,7 +182,7 @@ loop2:      call    mtrx_draw_pixel     ; draw pixel in buffer
 
             ;---- clear display and straight lines            
             call    mtrx_clear          ; clear display
-            call    mtrx_write_disp     ; update display
+            call    mtrx_update         ; update display
             lbdf    errmsg  
 
 
@@ -202,7 +202,7 @@ loop2:      call    mtrx_draw_pixel     ; draw pixel in buffer
             ldi     LED_GREEN           
             phi     r9                  ; set pixel color
             
-            call    mtrx_draw_line     ; draw line in buffer
+            call    gfx_draw_line       ; draw line in buffer
             
             ; test drawing horizontal line with swapped endpoints 
             ldi     5                   ; set line origin at 5,5
@@ -215,7 +215,7 @@ loop2:      call    mtrx_draw_pixel     ; draw pixel in buffer
             plo     r8                  ; set endpoint x = 2            
             ldi     LED_YELLOW           
             phi     r9                  ; set line color            
-            call    mtrx_draw_line      ; draw line in buffer
+            call    gfx_draw_line      ; draw line in buffer
 
             ; draw a vertical line from 1,1 to 1,6
             ldi     1                   ; set line origin at 1,1
@@ -229,7 +229,7 @@ loop2:      call    mtrx_draw_pixel     ; draw pixel in buffer
             
             ldi     LED_RED           
             phi     r9                  ; set pixel color            
-            call    mtrx_draw_line      ; draw line in buffer   
+            call    gfx_draw_line      ; draw line in buffer   
             
             ; test drawing vertical line with swapped endpoints
             ldi     5                   ; set line origin at 5,5
@@ -243,10 +243,10 @@ loop2:      call    mtrx_draw_pixel     ; draw pixel in buffer
             ldi     LED_GREEN           
             phi     r9                  ; set pixel color
 
-            call    mtrx_draw_line      ; draw pixel in buffer
+            call    gfx_draw_line      ; draw pixel in buffer
                 
             ;---- update display to show lines
-            call    mtrx_write_disp     ; update display
+            call    mtrx_update         ; update display
             lbdf    errmsg              ; if error writing to device, exit with msg
             
             load    rc, DELAY_500MS
@@ -258,7 +258,7 @@ loop2:      call    mtrx_draw_pixel     ; draw pixel in buffer
             
             ;---- clear display         
             call    mtrx_clear          ; clear display
-            call    mtrx_write_disp     ; update display
+            call    mtrx_update         ; update display
             lbdf    errmsg              ; if error writing to device, exit with msg
               
               
@@ -274,7 +274,7 @@ loop2:      call    mtrx_draw_pixel     ; draw pixel in buffer
             ldi     LED_GREEN           
             phi     r9                  ; set pixel color
             
-            call    mtrx_draw_line     ; draw line in buffer
+            call    gfx_draw_line     ; draw line in buffer
             
             ; test drawing slanted line with swapped endpoints 
             ldi     5                   ; set line origin at 5,7
@@ -289,9 +289,9 @@ loop2:      call    mtrx_draw_pixel     ; draw pixel in buffer
             phi     r8                  ; set endpoint y = 3
             ldi     LED_YELLOW           
             phi     r9                  ; set line color            
-            call    mtrx_draw_line      ; draw line in buffer
+            call    gfx_draw_line       ; draw line in buffer
 
-            call    mtrx_write_disp     ; update display
+            call    mtrx_update         ; update display
             lbdf    errmsg  
             
             load    rc, DELAY_500MS
@@ -300,7 +300,7 @@ loop2:      call    mtrx_draw_pixel     ; draw pixel in buffer
 
             ;---- clear display and draw slanted lines         
             call    mtrx_clear          ; clear display
-            call    mtrx_write_disp     ; update display
+            call    mtrx_update         ; update display
             lbdf    errmsg              ; if error writing to device, exit with msg
               
               
@@ -317,7 +317,7 @@ loop2:      call    mtrx_draw_pixel     ; draw pixel in buffer
             ldi     LED_RED           
             phi     r9                  ; set pixel color
             
-            call    mtrx_draw_line     ; draw line in buffer
+            call    gfx_draw_line     ; draw line in buffer
             
             ; test drawing slanted line with swapped endpoints 
             ldi     6                   ; set line origin at 6,4
@@ -332,9 +332,9 @@ loop2:      call    mtrx_draw_pixel     ; draw pixel in buffer
             phi     r8                  ; set endpoint y = 7
             ldi     LED_YELLOW           
             phi     r9                  ; set line color            
-            call    mtrx_draw_line      ; draw line in buffer
+            call    gfx_draw_line       ; draw line in buffer
 
-            call    mtrx_write_disp     ; update display
+            call    mtrx_update         ; update display
             lbdf    errmsg  
             
             load    rc, DELAY_500MS
@@ -346,7 +346,7 @@ loop2:      call    mtrx_draw_pixel     ; draw pixel in buffer
             
             ;---- clear display and draw steep lines        
             call    mtrx_clear          ; clear display
-            call    mtrx_write_disp     ; update display
+            call    mtrx_update         ; update display
             lbdf    errmsg              ; if error writing to device, exit with msg
               
               
@@ -364,7 +364,7 @@ loop2:      call    mtrx_draw_pixel     ; draw pixel in buffer
             ldi     LED_YELLOW          
             phi     r9                  ; set pixel color
             
-            call    mtrx_draw_line     ; draw line in buffer
+            call    gfx_draw_line     ; draw line in buffer
             
             ; test drawing steep slanted line with swapped endpoints 
             ldi     4                   ; set line origin at 4,7
@@ -379,9 +379,9 @@ loop2:      call    mtrx_draw_pixel     ; draw pixel in buffer
             phi     r8                  ; set endpoint y = 3
             ldi     LED_RED           
             phi     r9                  ; set line color            
-            call    mtrx_draw_line      ; draw line in buffer
+            call    gfx_draw_line       ; draw line in buffer
 
-            call    mtrx_write_disp     ; update display
+            call    mtrx_update         ; update display
             lbdf    errmsg  
             
             load    rc, DELAY_500MS
@@ -389,10 +389,10 @@ loop2:      call    mtrx_draw_pixel     ; draw pixel in buffer
               
             ;---- clear display and draw bitmaps             
             call    mtrx_clear          ; clear display
-            call    mtrx_write_disp     ; update display
+            call    mtrx_update         ; update display
             lbdf    errmsg              ; if error writing to device, exit with msg
           
-            load    rf, triangle         ; load test bitmap
+            load    rf, triangle        ; load test bitmap
             ldi     LED_RED
             phi     r9                  ; set bitmap color
 
@@ -404,11 +404,11 @@ loop2:      call    mtrx_draw_pixel     ; draw pixel in buffer
             plo     r8                  ; set bitmap width
             phi     r8                  ; set bitmap height
 
-            call    mtrx_draw_bitmap
+            call    gfx_draw_bitmap
             lbdf    errmsg              ; if error writing to device, exit with msg
             
             ;---- update display to show bitmap
-            call    mtrx_write_disp     ; update display
+            call    mtrx_update         ; update display
             lbdf    errmsg              ; if error writing to device, exit with msg
             
             load    rc, DELAY_500MS
@@ -416,7 +416,7 @@ loop2:      call    mtrx_draw_pixel     ; draw pixel in buffer
             
             ;---- clear display and draw bitmap              
             call    mtrx_clear          ; clear display
-            call    mtrx_write_disp     ; update display
+            call    mtrx_update         ; update display
             lbdf    errmsg              ; if error writing to device, exit with msg
           
             load    rf, frown           ; load test bitmap (clipped)
@@ -431,11 +431,11 @@ loop2:      call    mtrx_draw_pixel     ; draw pixel in buffer
             plo     r8                  ; set bitmap width
             phi     r8                  ; set bitmap height
             
-            call    mtrx_draw_bitmap
+            call    gfx_draw_bitmap
             lbdf    errmsg              ; if error writing to device, exit with msg
 
             ;---- update display to show bitmap
-            call    mtrx_write_disp     ; update display
+            call    mtrx_update         ; update display
             lbdf    errmsg              ; if error writing to device, exit with msg
                     
             load    rc, DELAY_500MS
@@ -456,11 +456,11 @@ loop2:      call    mtrx_draw_pixel     ; draw pixel in buffer
             plo     r8                  ; set bitmap width
             phi     r8                  ; set bitmap height            
 
-            call    mtrx_draw_bitmap
+            call    gfx_draw_bitmap
             lbdf    errmsg              ; if error writing to device, exit with msg
 
             ;---- update display to show bitmap
-            call    mtrx_write_disp     ; update display
+            call    mtrx_update         ; update display
             lbdf    errmsg              ; if error writing to device, exit with msg
 
             load    rc, DELAY_500MS
@@ -481,11 +481,11 @@ loop2:      call    mtrx_draw_pixel     ; draw pixel in buffer
             plo     r8                  ; set bitmap width
             phi     r8                  ; set bitmap height            
 
-            call    mtrx_draw_bitmap
+            call    gfx_draw_bitmap
             lbdf    errmsg              ; if error writing to device, exit with msg
             
             ;---- update display to show bitmap
-            call    mtrx_write_disp     ; update display
+            call    mtrx_update         ; update display
             lbdf    errmsg              ; if error writing to device, exit with msg
             
             load    rc, DELAY_500MS
@@ -497,10 +497,10 @@ loop2:      call    mtrx_draw_pixel     ; draw pixel in buffer
             ldi     LED_RED             ; set color
             phi     r9
             
-            call   mtrx_print_hstr
-            lbdf   errmsg               ; if error writing to device, exit with msg
+            call    mtrx_print_hstr
+            lbdf    errmsg              ; if error writing to device, exit with msg
 
-            call    mtrx_write_disp     ; update display
+            call    mtrx_update         ; update display
             lbdf    errmsg              ; if error writing to device, exit with msg
 
             load    rc, DELAY_500MS
@@ -513,10 +513,10 @@ loop2:      call    mtrx_draw_pixel     ; draw pixel in buffer
             ldi     LED_YELLOW          ; set color
             phi     r9
             
-            call   mtrx_print_vstr
-            lbdf   errmsg               ; if error writing to device, exit with msg
+            call    mtrx_print_vstr
+            lbdf    errmsg              ; if error writing to device, exit with msg
 
-            call    mtrx_write_disp     ; update display
+            call    mtrx_update         ; update display
             lbdf    errmsg              ; if error writing to device, exit with msg
 
             load    rc, DELAY_500MS
@@ -524,7 +524,7 @@ loop2:      call    mtrx_draw_pixel     ; draw pixel in buffer
             
             ;---- clear display and exit            
 done:       call    mtrx_clear          ; clear display
-            call    mtrx_write_disp     ; update display
+            call    mtrx_update         ; update display
             lbdf    errmsg              ; if error writing to device, exit with msg
             
             ldi     0
@@ -552,4 +552,5 @@ frown:      db $3c, $42, $a5, $81, $99, $a5, $42, $3c
             ;---- Strings for scrolling text
 tst_str1:   db 'Hello,',0
 tst_str2:   db 'World!',0
+
             end     start
