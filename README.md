@@ -187,7 +187,7 @@ Util Library API
 
 GFX 1802 library
 ----------------
-The matrix library implements the GFX Display Interface to support graphics functions provided by the [GFX 1802 Library.](https://github.com/fourstix/GFX-1802-Library) The GFX 1802 Library is a graphics library written in 1802 Assembler code based on the Adafruit_GFX-Library written by Ladyada Limor Fried.
+The matrix library implements the GFX Display Interface to support graphics functions provided by the common [GFX 1802 Library.](https://github.com/fourstix/GFX-1802-Library) The GFX 1802 Library is a common graphics library written in 1802 Assembler code and based on the Adafruit_GFX-Library written by Ladyada Limor Fried.
 
 Example programs
 ----------------
@@ -427,7 +427,7 @@ Blank and turn off the backlight on a Liquid Crystal Display with I2C
 Example program
 ----------------
 
-The graphics functions for the matrix example programs are provided by the [GFX 1802 Library.](https://github.com/fourstix/GFX-1802-Library).  
+The graphics functions for the matrix example programs are provided by the common [GFX 1802 Library.](https://github.com/fourstix/GFX-1802-Library)  
 
 ## bicolor  
 **Usage:** bicolor  
