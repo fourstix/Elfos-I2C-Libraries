@@ -52,7 +52,8 @@ clr_loop:   ldi     0
             lbnz    clr_loop
 
             pop     r9
-            pop     rd      
+            pop     rd
+            clc      
             return
 
             endp

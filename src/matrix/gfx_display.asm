@@ -51,17 +51,6 @@
             lbr     mtrx_clear    ; transfer to device routine
             endp
 
-;-------------------------------------------------------------------------------
-; This routine writes the display buffer to the display
-; Returns:
-;   DF = 0 on success, DF = 1 on error
-;-------------------------------------------------------------------------------
-
-            proc    gfx_disp_update
-                
-            lbr     mtrx_update   ; transfer to device routine
-            endp
-
 ;-------------------------------------------------------
 ; Name: gfx_disp_pixel
 ;
