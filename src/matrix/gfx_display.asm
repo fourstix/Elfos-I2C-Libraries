@@ -122,7 +122,6 @@ wh_loop:    call    mtrx_write_pixel  ; default routine, with no optimization
             
             glo     r9                ; check length count
             lbz     wh_done           ; if zero we are done
-            inc     rd                ; move ptr to next byte
             dec     r9                ; draw length of w pixels
             lbr     wh_loop            
 
