@@ -18,7 +18,4 @@
             extrn   gfx_draw_rect
             extrn   gfx_fill_rect
             extrn   gfx_draw_line
-            extrn   gfx_check_bounds
-            extrn   gfx_adj_bounds
-            extrn   gfx_adj_cursor
             

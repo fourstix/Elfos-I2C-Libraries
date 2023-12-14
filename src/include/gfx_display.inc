@@ -16,6 +16,7 @@
 ;-------------------------------------------------------------------------------
             extrn   gfx_disp_size
             extrn   gfx_disp_clear
+            extrn   gfx_disp_update
             extrn   gfx_disp_pixel      
             extrn   gfx_disp_h_line 
             extrn   gfx_disp_v_line 
