@@ -48,8 +48,7 @@
 ; Registers Used:
 ;   r7.1 - origin y 
 ;   r7.0 - origin x 
-;   r8   - character write scratch register
-;   r9.0 - character to write
+;   r8.0 - character to write
 ;   ra.0 - scroll counter
 ;   rc   - scratch register, copy of origin
 ;
@@ -74,7 +73,7 @@
             phi     r7                ; set y origin
             
 sl_loop:    ghi     rd                ; get previous character
-            plo     r9                ; write previous character
+            plo     r8                ; write previous character
             
             call    mtrx_clear        ; clear out display buffer
             
@@ -93,8 +92,8 @@ sl_loop:    ghi     rd                ; get previous character
             clc                       ; clear DF flag
             
             glo     rd                ; get next character
-            plo     r9                ; write next character
-            call    gfx_draw_char    ; r7 is consumed
+            plo     r8                ; write next character
+            call    gfx_draw_char     ; r7 is consumed
             lbdf    sl_exit
 
             ghi     rc                ; get y origin from scratch register

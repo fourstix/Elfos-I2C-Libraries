@@ -93,7 +93,7 @@ loop:       glo     rc                  ; get counter from index
 
             ldi    ' '                  ; printable chars start at space
             add                         ; convert to character
-            plo    r9                   ; save char to write
+            plo    r8                   ; save char to write
 
             call    mtrx_clear          ; clear out display buffer
 
