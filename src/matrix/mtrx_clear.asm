@@ -29,29 +29,29 @@
 ; This routine clears the matrix display buffer
 ; Registers Used:
 ;   RD   - pointer to the display buffer
-;   R9.0 - byte counter
+;   RA.0 - byte counter
 ;-------------------------------------------------------------------------------
 
             proc    mtrx_clear
 
             push    rd
-            push    r9
+            push    ra
 
             ; one display byte + 8 lines of 2 bytes 
             ; each pixel has 2 bytes (one green byte + one red byte)
             
             load    rd, mtrx_buffer
             ldi     17                   
-            plo     r9
+            plo     ra
 
 clr_loop:   ldi     0
             str     rd
             inc     rd
-            dec     r9
-            glo     r9
+            dec     ra
+            glo     ra
             lbnz    clr_loop
 
-            pop     r9
+            pop     ra
             pop     rd
             clc      
             return

@@ -73,10 +73,10 @@
 ; Draw a vertical line starting at position x,y.
 ;
 ; Parameters: 
-;   r9.1 - color 
-;   r9.0 - length  (0 to 7)   
+;   r9.1 - color
 ;   r7.1 - origin y 
 ;   r7.0 - origin x 
+;   r8.0 - length  (0 to 7)   
 ;                  
 ; Return:
 ;   DF = 1 if error, 0 if no error (r7 & r9 consumed)
@@ -90,10 +90,10 @@ wv_loop:    call    mtrx_write_pixel  ; default routine, with no optimization
             adi      1
             phi     r7                ; save updated y value
             
-            glo     r9                ; check length count
+            glo     r8                ; check length count
             lbz     wv_done           ; if zero we are done
             
-            dec     r9                ; draw length of w pixels
+            dec     r8                ; draw length of w pixels
             lbr     wv_loop            
 wv_done:    return
 
@@ -105,10 +105,10 @@ wv_done:    return
 ; Draw a horizontal line starting at position x,y.
 ;
 ; Parameters: 
-;   r9.1 - color 
-;   r9.0 - length  (0 to width-1)   
+;   r9.1 - color
 ;   r7.1 - origin y 
 ;   r7.0 - origin x 
+;   r8.0 - length  (0 to width-1)   
 ;                  
 ; Return:
 ;   DF = 1 if error, 0 if no error (r7 & r9 consumed)
@@ -120,9 +120,9 @@ wh_loop:    call    mtrx_write_pixel  ; default routine, with no optimization
             
             inc     r7                ; move x to next position
             
-            glo     r9                ; check length count
+            glo     r8                ; check length count
             lbz     wh_done           ; if zero we are done
-            dec     r9                ; draw length of w pixels
+            dec     r8                ; draw length of w pixels
             lbr     wh_loop            
 
 wh_done:    return

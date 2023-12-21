@@ -48,8 +48,31 @@ main:       lda     ra                  ; move past any spaces
             lbz     main
             dec     ra                  ; move back to non-space character
             ldn     ra                  ; get byte
-            lbnz    usage               ; jump if any argument given
-                        
+            lbnz    good                ; jump if non-zero
+            lbr     show_it             ; no rotation if no argument given
+         
+  good:     smi     '-'                 ; was it a dash to indicate option?
+            lbnz    usage               ; if not a dash, show error  
+            inc     ra                  ; move to next character
+            lda     ra                  ; check for fill option 
+            smi     'r'
+            lbnz    usage               ; bad option, show usage message
+         
+  sp_1:     lda     ra                  ; move past any spaces
+            smi     ' '
+            lbz     sp_1
+
+            dec     ra                  ; move back to non-space character
+            ldn     ra                  ; get rotation value
+            smi     '0'                 ; should be 0, 1, 2 or 3
+            lbnf    usage               ; if less than zero, show usage message
+            ldn     ra                  ; check again
+            smi     '4'                 ; should be 0, 1, 2 or 3
+            lbdf    usage               ; if greater than 3, show usage message
+            load    rf, rotate          ; point rf to rotate flag
+            ldn     ra                  ; get rotation paramater
+            smi     '0'                 ; convert character to digit value
+            str     rf                  ; save as rotate flag
             
 show_it:    call    i2c_init            ; initialize i2c bus
 
@@ -75,6 +98,9 @@ show_it:    call    i2c_init            ; initialize i2c bus
             ldi     0                   ; set pixel position at 0,0
             plo     r7                  ; set pixel x
             phi     r7                  ; set pixel y
+            load    rf, rotate          ; set rotation flag
+            ldn     rf
+            plo     r9
             ldi     LED_GREEN           
             phi     r9                  ; set pixel color
             
@@ -95,6 +121,10 @@ loop:       call    gfx_draw_pixel      ; draw pixel in buffer
             ldi     3                   ; set pixel position at 3,3
             plo     r7                  ; set pixel x
             phi     r7                  ; set pixel y
+            
+            load    rf, rotate          ; set rotation flag
+            ldn     rf
+            plo     r9            
             ldi     LED_YELLOW           
             phi     r9                  ; set pixel color            
             call    gfx_draw_pixel      ; draw pixel in buffer
@@ -111,6 +141,10 @@ loop:       call    gfx_draw_pixel      ; draw pixel in buffer
             ldi     5                   ; set pixel position at 5,5
             plo     r7                  ; set pixel x
             phi     r7                  ; set pixel y
+
+            load    rf, rotate          ; set rotation value
+            ldn     rf
+            plo     r9            
             ldi     LED_RED           
             phi     r9                  ; set pixel color
 
@@ -138,6 +172,10 @@ loop2:      call    gfx_draw_pixel     ; draw pixel in buffer
             ;---- clear display and draw rectangles
             call    mtrx_clear          ; clear display
 
+            load    rf, rotate          ; set rotation value
+            ldn     rf
+            plo     r9            
+
             ldi     LED_RED             ; set color
             phi     r9
             
@@ -158,6 +196,10 @@ loop2:      call    gfx_draw_pixel     ; draw pixel in buffer
             
             load    rc, DELAY_500MS
             call    util_delay
+
+            load    rf, rotate          ; set rotation value
+            ldn     rf
+            plo     r9            
 
             ldi     LED_GREEN           ; set color
             phi     r9
@@ -198,6 +240,10 @@ loop2:      call    gfx_draw_pixel     ; draw pixel in buffer
             phi     r8                  ; set endpoint y = 0
             ldi     7
             plo     r8                  ; set endpoint x = 7
+
+            load    rf, rotate          ; set rotation value
+            ldn     rf
+            plo     r9            
             
             ldi     LED_GREEN           
             phi     r9                  ; set pixel color
@@ -314,6 +360,10 @@ loop2:      call    gfx_draw_pixel     ; draw pixel in buffer
             phi     r7                  ; set origin y
             plo     r8                  ; set endpoint y = 0
             
+            load    rf, rotate          ; set rotation value
+            ldn     rf
+            plo     r9            
+
             ldi     LED_RED           
             phi     r9                  ; set pixel color
             
@@ -360,6 +410,10 @@ loop2:      call    gfx_draw_pixel     ; draw pixel in buffer
             plo     r8                  ; set endpoint x = 2
             ldi     7                   
             phi     r8                  ; set endpoint y = 7
+
+            load    rf, rotate          ; set rotation value
+            ldn     rf
+            plo     r9            
             
             ldi     LED_YELLOW          
             phi     r9                  ; set pixel color
@@ -392,10 +446,14 @@ loop2:      call    gfx_draw_pixel     ; draw pixel in buffer
             call    mtrx_update         ; update display
             lbdf    errmsg              ; if error writing to device, exit with msg
           
-            load    rf, triangle        ; load test bitmap
+            load    rf, rotate          ; set rotation value
+            ldn     rf
+            plo     r9            
+
             ldi     LED_RED
             phi     r9                  ; set bitmap color
 
+            load    rf, triangle        ; load test bitmap
             ldi     0                   ; set origin (upper left corner) to 0,0  
             plo     r7                  ; set origin x to 0
             phi     r7                  ; set origin y to 0
@@ -418,10 +476,15 @@ loop2:      call    gfx_draw_pixel     ; draw pixel in buffer
             call    mtrx_clear          ; clear display
             call    mtrx_update         ; update display
             lbdf    errmsg              ; if error writing to device, exit with msg
+
+            load    rf, rotate          ; set rotation value
+            ldn     rf
+            plo     r9            
           
-            load    rf, frown           ; load test bitmap (clipped)
             ldi     LED_YELLOW
             phi     r9                  ; set bitmap color
+
+            load    rf, frown           ; load test bitmap (clipped)
 
             ldi     -2                  ; set origin (upper left corner)  
             plo     r7                  ; set origin x to -2 (clipped bitmap)
@@ -444,10 +507,14 @@ loop2:      call    gfx_draw_pixel     ; draw pixel in buffer
             call    mtrx_clear          ; clear display buffer
             lbdf    errmsg              ; if error writing to device, exit with msg
 
-            load    rf, meh             ; load test bitmap (clipped)
+            load    rf, rotate          ; set rotation value
+            ldn     rf
+            plo     r9            
+
             ldi     LED_RED
             phi     r9                  ; set bitmap color
 
+            load    rf, meh             ; load test bitmap (clipped)
             ldi     1                   ; set origin (upper left corner)  
             plo     r7                  ; set origin x to 1 (clipped bitmap)
             phi     r7                  ; set origin y to 1 (clipped bitmap)
@@ -468,10 +535,15 @@ loop2:      call    gfx_draw_pixel     ; draw pixel in buffer
 
             call    mtrx_clear          ; clear display buffer
             lbdf    errmsg              ; if error writing to device, exit with msg
+
+            load    rf, rotate          ; set rotation value
+            ldn     rf
+            plo     r9            
           
-            load    rf, smile           ; load test bitmap
             ldi     LED_GREEN
             phi     r9                  ; set bitmap color
+
+            load    rf, smile           ; load test bitmap
 
             ldi     0                   ; set origin (upper left corner) to 0,0  
             plo     r7                  ; set origin x to 0
@@ -493,9 +565,14 @@ loop2:      call    gfx_draw_pixel     ; draw pixel in buffer
             
             call    mtrx_clear          ; clear display
 
-            load    rf, tst_str1        ; print a test string
+            load    rf, rotate          ; set rotation value
+            ldn     rf
+            plo     r9            
+
             ldi     LED_RED             ; set color
             phi     r9
+
+            load    rf, tst_str1        ; print a test string
             
             call    mtrx_print_hstr
             lbdf    errmsg              ; if error writing to device, exit with msg
@@ -509,10 +586,14 @@ loop2:      call    gfx_draw_pixel     ; draw pixel in buffer
             call    mtrx_clear          ; clear display
             lbdf    errmsg              ; if error writing to device, exit with msg
 
-            load    rf, tst_str2        ; print a test string
+            load    rf, rotate          ; set rotation value
+            ldn     rf
+            plo     r9            
+
             ldi     LED_YELLOW          ; set color
             phi     r9
             
+            load    rf, tst_str2        ; print a test string
             call    mtrx_print_vstr
             lbdf    errmsg              ; if error writing to device, exit with msg
 
@@ -539,9 +620,12 @@ errmsg:     call    o_inmsg
             abend                       ; return to Elf/os with error code
             
 usage:      call    o_inmsg             ; otherwise display usage message
-            db      'Usage: bicolor',10,13,0
+            db      'Usage: bicolor [-r n, where n = 0|1|2|3]',10,13
+            db      'Option: -r n, rotate by n*90 degrees counter clockwise',10,13,0
             abend                       ; and return to os
             
+            ;---- rotation flag
+rotate:     db 0            
             
             ;---- 8x8 bitmaps for testing
 triangle:   db $80, $C0, $E0, $F0, $F8, $FC, $FE, $FF

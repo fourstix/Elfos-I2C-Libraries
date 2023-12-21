@@ -38,6 +38,7 @@
 ;   r7.1 - y (line, 0 to 7)
 ;   r7.0 - x (pixel offset, 0 to 7)
 ;   r9.1 - color
+;   r9.0 - rotation
 ; Registers Used:
 ;   RD - pointer to the display buffer
 ;   RC.0 - bit mask for clearing bit (AND mask)

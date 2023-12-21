@@ -52,7 +52,32 @@ main:       lda     ra                  ; move past any spaces
             lbz     main
             dec     ra                  ; move back to non-space character
             ldn     ra                  ; get byte
-            lbnz    usage               ; jump if any argument given
+            lbnz    good                ; jump if any argument given
+            lbr     show_it             ; no rotation if no argument given
+            
+
+good:       smi     '-'                 ; was it a dash to indicate option?
+            lbnz    usage               ; if not a dash, show error  
+            inc     ra                  ; move to next character
+            lda     ra                  ; check for fill option 
+            smi     'r'
+            lbnz    usage               ; bad option, show usage message
+       
+sp_1:       lda     ra                  ; move past any spaces
+            smi     ' '
+            lbz     sp_1
+
+            dec     ra                  ; move back to non-space character
+            ldn     ra                  ; get rotation value
+            smi     '0'                 ; should be 0, 1, 2 or 3
+            lbnf    usage               ; if less than zero, show usage message
+            ldn     ra                  ; check again
+            smi     '4'                 ; should be 0, 1, 2 or 3
+            lbdf    usage               ; if greater than 3, show usage message
+            load    rf, rotate          ; point rf to rotate flag
+            ldn     ra                  ; get rotation paramater
+            smi     '0'                 ; convert character to digit value
+            str     rf                  ; save as rotate flag
                         
             
 show_it:    call    i2c_init            ; initialize i2c bus
@@ -80,7 +105,10 @@ show_it:    call    i2c_init            ; initialize i2c bus
             plo     rc
             phi     rc        
             
-
+            load    rf, rotate          ; set rotation value
+            ldn     rf
+            plo     r9  
+            
             ldi     LED_RED           
             phi     r9                  ; set pixel color
 
@@ -93,7 +121,7 @@ loop:       glo     rc                  ; get counter from index
 
             ldi    ' '                  ; printable chars start at space
             add                         ; convert to character
-            plo    r9                   ; save char to write
+            plo    r8                   ; save char to write
 
             call    mtrx_clear          ; clear out display buffer
 
@@ -132,7 +160,10 @@ errmsg:     call    o_inmsg
             abend                       ; return to Elf/os with error code
             
 usage:      call    o_inmsg             ; otherwise display usage message
-            db      'Usage: bichar',10,13,0
+            db      'Usage: bichar [-r n, where n = 0|1|2|3]',10,13
+            db      'Option: -r n, rotate by n*90 degrees counter clockwise',10,13,0
             abend                       ; and return to os
             
+            ;---- rotation flag
+rotate:     db 0                
             end     start
