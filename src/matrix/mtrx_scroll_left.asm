@@ -43,6 +43,7 @@
 ;
 ; Parameters: 
 ;   r9.1 - color
+;   r9.0 - rotation
 ;   rd.0 - previous character
 ;   rd.1 - new character
 ; Registers Used:

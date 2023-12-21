@@ -430,12 +430,13 @@ Example program
 The graphics functions for the matrix example programs are provided by the common [GFX 1802 Library.](https://github.com/fourstix/GFX-1802-Library)  
 
 ## bicolor  
-**Usage:** bicolor  
+**Usage:** bicolor [-r 0|1|2|3]  
 Show graphics functions available on an Adafruit Bicolor 8x8 LED Matrix.
-
-## bichar  
-**Usage:** bichar  
+The option -r n, where n = 0,1,2 or 3, will rotate the display n*90 degrees counter-clockwise.
+## bichar 
+**Usage:** bichar [-r 0|1|2|3]  
 Show the printable ASCII character set on an Adafruit Bicolor 8x8 LED Matrix   
+The option -r n, where n = 0,1,2 or 3, will rotate the display n*90 degrees counter-clockwise.
 
 Nick's Libraries
 ----------------

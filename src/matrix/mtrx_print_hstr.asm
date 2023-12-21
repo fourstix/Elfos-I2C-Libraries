@@ -41,6 +41,7 @@
 ;
 ; Parameters: 
 ;   r9.1 - color
+;   r9.0 - rotation
 ;   rf - pointer to string buffer 
 ;
 ; Registers Used:
