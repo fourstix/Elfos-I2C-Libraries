@@ -58,7 +58,6 @@
 ;
 ; Parameters:
 ;   r9.1 - color
-;   r9.0 - rotation
 ;   r7.1 - y 
 ;   r7.0 - x
 ; Return:
@@ -75,7 +74,6 @@
 ;
 ; Parameters: 
 ;   r9.1 - color
-;   r9.0 - rotation 
 ;   r7.1 - origin y 
 ;   r7.0 - origin x 
 ;   r8.0 - length  (0 to 7)   
@@ -108,7 +106,6 @@ wv_done:    return
 ;
 ; Parameters: 
 ;   r9.1 - color
-;   r9.0 - rotation 
 ;   r7.1 - origin y 
 ;   r7.0 - origin x 
 ;   r8.0 - length  (0 to width-1)   
