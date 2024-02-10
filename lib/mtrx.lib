@@ -93,26 +93,27 @@ v0005
 .big
 {mtrx_scroll_left
 :0000 9c 73 8c 73 9a 73 8a 73 99 73 89 73 98 73 88 73
-/mtrx_clear 001e 00
-\mtrx_clear 001f
-:0010 97 73 87 73 f8 06 aa f8 00 a7 b7 9d a8 d4 00 00
-/gfx_draw_char 0025 00
-\gfx_draw_char 0026
-:0020 87 ac 97 bc d4 00 00 c3 00 56 9c b7 8c fc 06 a7
-/gfx_draw_char 0035 00
-\gfx_draw_char 0036
-:0030 fc 00 8d a8 d4 00 00 c3 00 56 9c b7 8c ff 01 a7
-/mtrx_update 0044 00
-\mtrx_update 0045
-:0040 2a fc 00 d4 00 00 c3 00 56 f8 6c ac f8 20 bc d4
-/util_delay 0050 00
-\util_delay 0051
-:0050 00 00 8a ca 00 1b 60 72 a7 f0 b7 60 72 a8 f0 b8
-:0060 60 72 a9 f0 b9 60 72 aa f0 ba 60 72 ac f0 bc d5
-+0028
-+0038
-+0047
-+0054
+/mtrx_clear 001f 00
+:0010 97 73 87 73 f8 06 aa f8 00 a7 b7 b8 9d a8 d4 00
+\mtrx_clear 0020
+/gfx_draw_char 0026 00
+\gfx_draw_char 0027
+:0020 00 87 ac 97 bc d4 00 00 c3 00 57 9c b7 8c fc 06
+/gfx_draw_char 0036 00
+\gfx_draw_char 0037
+:0030 a7 fc 00 8d a8 d4 00 00 c3 00 57 9c b7 8c ff 01
+/mtrx_update 0045 00
+\mtrx_update 0046
+:0040 a7 2a fc 00 d4 00 00 c3 00 57 f8 6c ac f8 20 bc
+/util_delay 0051 00
+\util_delay 0052
+:0050 d4 00 00 8a ca 00 1c 60 72 a7 f0 b7 60 72 a8 f0
+:0060 b8 60 72 a9 f0 b9 60 72 aa f0 ba 60 72 ac f0 bc
+:0070 d5
++0029
++0039
++0048
++0055
 }
 .big
 {mtrx_print_hstr
@@ -131,27 +132,27 @@ v0005
 .big
 {mtrx_scroll_up
 :0000 9c 73 8c 73 9a 73 8a 73 99 73 89 73 98 73 88 73
-:0010 97 73 87 73 f8 08 aa f8 01 a7 f8 00 b7 9d a8 d4
-/mtrx_clear 0020 00
-\mtrx_clear 0021
-/gfx_draw_char 0027 00
-\gfx_draw_char 0028
-:0020 00 00 87 ac 97 bc d4 00 00 c3 00 58 8c a7 9c fc
-/gfx_draw_char 0037 00
-\gfx_draw_char 0038
-:0030 08 b7 fc 00 8d a8 d4 00 00 c3 00 58 8c a7 9c ff
-/mtrx_update 0046 00
-\mtrx_update 0047
-:0040 01 b7 2a fc 00 d4 00 00 c3 00 58 f8 6c ac f8 20
-/util_delay 0052 00
-\util_delay 0053
-:0050 bc d4 00 00 8a ca 00 1d 60 72 a7 f0 b7 60 72 a8
-:0060 f0 b8 60 72 a9 f0 b9 60 72 aa f0 ba 60 72 ac f0
-:0070 bc d5
-+002a
-+003a
-+0049
-+0056
+:0010 97 73 87 73 f8 08 aa f8 01 a7 f8 00 b7 b8 9d a8
+/mtrx_clear 0021 00
+\mtrx_clear 0022
+/gfx_draw_char 0028 00
+\gfx_draw_char 0029
+:0020 d4 00 00 87 ac 97 bc d4 00 00 c3 00 59 8c a7 9c
+/gfx_draw_char 0038 00
+\gfx_draw_char 0039
+:0030 fc 08 b7 fc 00 8d a8 d4 00 00 c3 00 59 8c a7 9c
+/mtrx_update 0047 00
+\mtrx_update 0048
+:0040 ff 01 b7 2a fc 00 d4 00 00 c3 00 59 f8 6c ac f8
+/util_delay 0053 00
+\util_delay 0054
+:0050 20 bc d4 00 00 8a ca 00 1e 60 72 a7 f0 b7 60 72
+:0060 a8 f0 b8 60 72 a9 f0 b9 60 72 aa f0 ba 60 72 ac
+:0070 f0 bc d5
++002b
++003b
++004a
++0057
 }
 .big
 {mtrx_print_vstr
