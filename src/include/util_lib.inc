@@ -24,3 +24,4 @@
             extrn   util_c_to_f
             extrn   util_delay
             extrn   util_wait
+            extrn   util_debug

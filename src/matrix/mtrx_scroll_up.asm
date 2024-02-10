@@ -49,7 +49,7 @@
 ; Registers Used:
 ;   r7.1 - origin y 
 ;   r7.0 - origin x 
-;   r8   - character write scratch register
+;   r8.1 - character scaling 
 ;   r8.0 - character to write
 ;   ra.0 - scroll counter
 ;   rc   - scratch register, copy of origin
@@ -74,7 +74,8 @@
             plo     r7                ; set x origin
             ldi     0
             phi     r7                ; set y origin
-            
+            phi     r8                ; set scale to zero (no scaling)
+              
 sl_loop:    ghi     rd                ; get previous character
             plo     r8                ; write previous character
             
