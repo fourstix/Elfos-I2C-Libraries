@@ -103,7 +103,8 @@ show_it:    call    i2c_init            ; initialize i2c bus
 
             ldi     0                   ; set up counter 
             plo     rc
-            phi     rc        
+            phi     rc
+            phi     r8                  ; set char scale factor to 0 (no scaling)        
             
             load    rf, rotate          ; set rotation value
             ldn     rf
@@ -122,7 +123,7 @@ loop:       glo     rc                  ; get counter from index
             ldi    ' '                  ; printable chars start at space
             add                         ; convert to character
             plo    r8                   ; save char to write
-
+            
             call    mtrx_clear          ; clear out display buffer
 
             push    r7                  ; r7 is consumed              
