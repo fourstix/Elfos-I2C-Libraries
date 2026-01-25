@@ -103,7 +103,7 @@ External Flags
 <tr><td>/EF3</td><td>PIO/I2C</td><td>SDA</td></tr>
 <tr><td rowspan="3">/EF4</td><td>Front Panel</td><td>Input Button</td></tr>
 <tr><td>PIO/I2C</td><td>SCL (Clock Stretching)</td></tr>
-<tr><td>PIO/Mini-TalkerC</td><td>/LRQ (Load Request)</td></tr>
+<tr><td>PIO/Mini-Talker</td><td>/LRQ (Load Request)</td></tr>
 </table>
 
 Supported Devices
