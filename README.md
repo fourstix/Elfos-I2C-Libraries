@@ -1,18 +1,18 @@
 # Elfos-I2C-Libraries
-Libraries for using various I2C devices with an 1802-Mini with the PIO and I2C expansion boards. 
+Libraries for using various I2C devices with an 1802-Mini with the PIO and I2C expansion boards.
 
-Platform  
+Platform
 --------
-The programs were written to run displays from an [1802-Mini](https://github.com/dmadole/1802-Mini) by David Madole running with the [1802/Mini PIO Parallel Expansion Board](https://github.com/arhefner/1802-Mini-PIO) with the [I2C interface board](https://github.com/arhefner/1802-Mini-I2C) by Tony Hefner. 
+The programs were written to run displays from an [1802-Mini](https://github.com/dmadole/1802-Mini) by David Madole running with the [1802/Mini PIO Parallel Expansion Board](https://github.com/arhefner/1802-Mini-PIO) with the [I2C interface board](https://github.com/arhefner/1802-Mini-I2C) by Tony Hefner.
 
-These programs were assembled and linked with updated versions of the Asm-02 assembler and Link-02 linker by Mike Riley. The updated versions required to assemble and link this code are available in the main branch of [arhefner/Asm-02](https://github.com/arhefner/Asm-02) and the [updates branch at arhefner/Link-02](https://github.com/arhefner/Link-02/tree/updates).  
+These programs were assembled and linked with updated versions of the Asm-02 assembler and Link-02 linker by Mike Riley. The updated versions required to assemble and link this code are available in the main branch of [arhefner/Asm-02](https://github.com/arhefner/Asm-02) and the [updates branch at arhefner/Link-02](https://github.com/arhefner/Link-02/tree/updates).
 
 The Windows versions of Asm/02 and Link/02 are available in the latest release at [fourstix/Asm-02](https://github.com/fourstix/Asm-02/releases) and [fourstix/Link-02](https://github.com/fourstix/Link-02/tree/updates).
 
 Modification of I2C Adapter for Clock Stretching
 ------------------------------------------------
 
-Version A of the [I2C Adapter](https://github.com/arhefner/1802-Mini-I2C) needs a single wire modification to support I2C clock stretching.  First, solder a wire from the EF4 post on JP1 to the SCL signal available on the right side of resistor R7 as shown in the diagrams below. Then, set the jumper at JP1 to use EF3 for the SDA line.  With this 
+Version A of the [I2C Adapter](https://github.com/arhefner/1802-Mini-I2C) needs a single wire modification to support I2C clock stretching.  First, solder a wire from the EF4 post on JP1 to the SCL signal available on the right side of resistor R7 as shown in the diagrams below. Then, set the jumper at JP1 to use EF3 for the SDA line.  With this
 modification the I2C routines will be able to check EF4 to see if a device is holding the SCL line low for clock stretching, and EF3 is used for SDA.
 
 The modification wire is shown in blue on the images below. One can add the modification wire to either the back side or the front side.  I found it easiest to solder the wire on the back side of the I2C Adapter.
@@ -29,7 +29,7 @@ You can find more information about clock stretching and I2C in general in the A
 tutorial [*Working with I2C Devices*](https://learn.adafruit.com/working-with-i2c-devices).
 
 
-1802-Mini v4.5 Configuration 
+1802-Mini v4.5 Configuration
 -----------------------------
 For this configuration, the code is assembled with the expansion group I2C_GROUP defined as 02 in sysconfig.inc and with the I2C_PORT define statement set equal to 7.
 
@@ -84,12 +84,12 @@ Card Groups and Ports
 
 <tr><td>6</td><td>
 
-[PIO](https://github.com/arhefner/1802-Mini-PIO)
+[PIO](https://github.com/arhefner/1802-Mini-PIO)/[Mini-Talker](https://github.com/arhefner/1802-Mini-Talker)
 
 </td></tr>
 <tr><td>7</td><td>
 
-[I2C Adapter](https://github.com/arhefner/1802-Mini-I2C)
+[PIO](https://github.com/arhefner/1802-Mini-PIO)/[I2C Adapter](https://github.com/arhefner/1802-Mini-I2C)
 </td></tr>
 
 </table>
@@ -103,6 +103,7 @@ External Flags
 <tr><td>/EF3</td><td>PIO/I2C</td><td>SDA</td></tr>
 <tr><td rowspan="2">/EF4</td><td>Front Panel</td><td>Input Button</td></tr>
 <tr><td>PIO/I2C</td><td>SCL (Clock Stretching)</td></tr>
+<tr><td>PIO/Mini-TalkerC</td><td>/LRQ (Load Request)</td></tr>
 </table>
 
 Supported Devices
@@ -140,11 +141,11 @@ I2C Library API
 </td><td>Initialize the i2c bus</td></tr>
 <tr><td>
 
-[i2c_avail](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/I2C_API.md#i2c_avail) 
+[i2c_avail](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/I2C_API.md#i2c_avail)
 </td><td>Check for an i2c device at a given address</td></tr>
 <tr><td>
 
-[i2c_scan](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/I2C_API.md#i2c_scan) 
+[i2c_scan](https://github.com/fourstix/Elfos-I2C-Libraries/blob/main/I2C_API.md#i2c_scan)
 </td><td>Scan the i2c bus for any device with the id in RF.0</td></tr>
 <tr><td>
 
@@ -222,7 +223,7 @@ Example programs
 Example program
 ----------------
 ## scanner
-**Usage:** scanner    
+**Usage:** scanner
 Scan the i2c bus and list the devices found.
 
 [![Adafruit 4-Digit 7-Segment Display - Red](https://cdn-shop.adafruit.com/970x728/878-05.jpg)](https://www.adafruit.com/product/878)
@@ -232,15 +233,15 @@ Scan the i2c bus and list the devices found.
 Example programs
 ----------------
 ## led7print
-**Usage:** led7print *hhhh*    
+**Usage:** led7print *hhhh*
 Print the hex digits *hhhh* on the Adafruit 7 Segment LED display.
 
 ## led7clear
-**Usage:** led7clear    
+**Usage:** led7clear
 Clear the Adafruit 7 Segment LED display.
 
 ## led7clock
-**Usage:** led7clock    
+**Usage:** led7clock
 Display a digital clock on the Adafruit 7 Segment LED display.  Requires the 1802-Mini RTC (Real Time Clock) Card.  Press the input button to exit the program.
 
 [![Sparkfun Qwiic Alphanumeric Display - Blue](https://cdn.sparkfun.com/assets/parts/1/5/1/8/2/16426-Demo-01.jpg)](https://cdn.sparkfun.com/assets/parts/1/5/1/8/2/16426-Demo-01.jpg)
@@ -249,16 +250,16 @@ Display a digital clock on the Adafruit 7 Segment LED display.  Requires the 180
 
 Example programs
 ----------------
-## alprint  
-**Usage:** alprint *cccc*    
+## alprint
+**Usage:** alprint *cccc*
 Print the characters *cccc* on the Sparkfun 14 Segment LED display.
 
-## alclear  
-**Usage:** alclear    
+## alclear
+**Usage:** alclear
 Clear the Sparkfun 14 Segment LED display.
 
-## altest  
-**Usage:** altest     
+## altest
+**Usage:** altest
 Turn on four segments, one per each character, along with the colon and decimal point to test the Sparkfun 14 Segment LED display.
 
 [![Sparkfun Qwiic Single Relay](https://cdn.sparkfun.com//assets/parts/1/3/4/5/1/15093-SparkFun_Qwiic_Single_Relay-01.jpg)](https://www.sparkfun.com/products/15093)
@@ -268,19 +269,19 @@ Turn on four segments, one per each character, along with the colon and decimal 
 Example programs
 ----------------
 ## relay
-**Usage:** relay [-s|-t|-v, default = -s]   
-Show state, show version or toggle the Sparkfun Qwiic Single Relay.  
-*Options:* 
+**Usage:** relay [-s|-t|-v, default = -s]
+Show state, show version or toggle the Sparkfun Qwiic Single Relay.
+*Options:*
 *  -s Show relay state (default)
 *  -t Toggle relay state
 *  -v show relay Version
-           
+
 ## relayOn
-**Usage:** relayOn   
+**Usage:** relayOn
 Turn on the Sparkfun Qwiic Single Relay.
 
 ## relayOff
-**Usage:** relayOff   
+**Usage:** relayOff
 Turn off the Sparkfun Qwiic Single Relay.
 
 [![Sparkfun Qwiic Joystick](https://cdn.sparkfun.com/assets/parts/1/3/5/5/8/15168-SparkFun_Qwiic_Joystick-01.jpg)](https://www.sparkfun.com/products/15168)
@@ -290,7 +291,7 @@ Turn off the Sparkfun Qwiic Single Relay.
 Example program
 ----------------
 ## joystick
-**Usage:** joystick   
+**Usage:** joystick
 Show information read from the Sparkfun Qwiic Joystick.
 
 
@@ -301,11 +302,11 @@ Show information read from the Sparkfun Qwiic Joystick.
 Example program
 ----------------
 ## lm75a
-**Usage:** lm75a [-c|-f, default = -c]  
-Show the temperature read from the LM75A temperature sensor.  
+**Usage:** lm75a [-c|-f, default = -c]
+Show the temperature read from the LM75A temperature sensor.
 
 *Options:*
-* -c show temperature in Celsius (default)   
+* -c show temperature in Celsius (default)
 * -f show temperature in Fahrenheit
 
 [![Adafruit SHT31 Temperature & Humidity Sensor](https://cdn-shop.adafruit.com/970x728/2857-03.jpg)](https://www.adafruit.com/product/2857)
@@ -315,12 +316,12 @@ Show the temperature read from the LM75A temperature sensor.
 Example program
 ----------------
 ## sht31
-**Usage:** sht31 [-c|-d|-e|-f|-h|-r|-s, default = -c]  
-Show temperature, humidity and dewpoint readings from the SHT31 temperature and humidity sensor.  
-*Options:* 
+**Usage:** sht31 [-c|-d|-e|-f|-h|-r|-s, default = -c]
+Show temperature, humidity and dewpoint readings from the SHT31 temperature and humidity sensor.
+*Options:*
 * -c show readings in Celsius (default)
 * -d Disable heater
-* -e Enable heater 
+* -e Enable heater
 * -f show reading in Fahrenheit
 * -h show Heater state (on or off)
 * -r Reset sensor
@@ -342,24 +343,24 @@ Show temperature, humidity and dewpoint readings from the SHT31 temperature and 
 </td></tr>
 </table>
 
-## memset  
-**Usage:** memset [-f hh, default = 00][hhhh, default = 0000]  
+## memset
+**Usage:** memset [-f hh, default = 00][hhhh, default = 0000]
 Set a 128 byte block in the device memory to a hexadecimal byte value.
-*Options:*  
-*  -f hh byte value hh to set (default = 00). 
-*  hhhh is block address in hex (default = 0000) 
+*Options:*
+*  -f hh byte value hh to set (default = 00).
+*  hhhh is block address in hex (default = 0000)
 
-## memdump  
-**Usage:** memdump [hhhh, default = 0000]  
-Show the contents of a 128 byte block in the device memory  
-*Options:*   
-*  hhhh is block address in hex (default = 0000)  
+## memdump
+**Usage:** memdump [hhhh, default = 0000]
+Show the contents of a 128 byte block in the device memory
+*Options:*
+*  hhhh is block address in hex (default = 0000)
 
-## memtest  
-**Usage:** memtest [hhhh, default = 0000]  
-Write a string to the device memory, read it back and verify match.  
-*Options:*  
-*  hhhh is the test address in hex (default = 0000)  
+## memtest
+**Usage:** memtest [hhhh, default = 0000]
+Write a string to the device memory, read it back and verify match.
+*Options:*
+*  hhhh is the test address in hex (default = 0000)
 
 [![Sparkfun Qwiic 12 Button Keypad](https://cdn.sparkfun.com//assets/parts/1/3/7/7/7/15290-SparkFun_Qwiic_Keypad_-_12_Button-01.jpg)](https://www.sparkfun.com/products/15290)
 
@@ -367,9 +368,9 @@ Write a string to the device memory, read it back and verify match.
 
 Example program
 ----------------
-## keypad  
-**Usage:** keypad     
-Show information read from the Sparkfun Qwiic 12 Button Keypad and display keys pressed.  
+## keypad
+**Usage:** keypad
+Show information read from the Sparkfun Qwiic 12 Button Keypad and display keys pressed.
 
 
 [![Sparkfun Qwiic Twist RGB Rotary Encoder](https://cdn.sparkfun.com//assets/parts/1/3/4/3/3/15083-SparkFun_Qwiic_Twist_-_RGB_Rotary_Encoder_Breakout-01.jpg)](https://www.sparkfun.com/products/15083)
@@ -378,9 +379,9 @@ Show information read from the Sparkfun Qwiic 12 Button Keypad and display keys 
 
 Example program
 ----------------
-## twist  
-**Usage:** twist   
-Show information read information from a Sparkfun Qwiic Twist RGB Rotary Encoder and change the color as the knob is turned.  
+## twist
+**Usage:** twist
+Show information read information from a Sparkfun Qwiic Twist RGB Rotary Encoder and change the color as the knob is turned.
 
 <table>
 <tr><td>
@@ -401,24 +402,24 @@ Show information read information from a Sparkfun Qwiic Twist RGB Rotary Encoder
 Example program
 ----------------
 
-## lcdchar  
-**Usage:** lcdchar [-s|-l, default = -s (16x2 display)]  
-Show various character and cursor functions on a Liquid Crystal Display with I2C 
-*Options:* 
+## lcdchar
+**Usage:** lcdchar [-s|-l, default = -s (16x2 display)]
+Show various character and cursor functions on a Liquid Crystal Display with I2C
+*Options:*
 *  -s = small 16x2 display (default)
-*  -l = large 20x4 display  
+*  -l = large 20x4 display
 
-## lcdscroll  
-**Usage:** lcdscroll  
-Show scrolling text on a Liquid Crystal Display with I2C  
+## lcdscroll
+**Usage:** lcdscroll
+Show scrolling text on a Liquid Crystal Display with I2C
 
-## lcdtext  
-**Usage:** lcdtext  
-Show changing the text direction on a Liquid Crystal Display with I2C  
+## lcdtext
+**Usage:** lcdtext
+Show changing the text direction on a Liquid Crystal Display with I2C
 
-## lcdoff  
-**Usage:** lcdoff  
-Blank and turn off the backlight on a Liquid Crystal Display with I2C  
+## lcdoff
+**Usage:** lcdoff
+Blank and turn off the backlight on a Liquid Crystal Display with I2C
 
 [![Adafruit Bicolor 8x8 LED Matrix](https://cdn-shop.adafruit.com/970x728/902-00.jpg)](https://www.adafruit.com/product/902)
 
@@ -427,15 +428,15 @@ Blank and turn off the backlight on a Liquid Crystal Display with I2C
 Example program
 ----------------
 
-The graphics functions for the matrix example programs are provided by the common [GFX 1802 Library.](https://github.com/fourstix/GFX-1802-Library)  
+The graphics functions for the matrix example programs are provided by the common [GFX 1802 Library.](https://github.com/fourstix/GFX-1802-Library)
 
-## bicolor  
-**Usage:** bicolor [-r 0|1|2|3]  
+## bicolor
+**Usage:** bicolor [-r 0|1|2|3]
 Show graphics functions available on an Adafruit Bicolor 8x8 LED Matrix.
 The option -r n, where n = 0,1,2 or 3, will rotate the display n*90 degrees counter-clockwise.
-## bichar 
-**Usage:** bichar [-r 0|1|2|3]  
-Show the printable ASCII character set on an Adafruit Bicolor 8x8 LED Matrix   
+## bichar
+**Usage:** bichar [-r 0|1|2|3]
+Show the printable ASCII character set on an Adafruit Bicolor 8x8 LED Matrix
 The option -r n, where n = 0,1,2 or 3, will rotate the display n*90 degrees counter-clockwise.
 
 Nick's Libraries
@@ -486,66 +487,66 @@ Repository Contents
 -------------------
 * **/src/**  --Source files for assembling I2C libraries and example programs.
 * **/src/alnum/**  -- Source files for Sparkfun 14 Segment Alphanumeric display library.
-  * alnum.bat - Windows batch file to assemble source files to create library. 
+  * alnum.bat - Windows batch file to assemble source files to create library.
   * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/example/**  -- Source files for Elf/OS I2c library example programs.
-  * build.bat - Windows batch file to assemble source files to first set of example programs. 
+  * build.bat - Windows batch file to assemble source files to first set of example programs.
   * build2.bat - Windows batch file to assemble source files to create second set of example programs.
   * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/i2c/**  -- Source files for Elf/OS I2C library.
-  * i2c.bat - Windows batch file to assemble source files to create library. 
+  * i2c.bat - Windows batch file to assemble source files to create library.
   * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/include/**  -- Include files for Elf/OS I2c libraries and example programs.
 * **/src/joystick/**  -- Source files for Sparkfun Qwiic Joystick library.
-  * joystick.bat - Windows batch file to assemble source files to create library. 
+  * joystick.bat - Windows batch file to assemble source files to create library.
   * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/led7/**  -- Source files for Adafruit 7 Segment LED display library.
-  * led7.bat - Windows batch file to assemble source files to create library. 
+  * led7.bat - Windows batch file to assemble source files to create library.
   * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/lm75a/**  -- Source files for LM75A temperature sensor library.
-  * lm75a.bat - Windows batch file to assemble source files to create library. 
+  * lm75a.bat - Windows batch file to assemble source files to create library.
   * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/relay/**  -- Source files for Sparkfun Qwiic Single relay library.
-  * relay.bat - Windows batch file to assemble source files to create library. 
+  * relay.bat - Windows batch file to assemble source files to create library.
   * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/sht31/**  -- Source files for SHT31 temperature and humidity sensor library.
-  * sht31.bat - Windows batch file to assemble source files to create library. 
+  * sht31.bat - Windows batch file to assemble source files to create library.
   * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/mem/**  -- Source files for Adafruit Non-Volatile Fram and Sparkfun Qwiic EEPROM Breakout Boards library.
-  * mem.bat - Windows batch file to assemble source files to create library. 
+  * mem.bat - Windows batch file to assemble source files to create library.
   * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/keypad/**  -- Source files for Sparkfun Qwiic 12 Button Keypad library.
-  * keypad.bat - Windows batch file to assemble source files to create library. 
+  * keypad.bat - Windows batch file to assemble source files to create library.
   * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/twist/**  -- Source files for Sparkfun Qwiic Twist RGB Rotary Encoder library.
-  * twist.bat - Windows batch file to assemble source files to create library. 
+  * twist.bat - Windows batch file to assemble source files to create library.
   * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/lcd/**  -- Source files for I2C 16x2 and I2C 20x4 Liquid Crystal Displays library.
-  * lcd.bat - Windows batch file to assemble source files to create library. 
+  * lcd.bat - Windows batch file to assemble source files to create library.
   * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/matrix/**  -- Source files for Adafruit 8x8 LED Matrices library.
-  * matrix.bat - Windows batch file to assemble source files to create library. 
+  * matrix.bat - Windows batch file to assemble source files to create library.
   * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/src/util/**  -- Source files for common utility library.
-  * util.bat - Windows batch file to assemble source files to create library. 
+  * util.bat - Windows batch file to assemble source files to create library.
   * clean.bat - Windows batch file to delete binaries before rebuilding.
 * **/lib/**  -- Assembled Elf/OS I2C library files for linking with example programs.
 * **/bin/**  -- Binary files for Elf/OS I2C example programs.
 * **/nick/**  -- Various I2C libraries written by Milton 'Nick' DeNicholas.
 * **/nick/mcp23017/**  -- I2C library for the MCP23017 16-bit GPIO Expander written by Milton 'Nick' DeNicholas.
-  * mcp23017.lib - Assembled I2C library for the MCP23017 16-bit GPIO Expander. 
+  * mcp23017.lib - Assembled I2C library for the MCP23017 16-bit GPIO Expander.
   * **/nick/mcp23017/include** -- include files for MCP23017 16-bit GPIO Expander Library programs.
   * **/nick/mcp23017/src** -- source files for MCP23017 16-bit GPIO Expander Library.
 * **/nick/blinkm/**  -- I2C library for the BlinkM Smart LED written by Milton 'Nick' DeNicholas.
-  * blinkm.lib - Assembled I2C library for the BlinkM Smart LED. 
+  * blinkm.lib - Assembled I2C library for the BlinkM Smart LED.
   * **/nick/blinkm/include** -- include files for BlinkM Smart LED Library.
   * **/nick/blinkm/src** -- source files for BlinkM Smart LED Library.
 * **/nick/pcf8591/**  -- I2C library for the BlinkM Smart LED written by Milton 'Nick' DeNicholas.
-  * pcf8591.lib - Assembled I2C library for the PCF8591 8 Bit A/D D/A Converter. 
+  * pcf8591.lib - Assembled I2C library for the PCF8591 8 Bit A/D D/A Converter.
   * **/nick/pcf8591/include** -- include files for PCF8591 8 Bit A/D D/A Converter Library.
   * **/nick/pcf8591/src** -- source files for PCF8591 8 Bit A/D D/A Converter Library.
 * **/nick/tsl2561/**  -- I2C library for the TSL2561 LUX Sensor written by Milton 'Nick' DeNicholas.
-  * tsl2561.lib - Assembled I2C library for the TSL2561 LUX Sensor. 
+  * tsl2561.lib - Assembled I2C library for the TSL2561 LUX Sensor.
   * **/nick/tsl2561/include** -- include files for TSL2561 LUX Sensor Library.
   * **/nick/tsl2561/src** -- source files for TSL2561 LUX Sensor Library.
 
@@ -559,49 +560,49 @@ References to any products, programs or services do not imply
 that they will be available in all countries in which their respective owner operates.
 
 Adafruit, the Adafruit logo, and other Adafruit products and services are
-trademarks of the Adafruit Industries, in the United States, other countries or both. 
+trademarks of the Adafruit Industries, in the United States, other countries or both.
 
 Sparkfun, the Sparkfun logo, and other Sparkfun products and services are
-trademarks of the Sparkfun Electronics, in the United States, other countries or both. 
+trademarks of the Sparkfun Electronics, in the United States, other countries or both.
 
 SunFounder, the SunFounder logo, and other SunFounder products and services are
-trademarks of the SunFounder, Inc. in the United States, other countries or both. 
+trademarks of the SunFounder, Inc. in the United States, other countries or both.
 
 Any company, product, or services names may be trademarks or services marks of others.
 
 All libraries used in this code are copyright their respective authors.
 
-MCP23017 16-bit GPIO Expander I2C Library  
-Copyright (c) 2023 by Milton 'Nick' DeNicholas  
+MCP23017 16-bit GPIO Expander I2C Library
+Copyright (c) 2023 by Milton 'Nick' DeNicholas
 
-BlinkM Smart LED I2C Library  
-Copyright (c) 2023 by Milton 'Nick' DeNicholas  
+BlinkM Smart LED I2C Library
+Copyright (c) 2023 by Milton 'Nick' DeNicholas
 
-PCF8591 8 Bit A/D D/A Converter I2C Library  
-Copyright (c) 2023 by Milton 'Nick' DeNicholas  
+PCF8591 8 Bit A/D D/A Converter I2C Library
+Copyright (c) 2023 by Milton 'Nick' DeNicholas
 
-TSL2561 LUX Sensor I2C Library  
-Copyright (c) 2023 by Milton 'Nick' DeNicholas  
+TSL2561 LUX Sensor I2C Library
+Copyright (c) 2023 by Milton 'Nick' DeNicholas
 
 This code is based on code written by Tony Hefner and assembled with the Asm/02 assembler and Link/02 linker written by Mike Riley.
 
-Elf/OS  
+Elf/OS
 Copyright (c) 2004-2023 by Mike Riley
 
-Asm/02 1802 Assembler  
+Asm/02 1802 Assembler
 Copyright (c) 2004-2023 by Mike Riley
 
-Link/02 1802 Linker  
+Link/02 1802 Linker
 Copyright (c) 2004-2023 by Mike Riley
 
-The 1802/Mini PIO Parallel Expansion Board   
+The 1802/Mini PIO Parallel Expansion Board
 Copyright (c) 2022-2023 by Tony Hefner
 
-The 1802/Mini I2C Adapter Board   
+The 1802/Mini I2C Adapter Board
 Copyright (c) 2022-2023 by Tony Hefner
 
-The 1802-Mini Microcomputer Hardware   
-Copyright (c) 2020-2023 by David Madole  
+The 1802-Mini Microcomputer Hardware
+Copyright (c) 2020-2023 by David Madole
 
 Many thanks to the original authors for making their designs and code available as open source, and a big thank you to Bernie Murphy for his testing, code contributions and suggestions.  Many thanks to Milton 'Nick' DeNicholas for kindly contributing his libraries.
 
