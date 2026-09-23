@@ -446,7 +446,7 @@ These I2C libraries were written by Milton 'Nick' DeNicholas who was kind enough
 <table>
 <tr><td>
 
-[![MCP23017 16-bit GPIO Expander](https://cdn-shop.adafruit.com/970x728/732-02.jpg)](https://www.adafruit.com/product/732)
+[![MCP23017 16-bit GPIO Expander](https://cdn-shop.adafruit.com/230x173/732-05.jpg)](https://www.adafruit.com/product/732)
 
 [*MCP23017 16-bit GPIO Expander*](https://www.adafruit.com/product/732)
 
